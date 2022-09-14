@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Mail\ApprovedMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class PermohonanController extends Controller
 {
@@ -32,6 +34,10 @@ class PermohonanController extends Controller
         }
 
         $user->save();
+        Mail::to($user->email)->send(new ApprovedMail($user));
+
         return redirect()->route('permohonan-user');
+
+        // return new ApprovedMail();
     }
 }

@@ -1,13 +1,14 @@
 <?php
 
+use App\Mail\ApprovedMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PostController;
-
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PermohonanController;
 use App\Http\Controllers\App\PembelajaranController;
 use App\Http\Controllers\Admin\ListPembelajaranController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminNa3pController;
@@ -17,7 +18,7 @@ use App\Http\Controllers\Admin\Pembelajaran\AdminAklisController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminSarjuController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminRetailController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminPemeliharaanController;
-use App\Http\Controllers\Admin\PermohonanController;
+use App\Mail\AprrovedMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -146,3 +147,8 @@ Route::post('/admin/p/spap/{id}',[AdminSpapController::class,'update'])->middlew
 Route::get('/admin/p/spap/{id}',[AdminSpapController::class,'destroy'])->middleware('admin');
 
 
+// Route::get('/admin/email', function(){
+//     return new ApprovedMail();
+// });
+
+// Route::get('/admin/email',[PermohonanController::class,'email']);
