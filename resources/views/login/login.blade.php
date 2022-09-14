@@ -16,11 +16,19 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-sm-12 mx-auto">
+                <div class="col-md-6 col-sm-12 mx-auto">
                     <div class="card">
                         @if (session()->has('success'))
                         <div class="alert alert-success alert-dismissible fade show float-top" role="alert">
                             {{ session('success') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
+                        @if (session()->has('NotApproved'))
+                        <div class="alert alert-secondary alert-dismissible fade show float-top" role="alert">
+                            {{ session('NotApproved') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -43,15 +51,15 @@
                             <form action="/" method="POST">
                                 @csrf
                                 <div class="form-group position-relative has-icon-left">
-                                    <label for="username">Username</label>
+                                    <label for="email">Email</label>
                                     <div class="position-relative">
-                                        <input type="text" class="form-control @error('username') is-invalid @enderror"
-                                            id="username" name="username" required value="{{ old('username') }}"
+                                        <input type="email" class="form-control @error('email') is-invalid @enderror"
+                                            id="email" name="email" required value="{{ old('email') }}"
                                             autocomplete="off">
                                         <div class="form-control-icon">
                                             <i data-feather="user"></i>
                                         </div>
-                                        @error('username')
+                                        @error('email')
                                         <div class="invalid-feedback">
                                             {{ $messege }}
                                         </div>
@@ -115,6 +123,7 @@
     <script src="/voler/dist/assets/js/app.js"></script>
 
     <script src="/voler/dist/assets/js/main.js"></script>
+    
 </body>
 
 </html>

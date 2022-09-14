@@ -20,7 +20,7 @@ return new class extends Migration
             $table->enum('role',['admin','user']);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('approve',['no','yes']);
+            $table->enum('is_approve',['Not Approved','Approved']);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

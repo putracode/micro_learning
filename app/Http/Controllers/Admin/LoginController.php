@@ -18,7 +18,7 @@ class LoginController extends Controller
     public function authenticate(Request $request){
         
         $credentials = $request->validate([
-            'username' => ['required'],
+            'email' => ['required'],
             'password' => ['required']
         ]);
 
@@ -57,6 +57,6 @@ class LoginController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);
 
-        return redirect()->route('login')->with('success','Anda Berhasil Registrasi!');
+        return redirect()->route('login')->with('success','Anda Berhasil Registrasi!. Mohon Menunggu Persetujuan Admin');
     }
 }

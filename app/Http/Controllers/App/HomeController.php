@@ -9,6 +9,10 @@ use App\Models\Post;
 
 class HomeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['approved']);
+    }
     public function index(){
         return view('app.home',[
             'post' => Post::all()

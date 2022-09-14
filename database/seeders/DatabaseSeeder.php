@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'putra',
             'email' => 'saputra@gmail.com',
             'password' => bcrypt('password'),
-            'approve' => 1
+            'is_approve' => 2
         ]);
 
         User::create([
@@ -38,9 +38,19 @@ class DatabaseSeeder extends Seeder
             'username' => 'rendi',
             'email' => 'rendi@gmail.com',
             'password' => bcrypt('password'),
-            'approve' => 1
+            'is_approve' => 2
         ]);
 
         // Post::factory(20)->create();
+        // if($request->is_approve == 2){
+        //     if(Auth::attempt($credentials)){
+        //         $request->session()->regenerate();
+        //         return redirect()->intended('/home');
+        //     }
+        // }else if($request->is_approve == 1){
+        //     return back()->with('NotApprove','Login Gagal. Anda Belum Mendapat Persetujuan Admin');
+        // }else{
+        //     return back()->with('loginError','Login Failed!');
+        // }
     }
 }

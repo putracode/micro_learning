@@ -24,10 +24,10 @@
                                 <h3>Sign Up</h3>
                                 <p>Please fill the form to register.</p>
                             </div>
-                            <form action="/registrasi" method="POST">
+                            <form action="/register" method="POST">
                                 @csrf
                                 <div class="row">
-
+                                    <input type="hidden" name="is_approve" value="1">
                                     <input type="hidden" name="role" value="2">
 
                                     <div class="col-md-6 col-12">

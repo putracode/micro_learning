@@ -73,6 +73,14 @@
                             </a>
 
                         </li>
+
+                        <li class="sidebar-item {{ Request::is('admin/permohonan-user*') ? 'active' : '' }}">
+                            <a href="/admin/permohonan-user" class='sidebar-link'>
+                                <i data-feather="user" width="20"></i>
+                                <span>Permohonan User</span>
+                            </a>
+
+                        </li>
                     </ul>
 
                     

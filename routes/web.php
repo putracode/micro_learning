@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\Pembelajaran\AdminAklisController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminSarjuController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminRetailController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminPemeliharaanController;
+use App\Http\Controllers\Admin\PermohonanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,7 +42,7 @@ Route::get('/register',[LoginController::class,'indexRegister'])->middleware('gu
 Route::post('/register',[LoginController::class,'store'])->middleware('guest');
 
 // HOME
-Route::get('/home',[HomeController::class,'index'])->middleware('auth');
+Route::get('/home',[HomeController::class,'index'])->middleware('auth','approved');
 
 // LIST PEMBELAJARAN
 Route::get('/home/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
@@ -90,6 +91,10 @@ Route::post('/admin/user',[RegisterController::class,'store'])->middleware('admi
 Route::get('/admin/user/{id}/edit',[RegisterController::class,'edit'])->middleware('admin');
 Route::post('/admin/user/{id}',[RegisterController::class,'update'])->middleware('admin');
 Route::get('/admin/user/{id}',[RegisterController::class,'destroy'])->middleware('admin');
+
+Route::get('/admin/permohonan-user',[PermohonanController::class,'index'])->name('permohonan-user')->middleware('admin');
+Route::get('/admin/permohonan-user/{id}/tolak',[PermohonanController::class,'tolak'])->middleware('admin');
+Route::get('/admin/permohonan-user/{id}/terima',[PermohonanController::class,'terima'])->middleware('admin');
 
 Route::get('/admin/p/aklik',[AdminAklikController::class,'index'])->name('PembelajaranAklik')->middleware('admin');
 Route::get('/admin/p/aklik/create',[AdminAklikController::class,'create'])->middleware('admin');

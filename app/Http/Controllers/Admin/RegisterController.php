@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 class RegisterController extends Controller
 {
     public function index(){
-        $user = user::all()->sortBy('name');
+        $user = user::all()->sortBy('name')->where('is_approve','Approved');
         return view('admin.user.index',[
             'user' => $user
         ]);
