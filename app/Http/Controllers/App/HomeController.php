@@ -12,6 +12,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware(['approved']);
+        $this->middleware(['newpassword']);
     }
     public function index(){
         return view('app.home',[

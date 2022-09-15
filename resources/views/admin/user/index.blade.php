@@ -15,11 +15,13 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Usename</th>
+                                    <th>Nama Lengkap</th>
                                     <th>Role</th>
                                     <th>Email</th>
                                     <th>Password</th>
+                                    <th>Pengguna</th>
+                                    <th>Perusahaan</th>
+                                    <th>Bidang</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -29,10 +31,12 @@
                                     <td>{{ $loop->iteration }}</td>
                                     
                                     <td>{{ $row->name }}</td>
-                                    <td>{{ $row->username }}</td>
                                     <td>{{ $row->role }}</td>
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->password }}</td>
+                                    <td>{{ $row->pengguna }}</td>
+                                    <td>{{ $row->perusahaan }}</td>
+                                    <td>{{ $row->bidang }}</td>
                                     <td>
                                         <a href="/admin/user/{{ $row->id }}/edit" class="btn btn-warning btn-sm mr-1 px-4 mb-1">Edit</a>
                                         <a href="/admin/user/{{ $row->id }}"

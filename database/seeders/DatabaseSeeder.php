@@ -26,19 +26,25 @@ class DatabaseSeeder extends Seeder
         User::create([
             'name' => 'Saputra',
             'role' => 'admin',
-            'username' => 'putra',
+            // 'username' => 'putra',
             'email' => 'saputra@gmail.com',
             'password' => bcrypt('password'),
-            'is_approve' => 2
+            'perusahaan' => 'ICON+',
+            'bidang' => 'Bidang Aktivasi Publik',
+            'is_approve' => 2,
+            'pengguna' => 'Internal'
         ]);
 
         User::create([
             'name' => 'Rendi Purwito Armin',
             'role' => 'user',
-            'username' => 'rendi',
+            // 'username' => 'rendi',
             'email' => 'rendi@gmail.com',
             'password' => bcrypt('password'),
-            'is_approve' => 2
+            'perusahaan' => 'ICON+',
+            'bidang' => 'Bidang Aktivasi Listrik',
+            'is_approve' => 2,
+            'pengguna' => 'Eksternal'
         ]);
 
         // Post::factory(20)->create();

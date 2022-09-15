@@ -121,7 +121,7 @@
                                     {{-- <img src="/voler/dist/assets/images/avatar/avatar-s-1.png" alt="" srcset=""> --}}
                                     <i class="bi bi-person-fill"></i>
                                 </div>
-                                <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->username }}
+                                <div class="d-none d-md-block d-lg-inline-block">Hi, {{ auth()->user()->name }}
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">

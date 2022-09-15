@@ -41,9 +41,11 @@ Route::post('/',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout']);
 Route::get('/register',[LoginController::class,'indexRegister'])->middleware('guest');
 Route::post('/register',[LoginController::class,'store'])->middleware('guest');
+Route::get('/change-password',[LoginController::class,'change'])->middleware('guest');
+Route::post('/change-password',[LoginController::class,'update'])->middleware('guest');
 
 // HOME
-Route::get('/home',[HomeController::class,'index'])->middleware('auth','approved');
+Route::get('/home',[HomeController::class,'index'])->middleware('auth','approved','newpassword');
 
 // LIST PEMBELAJARAN
 Route::get('/home/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
@@ -147,8 +149,3 @@ Route::post('/admin/p/spap/{id}',[AdminSpapController::class,'update'])->middlew
 Route::get('/admin/p/spap/{id}',[AdminSpapController::class,'destroy'])->middleware('admin');
 
 
-// Route::get('/admin/email', function(){
-//     return new ApprovedMail();
-// });
-
-// Route::get('/admin/email',[PermohonanController::class,'email']);
