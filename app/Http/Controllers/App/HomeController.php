@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers\App;
 
-use App\Models\ListPembelajaran;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\Post;
+use Illuminate\Http\Request;
+use App\Models\ListPembelajaran;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['approved']);
         $this->middleware(['newpassword']);
+        $this->middleware(['approved']);
     }
     public function index(){
-        return view('app.home',[
-            'post' => Post::all()
-        ]);
+        if ((Auth::user()->password_change == false)) {
+            return redirect('/change-password');
+        }else{
+            return view('app.home',[
+                'post' => Post::all()
+            ]);
+        }
     }
 
     public function indexListPembelajaran(){

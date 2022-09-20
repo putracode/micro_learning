@@ -49,7 +49,8 @@ class LoginController extends Controller
         $validatedData = $this->validate($request,[
             'name' => ['required'],
             'role' => ['required'],
-            'email' => ['required'],
+            'email' => ['required','unique:users'],
+            'no_telepon' => ['required'],
             'password' => ['required'],
             'bidang' => ['required'],
             'pengguna' => ['required'],
@@ -59,21 +60,9 @@ class LoginController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);
 
-        return redirect()->route('login')->with('success','Anda Berhasil Registrasi!. Mohon Menunggu Persetujuan Admin');
+        return redirect()->route('login')->with('success','Anda Berhasil Registrasi!. Username dan password akan dikirim via Email');
     }
 
 
-    public function change(){
-        return view('login.changepassword');
-    }
-
-
-    public function update(Request $request,$id){
-        $user = user::find($id);
-
-        // $request['password'] = bcrypt($request['password']);
-        $user->update($request->all());
-        
-        return redirect()->route('login')->with('Edit','Password berhasil Diubah!');
-    }
+    
 }

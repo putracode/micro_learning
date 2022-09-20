@@ -6,9 +6,9 @@ Email : {{ $user->email }}
 <br> 
 Password : 1234567
 
-@component('mail::button', ['url' => '/change-password/{{ $user->id }}'])
+{{-- @component('mail::button', ['url' => '/change-password/{{ $user->id }}'])
 Change Password
-@endcomponent
+@endcomponent --}}
 
 Thanks,<br>
 {{ config('app.name') }}

@@ -9,6 +9,13 @@
 
     <link rel="shortcut icon" href="/voler/dist/assets/images/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="/voler/dist/assets/css/app.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+    <style>
+        *{
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -50,18 +57,18 @@
                             </div>
                             <form action="/" method="POST">
                                 @csrf
-                                <div class="form-group position-relative has-icon-left">
+                                <div class="form-group position-relative has-icon-left mb-3">
                                     <label for="email">Email</label>
                                     <div class="position-relative">
                                         <input type="email" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" required value="{{ old('email') }}"
                                             autocomplete="off">
                                         <div class="form-control-icon">
-                                            <i data-feather="user"></i>
+                                            <i data-feather="mail"></i>
                                         </div>
                                         @error('email')
                                         <div class="invalid-feedback">
-                                            {{ $messege }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
@@ -79,7 +86,7 @@
                                             autocomplete="off">
                                         @error('password')
                                         <div class="invalid-feedback">
-                                            {{ $messege }}
+                                            {{ $message }}
                                         </div>
                                         @enderror
                                         <div class="form-control-icon">

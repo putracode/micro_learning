@@ -7,6 +7,7 @@ use App\Http\Controllers\App\PostController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\AdminPostController;
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermohonanController;
 use App\Http\Controllers\App\PembelajaranController;
@@ -31,9 +32,9 @@ use App\Mail\AprrovedMail;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/test', function () {
+    return view('layout.admin');
+});
 
 // LOGIN
 Route::get('/',[LoginController::class,'indexLogin'])->name('login')->middleware('guest');
@@ -41,8 +42,8 @@ Route::post('/',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout']);
 Route::get('/register',[LoginController::class,'indexRegister'])->middleware('guest');
 Route::post('/register',[LoginController::class,'store'])->middleware('guest');
-Route::get('/change-password',[LoginController::class,'change'])->middleware('guest');
-Route::post('/change-password',[LoginController::class,'update'])->middleware('guest');
+Route::get('/change-password',[ChangePasswordController::class,'change'])->middleware('auth');
+Route::post('/change-password',[ChangePasswordController::class,'changePassword'])->middleware('auth');
 
 // HOME
 Route::get('/home',[HomeController::class,'index'])->middleware('auth','approved','newpassword');

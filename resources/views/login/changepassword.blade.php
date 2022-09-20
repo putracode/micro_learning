@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Password</title>
+    <title>Sign in - Voler Admin Dashboard</title>
     <link rel="stylesheet" href="/voler/dist/assets/css/bootstrap.css">
 
     <link rel="shortcut icon" href="/voler/dist/assets/images/favicon.svg" type="image/x-icon">
@@ -16,20 +16,61 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-sm-12 mx-auto">
-                    <div class="card py-4">
+                <div class="col-md-8 col-sm-12 mx-auto">
+                    <div class="card">
+                        @if (session()->has('error'))
+                        <div class="alert alert-danger alert-dismissible fade show float-top" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        @endif
                         <div class="card-body">
+                            {{-- <form action="/logout" method="post" class="form-class">
+                                @csrf
+                                <button type="submit" class="dropdown-item"><i data-feather="log-out"
+                                        class="mr-1"></i>Logout</button>
+                            </form> --}}
                             <div class="text-center mb-5">
-                                {{-- <img src="/voler/dist/assets/images/favicon.svg" height="48" class='mb-4'> --}}
                                 <h3>Change Password</h3>
-                                <p>Please enter your new password</p>
+                                <p>Please change your password to continue to Micro Learning.</p>
                             </div>
                             <form action="/change-password" method="POST">
-                                <div class="form-group">
-                                    <label for="first-name-column">Password</label>
-                                    <input type="password" id="first-name-column" class="form-control" name="fname-column">
+                                @csrf
+                                <div class="form-group position-relative has-icon-left mb-4">
+                                    <label for="current_password">Current Password</label>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="current_password"
+                                            name="current_password" required>
+                                        <div class="form-control-icon">
+                                            <i data-feather="lock"></i>
+                                        </div>
+                                    </div>
                                 </div>
-
+                                <div class="form-group position-relative has-icon-left mb-4">
+                                    <div class="clearfix">
+                                        <label for="new_password">New Password</label>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="new_password"
+                                            name="new_password" required>
+                                        <div class="form-control-icon">
+                                            <i data-feather="lock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- <div class="form-group position-relative has-icon-left mb-4">
+                                    <div class="clearfix">
+                                        <label for="confirm_new_password">Confirm New Password</label>
+                                    </div>
+                                    <div class="position-relative">
+                                        <input type="password" class="form-control" id="confirm_new_password" required>
+                                        <div class="form-control-icon">
+                                            <i data-feather="lock"></i>
+                                        </div>
+                                    </div>
+                                </div> --}}
                                 <div class="clearfix">
                                     <button class="btn btn-primary float-right">Submit</button>
                                 </div>

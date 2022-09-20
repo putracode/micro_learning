@@ -16,6 +16,7 @@
             font-family: 'Poppins', sans-serif;
         }
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
@@ -46,7 +47,7 @@
                                                 value="{{ old('name') }}">
                                             @error('name')
                                             <div class="invalid-feedback">
-                                                {{ $messege }}
+                                                {{ $message }}
                                             </div>
                                             @enderror
                                         </div>
@@ -60,25 +61,25 @@
                                                 value="{{ old('email') }}">
                                             @error('email')
                                             <div class="invalid-feedback">
-                                                {{ $messege }}
+                                                {{ $message }}
                                             </div>
                                             @enderror
                                         </div>
                                     </div>
-                                    {{-- <div class="col-md-12 col-12 mb-3">
-                            <label for="pengguna" class="form-label">Pengguna</label>
-                            <select class="form-select @error('pengguna') is-invalid @enderror" id="pengguna"
-                                name="pengguna">
-                                <option selected disabled></option>
-                                <option value="1">Internal</option>
-                                <option value="2">Eksternal</option>
-                            </select>
-                            @error('pengguna')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                                </div>
-                                @enderror
-                        </div> --}}
+                                    <div class="col-md-12 col-12 mb-3">
+                                        <div class="form-group">
+                                            <label for="no_telepon">No Telepon</label>
+                                            <input type="number" id="no_telepon"
+                                                class="form-control @error('no_telepon') is-invalid @enderror" name="no_telepon"
+                                                value="{{ old('no_telepon') }}" minlength="12" maxlength="12">
+                                            @error('no_telepon')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
                         <div class="col-md-12 col-12 mb-3">
                             <div class="form-group">
                                 <label class="mb-3">Pengguna</label>
@@ -98,7 +99,7 @@
 
                                 @error('pengguna')
                                 <div class="invalid-feedback">
-                                    {{ $messege }}
+                                    {{ $message }}
                                 </div>
                                 @enderror
                             </div>
@@ -118,9 +119,9 @@
                                     <option value="Bidang Sarju">Bidang Sarju</option>
                                 </select>
                                 @error('bidang')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
                                 @enderror
                             </div>
                             <div class="col-md-12 col-12 mb-3">
@@ -131,7 +132,7 @@
                                         value="PT ICON+">
                                     @error('perusahaan')
                                     <div class="invalid-feedback">
-                                        {{ $messege }}
+                                        {{ $message }}
                                     </div>
                                     @enderror
                                 </div>
@@ -147,7 +148,7 @@
                                         value="{{ old('bidang') }}">
                                     @error('bidang')
                                     <div class="invalid-feedback">
-                                        {{ $messege }}
+                                        {{ $message }}
                                     </div>
                                     @enderror
                                 </div>
@@ -161,7 +162,7 @@
                                         value="{{ old('perusahaan') }}" value="PT ICON+">
                                     @error('perusahaan')
                                     <div class="invalid-feedback">
-                                        {{ $messege }}
+                                        {{ $message }}
                                     </div>
                                     @enderror
                                 </div>
@@ -233,6 +234,7 @@
             PerusahaanInBidangInternal.disabled = true;
         })
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 
 </html>

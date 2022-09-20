@@ -29,10 +29,12 @@ class DatabaseSeeder extends Seeder
             // 'username' => 'putra',
             'email' => 'saputra@gmail.com',
             'password' => bcrypt('password'),
+            'no_telepon' => '085692988947',
             'perusahaan' => 'ICON+',
             'bidang' => 'Bidang Aktivasi Publik',
             'is_approve' => 2,
-            'pengguna' => 'Internal'
+            'pengguna' => 'Internal',
+            'password_change' => true
         ]);
 
         User::create([
@@ -40,11 +42,13 @@ class DatabaseSeeder extends Seeder
             'role' => 'user',
             // 'username' => 'rendi',
             'email' => 'rendi@gmail.com',
+            'no_telepon' => '085893342578',
             'password' => bcrypt('password'),
             'perusahaan' => 'ICON+',
             'bidang' => 'Bidang Aktivasi Listrik',
             'is_approve' => 2,
-            'pengguna' => 'Eksternal'
+            'pengguna' => 'Internal',
+            'password_change' => true
         ]);
 
         // Post::factory(20)->create();

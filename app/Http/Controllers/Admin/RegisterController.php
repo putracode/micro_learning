@@ -27,9 +27,11 @@ class RegisterController extends Controller
         $validatedData = $this->validate($request,[
             'name' => ['required'],
             'role' => ['required'],
-            'username' => ['required'],
-            'email' => ['required'],
-            'password' => ['required']
+            'email' => ['required','unique'],
+            'password' => ['required'],
+            'bidang' => ['required'],
+            'pengguna' => ['required'],
+            'perusahaan' => ['required']
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);
@@ -59,6 +61,6 @@ class RegisterController extends Controller
         $user = user::find($id);
         $user->delete();
         
-        return redirect()->route('user');
+        return redirect()->route('user')->with('success','User Berhasil Di Hapus!');
     }
 }
