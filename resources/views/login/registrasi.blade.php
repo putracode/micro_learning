@@ -141,17 +141,21 @@
 
                         <div id="FormEksternal" style="display: none;">
                             <div class="col-md-12 col-12 mb-3">
-                                <div class="form-group">
-                                    <label for="bidangEksternal">Bidang</label>
-                                    <input type="text" id="bidangEksternal"
-                                        class="form-control @error('bidang') is-invalid @enderror" name="bidang"
-                                        value="{{ old('bidang') }}">
-                                    @error('bidang')
+                                <label for="bidang"><small>BIDANG</small></label>
+                                <select class="form-select @error('bidang') is-invalid @enderror" id="bidangEksternal"
+                                    name="bidang">
+                                    <option selected disabled></option>
+                                    <option value="Bidang Aktivasi">Bidang Aktivasi</option>
+                                    <option value="Bidang Pemeliharaan">Bidang Pemeliharaan</option>
+                                    <option value="Bidang Retail">Bidang Retail</option>
+                                    <option value="Bidang Pembangunan">Bidang Pembangunan</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                                @error('bidang')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
-                                    @enderror
-                                </div>
+                                @enderror
                             </div>
 
                             <div class="col-md-12 col-12 mb-3">
