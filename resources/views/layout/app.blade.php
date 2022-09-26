@@ -87,14 +87,14 @@
                         <li class='sidebar-title'>Tentang Kami</li>
 
                         <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
-                                <i data-feather="globe" width="20"></i>
-                                <span>Profile</span>
+                            <a href="/tentang-aplikasi" class='sidebar-link'>
+                                <i data-feather="image" width="20"></i>
+                                <span>Gallery</span>
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a href="index.html" class='sidebar-link'>
+                        <li class="sidebar-item {{ Request::is('tentang-aplikasi') ? 'active' : '' }}">
+                            <a href="/home/tentang-aplikasi" class='sidebar-link'>
                                 <i data-feather="globe" width="20"></i>
                                 <span>Tentang Aplikasi</span>
                             </a>
@@ -135,8 +135,6 @@
                                     <button type="submit" class="dropdown-item"><i data-feather="log-out"
                                             class="mr-1"></i>Logout</button>
                                 </form>
-
-
                             </div>
                         </li>
                     </ul>

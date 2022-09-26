@@ -24,5 +24,10 @@
     </tbody>
 </table> --}}
 <h1>List Pembelajaran</h1>
-<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMFAfjqiBUAQisLuuvU6I0JrkLua4iQuXp3xBbJo_LaNTBjW7zfQQAboO7vRIv2D2K5B2NakiN0W8D/pubhtml?widget=true&amp;headers=false" width="100%" height="720vh"></iframe>
+{{-- <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMFAfjqiBUAQisLuuvU6I0JrkLua4iQuXp3xBbJo_LaNTBjW7zfQQAboO7vRIv2D2K5B2NakiN0W8D/pubhtml?widget=true&amp;headers=false" width="100%" height="720vh"></iframe> --}}
+@foreach ($list as $row)
+    
+{!! $row->embed_pembelajaran !!}
+@endforeach
 @endsection
+

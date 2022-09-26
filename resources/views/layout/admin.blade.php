@@ -110,6 +110,13 @@
                                 <p>Dashboard</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/list-pembelajaran"
+                                class="nav-link {{ Request::is('admin/list-pembelajaran*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>List Pembelajaran</p>
+                            </a>
+                        </li>
                         <li class="nav-item ">
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
@@ -162,6 +169,14 @@
                                     </a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/admin/gallery"
+                                class="nav-link {{ Request::is('admin/gallery*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-image"></i>
+                                <p>Gallery</p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="/admin/user" class="nav-link {{ Request::is('admin/user*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-user"></i>

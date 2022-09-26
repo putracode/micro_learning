@@ -1,17 +1,21 @@
 <?php
 
 use App\Mail\ApprovedMail;
+use App\Mail\AprrovedMail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PostController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\AdminPostController;
-use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermohonanController;
 use App\Http\Controllers\App\PembelajaranController;
-use App\Http\Controllers\Admin\ListPembelajaranController;
+use App\Http\Controllers\App\TentangAplikasiController;
+use App\Http\Controllers\Admin\ChangePasswordController;
+
+use App\Http\Controllers\App\ListPembelajaranController;
+use App\Http\Controllers\Admin\AdminListPembelajaranController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminNa3pController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminSpapController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminAklikController;
@@ -19,7 +23,6 @@ use App\Http\Controllers\Admin\Pembelajaran\AdminAklisController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminSarjuController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminRetailController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminPemeliharaanController;
-use App\Mail\AprrovedMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,6 +81,9 @@ Route::get('/home/p/quiz-retail/{post:id}',[PembelajaranController::class,'quizR
 Route::get('/home/p/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP']);
 Route::get('/home/p/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU']);
 
+// Tentang Kami
+Route::get('/home/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');
+Route::get('/home/list-pembelajaran',[ListPembelajaranController::class,'index'])->name('list-pembelajaran');
 
 
 
@@ -149,4 +155,9 @@ Route::get('/admin/p/spap/{id}/edit',[AdminSpapController::class,'edit'])->middl
 Route::post('/admin/p/spap/{id}',[AdminSpapController::class,'update'])->middleware('admin');
 Route::get('/admin/p/spap/{id}',[AdminSpapController::class,'destroy'])->middleware('admin');
 
-
+Route::get('/admin/list-pembelajaran',[AdminListPembelajaranController::class,'index'])->name('AdminListPembelajaran')->middleware('admin');
+Route::get('/admin/list-pembelajaran/create',[AdminListPembelajaranController::class,'create'])->middleware('admin');
+Route::post('/admin/list-pembelajaran',[AdminListPembelajaranController::class,'store'])->middleware('admin');
+Route::get('/admin/list-pembelajaran/{id}/edit',[AdminListPembelajaranController::class,'edit'])->middleware('admin');
+Route::post('/admin/list-pembelajaran/{id}',[AdminListPembelajaranController::class,'update'])->middleware('admin');
+Route::get('/admin/list-pembelajaran/{id}',[AdminListPembelajaranController::class,'destroy'])->middleware('admin');

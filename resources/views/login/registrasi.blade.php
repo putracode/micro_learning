@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up - Voler Admin Dashboard</title>
+    <title>Sign up</title>
     <link rel="stylesheet" href="voler/dist/assets/css/bootstrap.css">
 
     <link rel="shortcut icon" href="voler/dist/assets/images/favicon.svg" type="image/x-icon">
@@ -109,7 +109,7 @@
                                 <label for="bidang"><small>BIDANG</small></label>
                                 <select class="form-select @error('bidang') is-invalid @enderror" id="bidangInternal"
                                     name="bidang">
-                                    <option selected disabled></option>
+                                    <option selected disabled hidden></option>
                                     <option value="Bidang Aktivasi Publik">Bidang Aktivasi Publik</option>
                                     <option value="Bidang Aktivasi Listrik">Bidang Aktivasi Listrik</option>
                                     <option value="Bidang NA3P">Bidang NA3P</option>
@@ -144,7 +144,7 @@
                                 <label for="bidang"><small>BIDANG</small></label>
                                 <select class="form-select @error('bidang') is-invalid @enderror" id="bidangEksternal"
                                     name="bidang">
-                                    <option selected disabled></option>
+                                    <option selected disabled hidden></option>
                                     <option value="Bidang Aktivasi">Bidang Aktivasi</option>
                                     <option value="Bidang Pemeliharaan">Bidang Pemeliharaan</option>
                                     <option value="Bidang Retail">Bidang Retail</option>
