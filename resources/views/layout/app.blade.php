@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/voler/dist/assets/css/app.css">
     <link rel="shortcut icon" href="/voler/dist/assets/images/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    @yield('css')
 </head>
 
 <body>
@@ -87,7 +88,7 @@
                         <li class='sidebar-title'>Tentang Kami</li>
 
                         <li class="sidebar-item">
-                            <a href="/tentang-aplikasi" class='sidebar-link'>
+                            <a href="/home/gallery" class='sidebar-link'>
                                 <i data-feather="image" width="20"></i>
                                 <span>Gallery</span>
                             </a>

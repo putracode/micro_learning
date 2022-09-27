@@ -6,14 +6,16 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\App\HomeController;
 use App\Http\Controllers\App\PostController;
 use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\App\GalleryController;
 use App\Http\Controllers\Admin\RegisterController;
 use App\Http\Controllers\Admin\AdminPostController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermohonanController;
 use App\Http\Controllers\App\PembelajaranController;
+use App\Http\Controllers\Admin\AdminGalleryController;
 use App\Http\Controllers\App\TentangAplikasiController;
-use App\Http\Controllers\Admin\ChangePasswordController;
 
+use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\App\ListPembelajaranController;
 use App\Http\Controllers\Admin\AdminListPembelajaranController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminNa3pController;
@@ -52,38 +54,43 @@ Route::post('/change-password',[ChangePasswordController::class,'changePassword'
 Route::get('/home',[HomeController::class,'index'])->middleware('auth','approved','newpassword');
 
 // LIST PEMBELAJARAN
-Route::get('/home/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
+Route::get('/home/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran')->middleware('auth');
 
 // PEMBELAJARAN
-Route::get('/home/p/bidang-aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK');
-Route::get('/home/p/bidang-aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS');
-Route::get('/home/p/bidang-NA3P',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P');
-Route::get('/home/p/bidang-pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN');
-Route::get('/home/p/bidang-retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL');
-Route::get('/home/p/bidang-SPAP',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP');
-Route::get('/home/p/bidang-sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU');
+Route::get('/home/p/bidang-aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK')->middleware('auth');
+Route::get('/home/p/bidang-aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS')->middleware('auth');
+Route::get('/home/p/bidang-NA3P',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P')->middleware('auth');
+Route::get('/home/p/bidang-pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN')->middleware('auth');
+Route::get('/home/p/bidang-retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('auth');
+Route::get('/home/p/bidang-SPAP',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('auth');
+Route::get('/home/p/bidang-sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('auth');
 
 // MATERI
-Route::get('/home/p/materi-aklik/{post:id}',[PembelajaranController::class,'materiAKLIK']);
-Route::get('/home/p/materi-aklis/{post:id}',[PembelajaranController::class,'materiAKLIS']);
-Route::get('/home/p/materi-na3p/{post:id}',[PembelajaranController::class,'materiNA3P']);
-Route::get('/home/p/materi-pemeliharaan/{post:id}',[PembelajaranController::class,'materiPEMELIHARAAN']);
-Route::get('/home/p/materi-retail/{post:id}',[PembelajaranController::class,'materiRETAIL']);
-Route::get('/home/p/materi-spap/{post:id}',[PembelajaranController::class,'materiSPAP']);
-Route::get('/home/p/materi-sarju/{post:id}',[PembelajaranController::class,'materiSARJU']);
+Route::get('/home/p/materi-aklik/{post:id}',[PembelajaranController::class,'materiAKLIK'])->middleware('auth');
+Route::get('/home/p/materi-aklis/{post:id}',[PembelajaranController::class,'materiAKLIS'])->middleware('auth');
+Route::get('/home/p/materi-na3p/{post:id}',[PembelajaranController::class,'materiNA3P'])->middleware('auth');
+Route::get('/home/p/materi-pemeliharaan/{post:id}',[PembelajaranController::class,'materiPEMELIHARAAN'])->middleware('auth');
+Route::get('/home/p/materi-retail/{post:id}',[PembelajaranController::class,'materiRETAIL'])->middleware('auth');
+Route::get('/home/p/materi-spap/{post:id}',[PembelajaranController::class,'materiSPAP'])->middleware('auth');
+Route::get('/home/p/materi-sarju/{post:id}',[PembelajaranController::class,'materiSARJU'])->middleware('auth');
 
 // QUIZ
-Route::get('/home/p/quiz-aklik/{post:id}',[PembelajaranController::class,'quizAKLIK']);
-Route::get('/home/p/quiz-aklis/{post:id}',[PembelajaranController::class,'quizAKLIS']);
-Route::get('/home/p/quiz-na3p/{post:id}',[PembelajaranController::class,'quizNA3P']);
-Route::get('/home/p/quiz-pemeliharaan/{post:id}',[PembelajaranController::class,'quizPEMELIHARAAN']);
-Route::get('/home/p/quiz-retail/{post:id}',[PembelajaranController::class,'quizRETAIL']);
-Route::get('/home/p/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP']);
-Route::get('/home/p/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU']);
+Route::get('/home/p/quiz-aklik/{post:id}',[PembelajaranController::class,'quizAKLIK'])->middleware('auth');
+Route::get('/home/p/quiz-aklis/{post:id}',[PembelajaranController::class,'quizAKLIS'])->middleware('auth');
+Route::get('/home/p/quiz-na3p/{post:id}',[PembelajaranController::class,'quizNA3P'])->middleware('auth');
+Route::get('/home/p/quiz-pemeliharaan/{post:id}',[PembelajaranController::class,'quizPEMELIHARAAN'])->middleware('auth');
+Route::get('/home/p/quiz-retail/{post:id}',[PembelajaranController::class,'quizRETAIL'])->middleware('auth');
+Route::get('/home/p/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP'])->middleware('auth');
+Route::get('/home/p/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU'])->middleware('auth');
 
 // Tentang Kami
-Route::get('/home/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');
-Route::get('/home/list-pembelajaran',[ListPembelajaranController::class,'index'])->name('list-pembelajaran');
+Route::get('/home/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi')->middleware('auth');
+
+// List Pembelajaran
+Route::get('/home/list-pembelajaran',[ListPembelajaranController::class,'index'])->name('list-pembelajaran')->middleware('auth');
+
+// Gallery
+Route::get('/home/gallery',[GalleryController::class,'index'])->name('gallery')->middleware('auth');
 
 
 
@@ -161,3 +168,10 @@ Route::post('/admin/list-pembelajaran',[AdminListPembelajaranController::class,'
 Route::get('/admin/list-pembelajaran/{id}/edit',[AdminListPembelajaranController::class,'edit'])->middleware('admin');
 Route::post('/admin/list-pembelajaran/{id}',[AdminListPembelajaranController::class,'update'])->middleware('admin');
 Route::get('/admin/list-pembelajaran/{id}',[AdminListPembelajaranController::class,'destroy'])->middleware('admin');
+
+Route::get('/admin/gallery',[AdminGalleryController::class,'index'])->name('AdminGallery')->middleware('admin');
+Route::get('/admin/gallery/create',[AdminGalleryController::class,'create'])->middleware('admin');
+Route::post('/admin/gallery',[AdminGalleryController::class,'store'])->middleware('admin');
+Route::get('/admin/gallery/{id}/edit',[AdminGalleryController::class,'edit'])->middleware('admin');
+Route::post('/admin/gallery/{id}',[AdminGalleryController::class,'update'])->middleware('admin');
+Route::get('/admin/gallery/{id}',[AdminGalleryController::class,'destroy'])->middleware('admin');
