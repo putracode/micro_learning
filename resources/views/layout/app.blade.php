@@ -15,11 +15,14 @@
     <link rel="shortcut icon" href="/voler/dist/assets/images/favicon.svg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     @yield('css')
+    {{-- <style>*{
+        border: 1px solid;
+    }</style> --}}
 </head>
 
 <body>
     <div id="app">
-        <div id="sidebar" class="active">
+        <div id="sidebar" class="activ">
             <div class="sidebar-wrapper active">
                 <div class="sidebar-header">
                     <img src="/img/logo.png" alt="" srcset="" style="width: 195px; height: 175px;">

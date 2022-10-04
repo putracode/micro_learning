@@ -126,9 +126,9 @@
 
 @section('script')
 <!-- jQuery -->
-<script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+{{-- <script src="/adminlte/plugins/jquery/jquery.min.js"></script> --}}
 <!-- Bootstrap 4 -->
-<script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+{{-- <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
 <!-- DataTables  & Plugins -->
 <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -143,9 +143,7 @@
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
-<script src="/adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/adminlte/dist/js/demo.js"></script>
+{{-- <script src="/adminlte/dist/js/adminlte.min.js"></script> --}}
 <!-- Page specific script -->
 <script>
     $(function () {

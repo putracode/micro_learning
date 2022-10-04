@@ -41,6 +41,8 @@
                                 <a href="/admin/list-pembelajaran/{{ $row->id }}/edit"
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <a href="/admin/list-pembelajaran/{{ $row->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>
                         @endforeach
@@ -56,10 +58,7 @@
 @endsection
 
 @section('script')
-<!-- jQuery -->
-<script src="/adminlte/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 <!-- DataTables  & Plugins -->
 <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -73,10 +72,7 @@
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/adminlte/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="/adminlte/dist/js/demo.js"></script>
+
 <!-- Page specific script -->
 <script>
     $(function () {

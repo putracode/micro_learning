@@ -15,7 +15,7 @@
 <br>
 
 <p>
-    Jika ada kendala atau masukan silahkan <a href="https://wa.me/628111993122" style="font-style: italic">hubungi kami</a> 
+    Jika ada kendala atau masukan silahkan <a href="https://wa.me/628111993122" style="font-style: italic" target="blank">hubungi kami</a> 
 </p>
 @endsection
 

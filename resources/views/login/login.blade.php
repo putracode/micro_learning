@@ -10,21 +10,31 @@
     {{-- <link rel="shortcut icon" href="/voler/dist/assets/images/favicon.svg" type="image/x-icon"> --}}
     <link rel="stylesheet" href="/voler/dist/assets/css/app.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="/adminlte/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
     <style>
         *{
             font-family: 'Poppins', sans-serif;
+            /* border: 1px solid; */
         }
     </style>
+    <script>
+        var Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    </script>
 </head>
 
 <body>
-    <div id="auth">
+    <div id="auth" style="background-image: url('/img/bgc.jpg'); background-size: cover; background-repeat: no-repeat">
 
         <div class="container">
             <div class="row">
-                <div class="col-md-7 col-sm-12 mx-auto">
-                    <div class="card">
+                <div class="col-md-7 col-sm-12 mx-auto rounded" >
+                    <div class="card ">
                         @if (session()->has('success'))
                         <div class="alert alert-success alert-dismissible fade show float-top" role="alert">
                             {{ session('success') }}
@@ -41,6 +51,7 @@
                             </button>
                         </div>
                         @endif
+
                         @if (session()->has('loginError'))
                         <div class="alert alert-danger alert-dismissible fade show float-top" role="alert">
                             {{ session('loginError') }}
@@ -49,8 +60,8 @@
                             </button>
                         </div>
                         @endif
-                        <div class="card-body">
-                            <div class="text-center mb-5">
+                        <div class="card-body ">
+                            <div class="text-center mb-5 ">
                                 {{-- <img src="/voler/dist/assets/images/favicon.svg" height="48" class='mb-4'> --}}
                                 <h3>Sign In</h3>
                                 <p>Please sign in to continue to Microlearning</p>
@@ -105,7 +116,7 @@
                                     </div>
                                 </div>
                                 <div class="clearfix">
-                                    <button class="btn btn-primary float-right" type="submit">Submit</button>
+                                    <button class="btn btn-primary float-right px-5" type="submit">Submit</button>
                                 </div>
                             </form>
                             {{-- <div class="divider">
@@ -128,8 +139,9 @@
     </div>
     <script src="/voler/dist/assets/js/feather-icons/feather.min.js"></script>
     <script src="/voler/dist/assets/js/app.js"></script>
-
     <script src="/voler/dist/assets/js/main.js"></script>
+    <script src="/adminlte/plugins/toastr/toastr.min.js"></script>
+    <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
     
 </body>
 
