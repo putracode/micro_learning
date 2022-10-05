@@ -41,8 +41,6 @@
                                 <a href="/admin/list-pembelajaran/{{ $row->id }}/edit"
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <a href="/admin/list-pembelajaran/{{ $row->id }}" class="btn btn-danger btn-sm">Delete</a>
-                                <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
-                            <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
                             </td>
                         </tr>
                         @endforeach

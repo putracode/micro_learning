@@ -50,11 +50,12 @@
                             <td>{{ $row->pengguna }}</td>
                             <td>{{ $row->perusahaan }}</td>
                             <td>{{ $row->bidang }}</td>
-                            <td>
+                            <td class="d-flex">
                                 <a href="/admin/permohonan-user/{{ $row->id }}/tolak"
-                                    class="btn btn-danger btn-sm">Tolak</a>
+                                    class="btn btn-danger btn-sm mr-1">Tolak</a>
                                 <a href="/admin/permohonan-user/{{ $row->id }}/terima"
                                     class="btn btn-success btn-sm">Terima</a>
+
                             </td>
                         </tr>
                         @endforeach

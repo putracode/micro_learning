@@ -10,21 +10,35 @@
     {{-- <link rel="shortcut icon" href="/voler/dist/assets/images/favicon.svg" type="image/x-icon"> --}}
     <link rel="stylesheet" href="/voler/dist/assets/css/app.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/adminlte/plugins/toastr/toastr.min.css">
     <link rel="stylesheet" href="/adminlte/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <style>
         *{
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
             /* border: 1px solid; */
         }
+        .toast { max-width: 100%; }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-        var Toast = Swal.mixin({
-            toast: true,
-            position: 'top-end',
-            showConfirmButton: false,
-            timer: 3000
-        });
+    toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": true,
+        "progressBar": true,
+        "positionClass": "toast-top-full-width",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "100000",
+        "hideDuration": "100000",
+        "timeOut": "100000",
+        "extendedTimeOut": "100000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
     </script>
 </head>
 
@@ -33,33 +47,32 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-md-7 col-sm-12 mx-auto rounded" >
+                <div class="col-md-4 col-sm-12 mx-auto rounded" >
                     <div class="card ">
                         @if (session()->has('success'))
-                        <div class="alert alert-success alert-dismissible fade show float-top" role="alert">
-                            {{ session('success') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                            <script>
+                                toastr.info("{!! Session::get('success') !!}")
+                            </script>
                         @endif
                         @if (session()->has('NotApproved'))
-                        <div class="alert alert-secondary alert-dismissible fade show float-top" role="alert">
-                            {{ session('NotApproved') }}
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                            <script>
+                                toastr.info("{!! Session::get('NotApproved') !!}")
+                            </script>
                         @endif
 
                         @if (session()->has('loginError'))
+                            <script>
+                                toastr.error("{!! Session::get('loginError') !!}")
+                            </script>
+                        @endif
+                        {{-- @if (session()->has('loginError'))
                         <div class="alert alert-danger alert-dismissible fade show float-top" role="alert">
                             {{ session('loginError') }}
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        @endif
+                        @endif --}}
                         <div class="card-body ">
                             <div class="text-center mb-5 ">
                                 {{-- <img src="/voler/dist/assets/images/favicon.svg" height="48" class='mb-4'> --}}
@@ -140,9 +153,8 @@
     <script src="/voler/dist/assets/js/feather-icons/feather.min.js"></script>
     <script src="/voler/dist/assets/js/app.js"></script>
     <script src="/voler/dist/assets/js/main.js"></script>
-    <script src="/adminlte/plugins/toastr/toastr.min.js"></script>
     <script src="/adminlte/plugins/sweetalert2/sweetalert2.min.js"></script>
-    
+
 </body>
 
 </html>
