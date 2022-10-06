@@ -48,9 +48,23 @@
                             <td>{{ $row->embed_form }}</td>
                             <td>{{ $row->embed_youtube }}</td>
                             <td>
-                                <a href="/admin/p/retail/{{ $row->id }}/edit"
-                                    class="btn btn-warning btn-sm">Edit</a>
-                                <a href="/admin/p/retail/{{ $row->id }}" class="btn btn-danger btn-sm">Delete</a>
+                                <a href="/admin/p/retail/{{ $row->id }}/edit">
+                                    <button type="button" class="btn btn-icon  btn-warning ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                            <path d="M5 20h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm-1-5L14 5l3 3L7 18H4v-3zM15 4l2-2l3 3l-2.001 2.001L15 4z" fill="#ffffff" fill-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </a>
+                                <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="p/retail" id="confirmbutton">
+                                    <button type="button" class="btn btn-icon btn-danger" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 6h18" />
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                        </g>
+                                    </svg>
+                                    </button>
+                                </a>
                             </td>
                         </tr>
                         @endforeach

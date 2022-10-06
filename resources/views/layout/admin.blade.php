@@ -259,56 +259,35 @@
     <script src="/adminlte/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="/adminlte/dist/js/pages/dashboard.js"></script> --}}
+
+    {{-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> --}}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    
 
     <script>
-        $(document).ready(function () {
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+        function buttonConfirm(id){
+            // let id = $('#confirmbutton').attr('data-id')
+            let url = $('#confirmbutton').attr('data-name')
+            swal({
+            title: "Apa Kamu Yakin?",
+            text: "Setelah dihapus, Anda tidak dapat memulihkan data ini",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                window.location = "/admin/" + url + "/" + id
+                swal("Data berhasil di hapus!", {
+                icon: "success",
+                });
+            } 
             });
-
-            $('.btndelete').click(function (e) {
-                e.preventDefault();
-
-                var deleteid = $(this).closest("tr").find('.delete_id').val();
-
-                swal({
-                        title: "Apakah anda yakin?",
-                        text: "Setelah dihapus, Anda tidak dapat memulihkan Tag ini lagi!",
-                        icon: "warning",
-                        buttons: true,
-                        dangerMode: true,
-                    })
-                    .then((willDelete) => {
-                        if (willDelete) {
-
-                            var data = {
-                                "_token": $('input[name=_token]').val(),
-                                'id': deleteid,
-                            };
-                            $.ajax({
-                                type: "DELETE",
-                                url: 'mahasiswa/destroy/' + deleteid,
-                                data: data,
-                                success: function (response) {
-                                    swal(response.status, {
-                                            icon: "success",
-                                        })
-                                        .then((result) => {
-                                            location.reload();
-                                        });
-                                }
-                            });
-                        }
-                    });
-            });
-
-        });
-
+        }
     </script>
+
     @yield('script')
 </body>
 

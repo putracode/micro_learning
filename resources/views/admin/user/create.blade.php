@@ -19,7 +19,7 @@
                     <input type="text" class="form-control @error('name') @enderror" id="name" name="name" required>
                     @error('name')
                     <div class="invalid-feedback">
-                        {{ $messege }}
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
@@ -43,7 +43,7 @@
                     <input type="email" class="form-control @error('email') @enderror" id="email" name="email" required>
                     @error('email')
                     <div class="invalid-feedback">
-                        {{ $messege }}
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
@@ -53,7 +53,17 @@
                     <input type="text" class="form-control @error('password') @enderror" id="password" name="password" required>
                     @error('password')
                     <div class="invalid-feedback">
-                        {{ $messege }}
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="mb-4">
+                    <label for="no_telepon" class="form-label">No Telepon</label>
+                    <input type="number" class="form-control @error('no_telepon') @enderror" id="no_telepon" name="no_telepon" required>
+                    @error('no_telepon')
+                    <div class="invalid-feedback">
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
@@ -77,7 +87,7 @@
 
                         @error('pengguna')
                         <div class="invalid-feedback">
-                            {{ $messege }}
+                            {{ $message }}
                         </div>
                         @enderror
                     </div>
@@ -110,7 +120,7 @@
                                 value="PT ICON+">
                             @error('perusahaan')
                             <div class="invalid-feedback">
-                                {{ $messege }}
+                                {{ $message }}
                             </div>
                             @enderror
                         </div>
@@ -126,7 +136,7 @@
                                 value="{{ old('bidang') }}">
                             @error('bidang')
                             <div class="invalid-feedback">
-                                {{ $messege }}
+                                {{ $message }}
                             </div>
                             @enderror
                         </div>
@@ -140,11 +150,13 @@
                                 value="{{ old('perusahaan') }}" value="PT ICON+">
                             @error('perusahaan')
                             <div class="invalid-feedback">
-                                {{ $messege }}
+                                {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
+
+                    
                 </div>
 
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>

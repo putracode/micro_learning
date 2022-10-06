@@ -115,8 +115,8 @@
                                         </svg>
                                     </button>
                                 </a>
-                                <a href="/admin/user/{{ $row->id }}" class="btndelete">
-                                    <button type="button" class="btn btn-icon  btn-danger">
+                                <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="user" id="confirmbutton">
+                                    <button type="button" class="btn btn-icon btn-danger" >
                                     <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em" viewBox="0 0 24 24">
                                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M3 6h18" />
@@ -182,6 +182,7 @@
     });
 
 </script>
+    
 @endsection
 
 {{-- @section('content')

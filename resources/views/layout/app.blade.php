@@ -20,7 +20,7 @@
     }</style> --}}
 </head>
 
-<body>
+<body >
     <div id="app">
         <div id="sidebar" class="activ">
             <div class="sidebar-wrapper active">
@@ -108,7 +108,7 @@
                 <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>
             </div>
         </div>
-        <div id="main" >
+        <div id="main" style="background-image: url('/img/bgc.jpg'); background-size: cover; background-repeat: no-repeat">
             <nav class="navbar navbar-header navbar-expand navbar-light">
                 <a class="sidebar-toggler" href="#"><span class="navbar-toggler-icon"></span></a>
                 <button class="btn navbar-toggler" type="button" data-toggle="collapse"
