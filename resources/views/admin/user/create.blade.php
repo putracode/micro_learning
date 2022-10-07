@@ -12,7 +12,7 @@
             <form class="forms-sample" action="/admin/user" method="POST">
 
                 @csrf
-                <input type="hidden" name="is_approve" value="2">
+                <input type="hidden" name="is_approve" value="Approved">
                 <input type="hidden" name="password_change" value="true">
                 <div class="mb-4">
                     <label for="name" class="form-label">Nama Lengkap</label>

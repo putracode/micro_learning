@@ -174,6 +174,13 @@
                             </ul>
                         </li>
                         <li class="nav-item">
+                            <a href="/admin/dashboard-penilaian"
+                                class="nav-link {{ Request::is('admin/dashboard-penilaian*') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-solid fa-browser"></i>
+                                <p>Dashboard Penilaian</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="/admin/gallery"
                                 class="nav-link {{ Request::is('admin/gallery*') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-image"></i>

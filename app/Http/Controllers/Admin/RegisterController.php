@@ -32,7 +32,8 @@ class RegisterController extends Controller
             'password' => ['required'],
             'bidang' => ['required'],
             'pengguna' => ['required'],
-            'perusahaan' => ['required']
+            'perusahaan' => ['required'],
+            'is_approve' => ['required']
         ]);
 
         $validatedData['password'] = bcrypt($validatedData['password']);
