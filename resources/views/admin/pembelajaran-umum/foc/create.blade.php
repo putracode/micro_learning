@@ -7,11 +7,11 @@
     <div class="card">
         <div class="card-header py-3">
             {{-- <h4 class="card-title">Tambah User</h4> --}}
-            <h6 class="m-0 font-weight-bold text-primary">Tambah Post</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Tambah Pembelajaran</h6>
         </div>
         <div class="card-body">
 
-            <form 3lass="forms-sample" action="/admin/p/retail" method="POST">
+            <form class="forms-sample" action="/admin/p/foc" method="POST">
 
                 @csrf
                 <div class="mb-4">
@@ -55,9 +55,9 @@
                     @enderror
                 </div>
                 
-                <input type="hidden" name="bidang" value="5">
+                <input type="hidden" name="bidang" value="FOC">
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
-                <a href="/admin/p/retail" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
+                <a href="/admin/p/foc" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
             </form>
         </div>
     </div>

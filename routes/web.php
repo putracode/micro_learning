@@ -26,6 +26,8 @@ use App\Http\Controllers\Admin\Pembelajaran\AdminAklisController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminSarjuController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminRetailController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminPemeliharaanController;
+use App\Http\Controllers\Admin\Pembelajaran\AdminFocController;
+use App\Http\Controllers\Admin\Pembelajaran\AdminFotController;
 use App\Http\Controllers\App\DashboardPenilaianController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -67,6 +69,8 @@ Route::get('/home/p/bidang-pemeliharaan',[PembelajaranController::class,'indexPE
 Route::get('/home/p/bidang-retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('auth');
 Route::get('/home/p/bidang-SPAP',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('auth');
 Route::get('/home/p/bidang-sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('auth');
+Route::get('/home/p/foc',[PembelajaranController::class,'indexFOC'])->name('indexFOC')->middleware('auth');
+Route::get('/home/p/fot',[PembelajaranController::class,'indexFOT'])->name('indexFOT')->middleware('auth');
 
 // MATERI
 Route::get('/home/p/materi-aklik/{post:id}',[PembelajaranController::class,'materiAKLIK'])->middleware('auth');
@@ -76,6 +80,8 @@ Route::get('/home/p/materi-pemeliharaan/{post:id}',[PembelajaranController::clas
 Route::get('/home/p/materi-retail/{post:id}',[PembelajaranController::class,'materiRETAIL'])->middleware('auth');
 Route::get('/home/p/materi-spap/{post:id}',[PembelajaranController::class,'materiSPAP'])->middleware('auth');
 Route::get('/home/p/materi-sarju/{post:id}',[PembelajaranController::class,'materiSARJU'])->middleware('auth');
+Route::get('/home/p/materi-foc/{post:id}',[PembelajaranController::class,'materiFOC'])->middleware('auth');
+Route::get('/home/p/materi-fot/{post:id}',[PembelajaranController::class,'materiFOT'])->middleware('auth');
 
 // QUIZ
 Route::get('/home/p/quiz-aklik/{post:id}',[PembelajaranController::class,'quizAKLIK'])->middleware('auth');
@@ -85,6 +91,8 @@ Route::get('/home/p/quiz-pemeliharaan/{post:id}',[PembelajaranController::class,
 Route::get('/home/p/quiz-retail/{post:id}',[PembelajaranController::class,'quizRETAIL'])->middleware('auth');
 Route::get('/home/p/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP'])->middleware('auth');
 Route::get('/home/p/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU'])->middleware('auth');
+Route::get('/home/p/quiz-foc/{post:id}',[PembelajaranController::class,'quizFOC'])->middleware('auth');
+Route::get('/home/p/quiz-fot/{post:id}',[PembelajaranController::class,'quizFOT'])->middleware('auth');
 
 // Tentang Kami
 Route::get('/home/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi')->middleware('auth');
@@ -116,7 +124,7 @@ Route::post('/admin/user/{id}',[RegisterController::class,'update'])->middleware
 Route::get('/admin/user/{id}',[RegisterController::class,'destroy'])->middleware('admin','auth');
 
 Route::get('/admin/permohonan-user',[PermohonanController::class,'index'])->name('permohonan-user')->middleware('admin','auth');
-Route::get('/admin/permohonan-user/{id}/tolak',[PermohonanController::class,'tolak'])->middleware('admin','auth');
+Route::post('/admin/permohonan-user/{id}/tolak',[PermohonanController::class,'tolak'])->middleware('admin','auth');
 Route::get('/admin/permohonan-user/{id}/terima',[PermohonanController::class,'terima'])->middleware('admin','auth');
 
 Route::get('/admin/p/aklik',[AdminAklikController::class,'index'])->name('PembelajaranAklik')->middleware('admin','auth');
@@ -167,6 +175,20 @@ Route::post('/admin/p/spap',[AdminSpapController::class,'store'])->middleware('a
 Route::get('/admin/p/spap/{id}/edit',[AdminSpapController::class,'edit'])->middleware('admin','auth');
 Route::post('/admin/p/spap/{id}',[AdminSpapController::class,'update'])->middleware('admin','auth');
 Route::get('/admin/p/spap/{id}',[AdminSpapController::class,'destroy'])->middleware('admin','auth');
+
+Route::get('/admin/p/foc',[AdminFocController::class,'index'])->name('PembelajaranFOC')->middleware('admin','auth');
+Route::get('/admin/p/foc/create',[AdminFocController::class,'create'])->middleware('admin','auth');
+Route::post('/admin/p/foc',[AdminFocController::class,'store'])->middleware('admin','auth');
+Route::get('/admin/p/foc/{id}/edit',[AdminFocController::class,'edit'])->middleware('admin','auth');
+Route::post('/admin/p/foc/{id}',[AdminFocController::class,'update'])->middleware('admin','auth');
+Route::get('/admin/p/foc/{id}',[AdminFocController::class,'destroy'])->middleware('admin','auth');
+
+Route::get('/admin/p/fot',[AdminFotController::class,'index'])->name('PembelajaranFOT')->middleware('admin','auth');
+Route::get('/admin/p/fot/create',[AdminFotController::class,'create'])->middleware('admin','auth');
+Route::post('/admin/p/fot',[AdminFotController::class,'store'])->middleware('admin','auth');
+Route::get('/admin/p/fot/{id}/edit',[AdminFotController::class,'edit'])->middleware('admin','auth');
+Route::post('/admin/p/fot/{id}',[AdminFotController::class,'update'])->middleware('admin','auth');
+Route::get('/admin/p/fot/{id}',[AdminFotController::class,'destroy'])->middleware('admin','auth');
 
 Route::get('/admin/list-pembelajaran',[AdminListPembelajaranController::class,'index'])->name('AdminListPembelajaran')->middleware('admin','auth');
 Route::get('/admin/list-pembelajaran/create',[AdminListPembelajaranController::class,'create'])->middleware('admin','auth');

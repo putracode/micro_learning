@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Voler Admin Dashboard</title>
+    <title>Micro</title>
 
     <link rel="stylesheet" href="/voler/dist/assets/css/bootstrap.css">
 
@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
 
-    @yield('css')
     <style>*{
         /* border: 1px solid; */
         /* font-family: 'Poppins', sans-serif; */
@@ -53,10 +52,11 @@
 
                         </li>
 
+                        @can('internal')  
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i data-feather="book" width="20"></i>
-                                <span>Pembelajaran</span>
+                                <span>Pembelajaran Bidang</span>
                             </a>
 
                             <ul class="submenu ">
@@ -80,6 +80,22 @@
                                 </li>
                                 <li>
                                     <a href="/home/bidang-sarju">Bidang Sarju</a>
+                                </li>
+                            </ul>
+                        </li>
+                        @endcan
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i data-feather="book" width="20"></i>
+                                <span>Pembelajaran Umum</span>
+                            </a>
+
+                            <ul class="submenu ">
+                                <li>
+                                    <a href="/home/p/foc">FOC</a>
+                                </li>
+                                <li>
+                                    <a href="/home/p/fot">FOT</a>
                                 </li>
                             </ul>
                         </li>

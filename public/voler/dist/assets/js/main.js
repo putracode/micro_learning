@@ -101,7 +101,7 @@ var _loop = function _loop() {
   sidebarItems[i].querySelector('.sidebar-link').addEventListener('click', function (e) {
     e.preventDefault();
     var submenu = sidebarItem.querySelector('.submenu');
-    if (submenu.classList.contains('')) submenu.classList.remove('active');else submenu.classList.add('active');
+    if (submenu.classList.contains('active')) submenu.classList.remove('active');else submenu.classList.add('active');
   });
 };
 

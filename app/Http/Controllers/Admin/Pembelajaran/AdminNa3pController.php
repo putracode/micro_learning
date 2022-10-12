@@ -10,14 +10,14 @@ class AdminNa3pController extends Controller
 {
     public function index(){
         $post = Post::all()->where('bidang','Bidang NA3P');
-        return view('admin.pembelajaran.na3p.index',[
+        return view('admin.pembelajaran-bidang.na3p.index',[
             'post' => $post
         ]);
     }
 
     public function create(){
         $post = Post::all();
-        return view('admin.pembelajaran.na3p.create',[
+        return view('admin.pembelajaran-bidang.na3p.create',[
             'post' => $post
         ]);
     }
@@ -42,7 +42,7 @@ class AdminNa3pController extends Controller
     public function edit($id){
         $post = post::find($id);
 
-        return view('admin.pembelajaran.na3p.edit',[
+        return view('admin.pembelajaran-bidang.na3p.edit',[
             'post' => $post
         ]);
     }

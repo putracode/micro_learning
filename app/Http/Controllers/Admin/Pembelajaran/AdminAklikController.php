@@ -10,14 +10,14 @@ class AdminAklikController extends Controller
 {
     public function index(){
         $post = Post::all()->where('bidang','Bidang Aktivasi Publik ( Aklik )');
-        return view('admin.pembelajaran.aklik.index',[
+        return view('admin.pembelajaran-bidang.aklik.index',[
             'post' => $post
         ]);
     }
 
     public function create(){
         $post = Post::all();
-        return view('admin.pembelajaran.aklik.create',[
+        return view('admin.pembelajaran-bidang.aklik.create',[
             'post' => $post
         ]);
     }
@@ -42,7 +42,7 @@ class AdminAklikController extends Controller
     public function edit($id){
         $post = post::find($id);
 
-        return view('admin.pembelajaran.aklik.edit',[
+        return view('admin.pembelajaran-bidang.aklik.edit',[
             'post' => $post
         ]);
     }

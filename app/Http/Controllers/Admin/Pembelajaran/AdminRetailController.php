@@ -10,14 +10,14 @@ class AdminRetailController extends Controller
 {
     public function index(){
         $post = Post::all()->where('bidang','Bidang Retail');
-        return view('admin.pembelajaran.retail.index',[
+        return view('admin.pembelajaran-bidang.retail.index',[
             'post' => $post
         ]);
     }
 
     public function create(){
         $post = Post::all();
-        return view('admin.pembelajaran.retail.create',[
+        return view('admin.pembelajaran-bidang.retail.create',[
             'post' => $post
         ]);
     }
@@ -42,7 +42,7 @@ class AdminRetailController extends Controller
     public function edit($id){
         $post = post::find($id);
 
-        return view('admin.pembelajaran.retail.edit',[
+        return view('admin.pembelajaran-bidang.retail.edit',[
             'post' => $post
         ]);
     }

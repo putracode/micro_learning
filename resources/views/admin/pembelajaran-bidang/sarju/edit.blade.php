@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
 
-            <form class="forms-sample" action="/admin/p/retail/{{ $post->id }}" method="POST">
+            <form class="forms-sample" action="/admin/p/sarju/{{ $post->id }}" method="POST">
 
                 @csrf
                 <div class="mb-4">
@@ -56,9 +56,9 @@
                     @enderror
                 </div>
                 
-                <input type="hidden" name="bidang" value="5">
+                <input type="hidden" name="bidang" value="Bidang Sarju">
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
-                <a href="/admin/p/retail" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
+                <a href="/admin/p/sarju" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
             </form>
         </div>
     </div>

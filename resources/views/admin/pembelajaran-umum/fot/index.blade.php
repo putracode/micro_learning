@@ -19,8 +19,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title fw-bold">Permohonan User</h3>
-                <a href="/admin/user/create" class="btn btn-primary btn-sm float-right px-4">Create</a>
+                <h3 class="card-title fw-bold">FOT</h3>
+                <a href="/admin/p/fot/create" class="btn btn-primary btn-sm float-right px-4">Create</a>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -28,41 +28,44 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Nama Lengkap</th>
-                            {{-- <th>Role</th> --}}
-                            <th>Email</th>
-                            {{-- <th>Password</th> --}}
-                            <th>Pengguna</th>
-                            <th>Perusahaan</th>
-                            <th>Bidang</th>
+                            <th>Title</th>
+                            <th>Sub Title</th>
+                            <th>Kategori</th>
+                            <th>Embed Form</th>
+                            <th>Embed Youtube</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($user as $row)
+                        @foreach ($post as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 
-                            <td>{{ $row->name }}</td>
-                            {{-- <td>{{ $row->role }}</td> --}}
-                            <td>{{ $row->email }}</td>
-                            {{-- <td>{{ $row->password }}</td> --}}
-                            <td>{{ $row->pengguna }}</td>
-                            <td>{{ $row->perusahaan }}</td>
+                            <td>{{ $row->title }}</td>
+                            <td>{{ $row->sub_title }}</td>
                             <td>{{ $row->bidang }}</td>
-                            <td class="d-flex">
-                                {{-- <a href="#"
-                                class="btn btn-danger btn-sm mr-1" onclick="buttonReject({{ $row->id }})">Tolak</a> --}}
-                                <form action="/admin/permohonan-user/{{ $row->id }}/tolak" method="POST" id="formtolak">
-                                    @csrf
-                                    <input type="text" hidden id="inputtolak" name="pesan" value="">
-                                    <button class="btn btn-danger btn-sm mr-1" id="buttontolak">Tolak</button>
-                                </form>
-                                <a href="/admin/permohonan-user/{{ $row->id }}/terima"
-                                    class="btn btn-success btn-sm">Terima</a>
 
+                            <td>{{ $row->embed_form }}</td>
+                            <td>{{ $row->embed_youtube }}</td>
+                            <td>
+                                <a href="/admin/p/fot/{{ $row->id }}/edit">
+                                    <button type="button" class="btn btn-icon  btn-warning ">
+                                        <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                            <path d="M5 20h14a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2zm-1-5L14 5l3 3L7 18H4v-3zM15 4l2-2l3 3l-2.001 2.001L15 4z" fill="#ffffff" fill-rule="evenodd" />
+                                        </svg>
+                                    </button>
+                                </a>
+                                <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="p/fot" id="confirmbutton">
+                                    <button type="button" class="btn btn-icon btn-danger" >
+                                    <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em" viewBox="0 0 24 24">
+                                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M3 6h18" />
+                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                        </g>
+                                    </svg>
+                                    </button>
+                                </a>
                             </td>
-                            {{-- /admin/permohonan-user/{{ $row->id }}/tolak --}}
                         </tr>
                         @endforeach
                     </tbody>
@@ -91,20 +94,7 @@
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<script>
-    $('#buttontolak').on('click',function(e){
-        e.preventDefault()
-        var form = $('#formtolak');
-        swal("Pesan Penolakan", {
-        content: "input",
-        })
-        .then((value) => {
-            console.log(value)
-            $('#inputtolak').val(value);    
-            form.submit()
-        }); 
-    })
-</script>
+
 <!-- Page specific script -->
 <script>
     $(function () {

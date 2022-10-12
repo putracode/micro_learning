@@ -10,14 +10,14 @@ class AdminSpapController extends Controller
 {
     public function index(){
         $post = Post::all()->where('bidang','Bidang SPAP');
-        return view('admin.pembelajaran.spap.index',[
+        return view('admin.pembelajaran-bidang.spap.index',[
             'post' => $post
         ]);
     }
 
     public function create(){
         $post = Post::all();
-        return view('admin.pembelajaran.spap.create',[
+        return view('admin.pembelajaran-bidang.spap.create',[
             'post' => $post
         ]);
     }
@@ -42,7 +42,7 @@ class AdminSpapController extends Controller
     public function edit($id){
         $post = post::find($id);
 
-        return view('admin.pembelajaran.spap.edit',[
+        return view('admin.pembelajaran-bidang.spap.edit',[
             'post' => $post
         ]);
     }

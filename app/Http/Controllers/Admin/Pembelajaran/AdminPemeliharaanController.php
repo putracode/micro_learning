@@ -10,14 +10,14 @@ class AdminPemeliharaanController extends Controller
 {
     public function index(){
         $post = Post::all()->where('bidang','Bidang Pemeliharaan');
-        return view('admin.pembelajaran.pemeliharaan.index',[
+        return view('admin.pembelajaran-bidang.pemeliharaan.index',[
             'post' => $post
         ]);
     }
 
     public function create(){
         $post = Post::all();
-        return view('admin.pembelajaran.pemeliharaan.create',[
+        return view('admin.pembelajaran-bidang.pemeliharaan.create',[
             'post' => $post
         ]);
     }
@@ -42,7 +42,7 @@ class AdminPemeliharaanController extends Controller
     public function edit($id){
         $post = post::find($id);
 
-        return view('admin.pembelajaran.pemeliharaan.edit',[
+        return view('admin.pembelajaran-bidang.pemeliharaan.edit',[
             'post' => $post
         ]);
     }

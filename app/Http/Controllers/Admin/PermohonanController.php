@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Mail\ApprovedMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\RejectMail;
 use Illuminate\Support\Facades\Mail;
 
 class PermohonanController extends Controller
@@ -17,10 +18,13 @@ class PermohonanController extends Controller
         ]);
     }
     
-    public function tolak($id){
-        $user = user::find($id);
+    public function tolak($id,Request $request){
+        $pesan = $request->pesan;
+        $user = User::find($id);
         $user->delete();
-        
+
+        Mail::to($user->email)->send(new RejectMail($user,$pesan));
+
         return redirect()->route('permohonan-user');
     }
 

@@ -11,7 +11,7 @@
         </div>
         <div class="card-body">
 
-            <form class="forms-sample" action="/admin/p/pemeliharaan/{{ $post->id }}" method="POST">
+            <form class="forms-sample" action="/admin/p/aklis/{{ $post->id }}" method="POST">
 
                 @csrf
                 <div class="mb-4">
@@ -56,9 +56,9 @@
                     @enderror
                 </div>
                 
-                <input type="hidden" name="bidang" value="4">
+                <input type="hidden" name="bidang" value="Bidang Aktivasi Listrik ( Aklis )">
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
-                <a href="/admin/p/pemeliharaan" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
+                <a href="/admin/p/aklis" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
             </form>
         </div>
     </div>

@@ -10,14 +10,14 @@ class AdminSarjuController extends Controller
 {
     public function index(){
         $post = Post::all()->where('bidang','Bidang Sarju');
-        return view('admin.pembelajaran.sarju.index',[
+        return view('admin.pembelajaran-bidang.sarju.index',[
             'post' => $post
         ]);
     }
 
     public function create(){
         $post = Post::all();
-        return view('admin.pembelajaran.sarju.create',[
+        return view('admin.pembelajaran-bidang.sarju.create',[
             'post' => $post
         ]);
     }
@@ -42,7 +42,7 @@ class AdminSarjuController extends Controller
     public function edit($id){
         $post = post::find($id);
 
-        return view('admin.pembelajaran.sarju.edit',[
+        return view('admin.pembelajaran-bidang.sarju.edit',[
             'post' => $post
         ]);
     }

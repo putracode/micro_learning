@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('sub_title');
-            $table->enum('bidang',['Bidang Aktivasi Publik ( Aklik )','Bidang Aktivasi Listrik ( Aklis )','Bidang NA3P','Bidang Pemeliharaan','Bidang Retail','Bidang SPAP','Bidang Sarju']);
+            // $table->enum('bidang',['Bidang Aktivasi Publik ( Aklik )','Bidang Aktivasi Listrik ( Aklis )','Bidang NA3P','Bidang Pemeliharaan','Bidang Retail','Bidang SPAP','Bidang Sarju']);
+            $table->string('bidang');
             // $table->string('slug')->unique();
             // $table->string('image')->nullable();
             $table->string('embed_youtube');

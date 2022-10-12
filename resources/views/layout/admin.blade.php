@@ -124,7 +124,7 @@
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
-                                    Pembelajaran
+                                    Pembelajaran Bidang
                                     <i class="fas fa-angle-left right"></i>
                                 </p>
                             </a>
@@ -173,10 +173,34 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link ">
+                                <i class="nav-icon fas fa-book"></i>
+                                <p>
+                                    Pembelajaran Umum
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="/admin/p/foc" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FOC</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/admin/p/fot" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FOT</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
                         <li class="nav-item">
                             <a href="/admin/dashboard-penilaian"
                                 class="nav-link {{ Request::is('admin/dashboard-penilaian*') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-solid fa-browser"></i>
+                                <i class="nav-icon fas fa-inbox"></i>
                                 <p>Dashboard Penilaian</p>
                             </a>
                         </li>
@@ -286,14 +310,19 @@
             })
             .then((willDelete) => {
             if (willDelete) {
-                window.location = "/admin/" + url + "/" + id
                 swal("Data berhasil di hapus!", {
-                icon: "success",
+                    icon: "success",
+                    timer: 1000,
                 });
+                setTimeout(function () {
+                    window.location.href = "/admin/" + url + "/" + id; 
+                }, 500);
+                
             } 
             });
         }
     </script>
+    
 
     @yield('script')
 </body>

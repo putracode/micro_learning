@@ -188,4 +188,56 @@ class PembelajaranController extends Controller
             'link' => 'bidang-sarju'
         ]);
     }
+
+
+
+
+    public function indexFOC(){
+        return view('app.pembelajaran.index',[
+            'posts' => Post::all()->where('bidang','FOC'),
+            'judul' => 'FOC',
+            'link_materi' => 'materi-foc',
+            'link_quiz' => 'quiz-foc',
+        ]);
+    }
+
+    public function materiFOC(Post $post){
+        return view('app.pembelajaran.materi',[
+            'post' => $post,
+            'link' => 'foc'
+        ]);
+    }
+
+    public function quizFOC(Post $post){
+        return view('app.pembelajaran.quiz',[
+            'post' => $post,
+            'link' => 'foc'
+        ]);
+    }
+
+
+
+
+    public function indexFOT(){
+        return view('app.pembelajaran.index',[
+            'posts' => Post::all()->where('bidang','FOT'),
+            'judul' => 'FOT',
+            'link_materi' => 'materi-fot',
+            'link_quiz' => 'quiz-fot',
+        ]);
+    }
+
+    public function materiFOT(Post $post){
+        return view('app.pembelajaran.materi',[
+            'post' => $post,
+            'link' => 'fot'
+        ]);
+    }
+
+    public function quizFOT(Post $post){
+        return view('app.pembelajaran.quiz',[
+            'post' => $post,
+            'link' => 'fot'
+        ]);
+    }
 }

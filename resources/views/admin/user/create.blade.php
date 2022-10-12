@@ -28,8 +28,8 @@
                     <label for="role" class="form-label">Role</label>
                     <select class="form-select @error('role') is-invalid @enderror" aria-label="Default select example"
                         id="role" name="role">
-                        <option value="1">Admin</option>
-                        <option value="2">User</option>
+                        <option value="2">Admin</option>
+                        <option value="1">User</option>
                     </select>
                     @error('role')
                     <div class="invalid-feedback">

@@ -16,8 +16,9 @@
             @foreach ($gallery as $row)
             <div class="col-md-4 mb-5">
                 
-                {{ $row->title }}
-                <br>
+              
+                <h5 style="font-weight: bold">{{ $row->title }}</h5>
+                
                 {!! $row->embed_youtube !!}
             </div>
             @endforeach
