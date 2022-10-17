@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\App;
 
-use App\Models\Post;
+use App\Models\Pembelajaran;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,21 +10,21 @@ class PembelajaranController extends Controller
 {
     public function indexAKLIK(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang Aktivasi Publik ( Aklik )'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Publik ( Aklik )'),
             'judul' => 'Bidang Aktivasi Publik ( Aklik )',
             'link_materi' => 'materi-aklik',
             'link_quiz' => 'quiz-aklik',
         ]);
     }
 
-    public function materiAKLIK(Post $post){
+    public function materiAKLIK(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-aktivasi-publik'
         ]);
     }
 
-    public function quizAKLIK(Post $post){
+    public function quizAKLIK(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-aktivasi-publik'
@@ -36,21 +36,21 @@ class PembelajaranController extends Controller
 
     public function indexAKLIS(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang Aktivasi Listrik ( Aklis )'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Listrik ( Aklis )'),
             'judul' => 'Bidang Aktivasi Listrik ( Aklis )',
             'link_materi' => 'materi-aklis',
             'link_quiz' => 'quiz-aklis'
         ]);
     }
 
-    public function materiAKLIS(Post $post){
+    public function materiAKLIS(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-aktivasi-listrik'
         ]);
     }
 
-    public function quizAKLIS(Post $post){
+    public function quizAKLIS(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-aktivasi-listrik'
@@ -64,21 +64,21 @@ class PembelajaranController extends Controller
 
     public function indexNA3P(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang NA3P'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang NA3P'),
             'judul' => 'Bidang NA3P',
             'link_materi' => 'materi-na3p',
             'link_quiz' => 'quiz-na3p'
         ]);
     }
 
-    public function materiNA3P(Post $post){
+    public function materiNA3P(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-NA3P'
         ]);
     }
 
-    public function quizNA3P(Post $post){
+    public function quizNA3P(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-NA3P'
@@ -90,21 +90,21 @@ class PembelajaranController extends Controller
 
     public function indexPEMELIHARAAN(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang Pemeliharaan'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang Pemeliharaan'),
             'judul' => 'Bidang Pemeliharaan',
             'link_materi' => 'materi-pemeliharaan',
             'link_quiz' => 'quiz-pemeliharaan',
         ]);
     }
 
-    public function materiPEMELIHARAAN(Post $post){
+    public function materiPEMELIHARAAN(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-pemeliharaan'
         ]);
     }
 
-    public function quizPEMELIHARAAN(Post $post){
+    public function quizPEMELIHARAAN(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-pemeliharaan'
@@ -116,21 +116,21 @@ class PembelajaranController extends Controller
 
     public function indexRETAIL(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang Retail'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang Retail'),
             'judul' => 'Bidang Retail',
             'link_materi' => 'materi-retail',
             'link_quiz' => 'quiz-retail',
         ]);
     }
 
-    public function materiRETAIL(Post $post){
+    public function materiRETAIL(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-retail'
         ]);
     }
 
-    public function quizRETAIL(Post $post){
+    public function quizRETAIL(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-retail'
@@ -142,21 +142,21 @@ class PembelajaranController extends Controller
 
     public function indexSPAP(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang SPAP'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang SPAP'),
             'judul' => 'Bidang SPAP',
             'link_materi' => 'materi-spap',
             'link_quiz' => 'quiz-spap',
         ]);
     }
 
-    public function materiSPAP(Post $post){
+    public function materiSPAP(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-SPAP'
         ]);
     }
 
-    public function quizSPAP(Post $post){
+    public function quizSPAP(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-SPAP'
@@ -168,21 +168,21 @@ class PembelajaranController extends Controller
 
     public function indexSARJU(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','Bidang Sarju'),
+            'posts' => Pembelajaran::all()->where('materi','Bidang Sarju'),
             'judul' => 'Bidang Sarju',
             'link_materi' => 'materi-sarju',
             'link_quiz' => 'quiz-sarju',
         ]);
     }
 
-    public function materiSARJU(Post $post){
+    public function materiSARJU(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'bidang-sarju'
         ]);
     }
 
-    public function quizSARJU(Post $post){
+    public function quizSARJU(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'bidang-sarju'
@@ -194,21 +194,21 @@ class PembelajaranController extends Controller
 
     public function indexFOC(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','FOC'),
+            'posts' => Pembelajaran::all()->where('materi','FOC'),
             'judul' => 'FOC',
             'link_materi' => 'materi-foc',
             'link_quiz' => 'quiz-foc',
         ]);
     }
 
-    public function materiFOC(Post $post){
+    public function materiFOC(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'foc'
         ]);
     }
 
-    public function quizFOC(Post $post){
+    public function quizFOC(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'foc'
@@ -220,21 +220,21 @@ class PembelajaranController extends Controller
 
     public function indexFOT(){
         return view('app.pembelajaran.index',[
-            'posts' => Post::all()->where('bidang','FOT'),
+            'posts' => Pembelajaran::all()->where('materi','FOT'),
             'judul' => 'FOT',
             'link_materi' => 'materi-fot',
             'link_quiz' => 'quiz-fot',
         ]);
     }
 
-    public function materiFOT(Post $post){
+    public function materiFOT(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
             'link' => 'fot'
         ]);
     }
 
-    public function quizFOT(Post $post){
+    public function quizFOT(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
             'link' => 'fot'

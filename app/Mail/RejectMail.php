@@ -31,6 +31,6 @@ class RejectMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Sorry')->view('email.rejected');
+        return $this->subject('Micro Learning')->view('email.rejected');
     }
 }

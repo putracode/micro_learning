@@ -5,20 +5,21 @@ namespace App\Http\Controllers\Admin\Pembelajaran;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pembelajaran;
 
 class AdminNa3pController extends Controller
 {
     public function index(){
-        $post = Post::all()->where('bidang','Bidang NA3P');
+        $pembelajaran = pembelajaran::all()->where('materi','Bidang NA3P');
         return view('admin.pembelajaran-bidang.na3p.index',[
-            'post' => $post
+            'pembelajaran' => $pembelajaran
         ]);
     }
 
     public function create(){
-        $post = Post::all();
+        $pembelajaran = pembelajaran::all();
         return view('admin.pembelajaran-bidang.na3p.create',[
-            'post' => $post
+            'pembelajaran' => $pembelajaran
         ]);
     }
 
@@ -27,23 +28,23 @@ class AdminNa3pController extends Controller
         $validatedData = $this->validate($request,[
             'title' => ['required'],
             'sub_title' => ['required'],
-            'bidang' => ['required'],
+            'materi' => ['required'],
             // 'slug' => ['required'],
             'embed_form' => ['required'],
             'embed_youtube' => ['required']
         ]);
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
-        Post::create($validatedData);
+        pembelajaran::create($validatedData);
 
         return redirect()->route('PembelajaranNa3p')->with('Success','Data berhasil Ditambahkan!');
     }
 
     public function edit($id){
-        $post = post::find($id);
+        $pembelajaran = pembelajaran::find($id);
 
         return view('admin.pembelajaran-bidang.na3p.edit',[
-            'post' => $post
+            'pembelajaran' => $pembelajaran
         ]);
     }
 
@@ -51,19 +52,19 @@ class AdminNa3pController extends Controller
         $validasi = $this->validate($request,[
             'title' => ['required'],
             'sub_title' => ['required'],
-            'bidang' => ['required'],
+            'materi' => ['required'],
             // 'slug' => ['required'],
             'embed_form' => ['required'],
             'embed_youtube' => ['required']
         ]);
 
-        Post::where('id',$id)->update($validasi);
+        pembelajaran::where('id',$id)->update($validasi);
         return redirect()->route('PembelajaranNa3p')->with('Edit','Data berhasil di ubah!');
     }
     
     public function destroy($id){
-        $post = post::find($id);
-        $post->delete();
+        $pembelajaran = Pembelajaran::find($id);
+        $pembelajaran->delete();
         
         return redirect()->route('PembelajaranNa3p');
     }

@@ -37,7 +37,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($post as $row)
+                        @foreach ($pembelajaran as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 

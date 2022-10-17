@@ -4,21 +4,22 @@ namespace App\Http\Controllers\Admin\Pembelajaran;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Pembelajaran;
 use App\Models\Post;
 
 class AdminAklikController extends Controller
 {
     public function index(){
-        $post = Post::all()->where('bidang','Bidang Aktivasi Publik ( Aklik )');
+        $pembelajaran = pembelajaran::all()->where('materi','Bidang Aktivasi Publik ( Aklik )');
         return view('admin.pembelajaran-bidang.aklik.index',[
-            'post' => $post
+            'pembelajaran' => $pembelajaran
         ]);
     }
 
     public function create(){
-        $post = Post::all();
+        $pembelajaran = pembelajaran::all();
         return view('admin.pembelajaran-bidang.aklik.create',[
-            'post' => $post
+            'pembelajaran' => $pembelajaran
         ]);
     }
 
@@ -27,23 +28,23 @@ class AdminAklikController extends Controller
         $validatedData = $this->validate($request,[
             'title' => ['required'],
             'sub_title' => ['required'],
-            'bidang' => ['required'],
+            'materi' => ['required'],
             // 'slug' => ['required'],
             'embed_form' => ['required'],
             'embed_youtube' => ['required']
         ]);
 
         // $validatedData['password'] = bcrypt($validatedData['password']);
-        Post::create($validatedData);
+        Pembelajaran::create($validatedData);
 
         return redirect()->route('PembelajaranAklik')->with('Success','Data berhasil Ditambahkan!');
     }
 
     public function edit($id){
-        $post = post::find($id);
+        $pembelajaran = pembelajaran::find($id);
 
         return view('admin.pembelajaran-bidang.aklik.edit',[
-            'post' => $post
+            'pembelajaran' => $pembelajaran
         ]);
     }
 
@@ -51,19 +52,19 @@ class AdminAklikController extends Controller
         $validasi = $this->validate($request,[
             'title' => ['required'],
             'sub_title' => ['required'],
-            'bidang' => ['required'],
+            'materi' => ['required'],
             // 'slug' => ['required'],
             'embed_form' => ['required'],
             'embed_youtube' => ['required']
         ]);
 
-        Post::where('id',$id)->update($validasi);
+        Pembelajaran::where('id',$id)->update($validasi);
         return redirect()->route('PembelajaranAklik')->with('Edit','Data berhasil di ubah!');
     }
     
     public function destroy($id){
-        $post = post::find($id);
-        $post->delete();
+        $pembelajaran = Pembelajaran::find($id);
+        $pembelajaran->delete();
         
         return redirect()->route('PembelajaranAklik');
     }

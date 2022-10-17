@@ -55,7 +55,7 @@
                     @enderror
                 </div>
                 
-                <input type="hidden" name="bidang" value="Bidang Aktivasi Listrik ( Aklis )">
+                <input type="hidden" name="materi" value="Bidang Aktivasi Listrik ( Aklis )">
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
                 <a href="/admin/p/aklis" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
             </form>

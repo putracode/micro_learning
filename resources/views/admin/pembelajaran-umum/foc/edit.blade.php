@@ -34,7 +34,7 @@
                     @enderror
                 </div>
 
-                <input type="hidden" name="bidang" value="FOC">
+                <input type="hidden" name="materi" value="FOC">
                 
                 <div class="mb-4">
                     <label for="embed_form" class="form-label">Embed Form</label>

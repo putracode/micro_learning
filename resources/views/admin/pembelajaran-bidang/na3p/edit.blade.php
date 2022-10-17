@@ -56,7 +56,7 @@
                     @enderror
                 </div>
                 
-                <input type="hidden" name="bidang" value="Bidang NA3P">
+                <input type="hidden" name="materi" value="Bidang NA3P">
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
                 <a href="/admin/p/na3p" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
             </form>

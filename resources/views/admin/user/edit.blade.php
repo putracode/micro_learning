@@ -14,32 +14,24 @@
             <form class="forms-sample" action="/admin/user/{{ $user->id }}" method="POST">
 
                 @csrf
+                <input type="hidden" name="is_approve" value="Approved">
+                <input type="hidden" name="password_change" value="true">
                 <div class="mb-4">
-                    <label for="name" class="form-label">Nama</label>
-                    <input type="text" class="form-control @error('name') @enderror" id="name" name="name" value="{{ $user->name }}" autocomplete="off">
+                    <label for="name" class="form-label">Nama Lengkap</label>
+                    <input type="text" class="form-control @error('name') @enderror" id="name" name="name" required>
                     @error('name')
                     <div class="invalid-feedback">
-                        {{ $messege }}
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
 
                 <div class="mb-4">
-                    <label for="username" class="form-label">Username</label>
-                    <input type="text" class="form-control @error('username') @enderror" id="username" name="username" value="{{ $user->username }}" autocomplete="off">
-                    @error('username')
-                    <div class="invalid-feedback">
-                        {{ $messege }}
-                    </div>
-                    @enderror
-                </div>
-                
-                <div class="mb-4">
                     <label for="role" class="form-label">Role</label>
-                    <select class="form-select @error('role') is-invalid @enderror"
+                    <select class="form-select @error('role') is-invalid @enderror" aria-label="Default select example"
                         id="role" name="role">
-                        <option value="1">Admin</option>
-                        <option value="2">User</option>
+                        <option value="2">Admin</option>
+                        <option value="1">User</option>
                     </select>
                     @error('role')
                     <div class="invalid-feedback">
@@ -50,22 +42,121 @@
 
                 <div class="mb-4">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control @error('email') @enderror" id="email" name="email" value="{{ $user->email }}" autocomplete="off">
+                    <input type="email" class="form-control @error('email') @enderror" id="email" name="email" required>
                     @error('email')
                     <div class="invalid-feedback">
-                        {{ $messege }}
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
 
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
-                    <input type="text" class="form-control @error('password') @enderror" id="password" name="password" placeholder="Isi Kembali Password.." autocomplete="off">
+                    <input type="text" class="form-control @error('password') @enderror" id="password" name="password" required>
                     @error('password')
                     <div class="invalid-feedback">
-                        {{ $messege }}
+                        {{ $message }}
                     </div>
                     @enderror
+                </div>
+
+                <div class="mb-4">
+                    <label for="no_telepon" class="form-label">No Telepon</label>
+                    <input type="number" class="form-control @error('no_telepon') @enderror" id="no_telepon" name="no_telepon" required>
+                    @error('no_telepon')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <label style="margin-bottom: -10px">Pengguna</label>
+                <div class="col-md-12 col-12 mb-4 ms-3">
+                    <div class="form-group">
+                        <br>
+
+                        <input type="radio" id="internal"
+                            class="form-check-input @error('pengguna') is-invalid @enderror mb-2 radio-button"
+                            name="pengguna" value="Internal">
+                        <label for="internal">Internal</label>
+
+                        <br>
+
+                        <input type="radio" id="eksternal"
+                            class="form-check-input @error('pengguna') is-invalid @enderror radio-button"
+                            name="pengguna" value="Eksternal">
+                        <label for="eksternal">Eksternal</label>
+
+                        @error('pengguna')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                </div>
+                <div id="FormInternal" style="display: none;">
+                    <div class="col-md-12 col-12 mb-4">
+                        <label for="bidang">Bidang</label>
+                        <select class="form-select @error('bidang') is-invalid @enderror" id="bidangInternal"
+                            name="bidang">
+                            <option selected disabled></option>
+                            <option value="Bidang Aktivasi Publik">Bidang Aktivasi Publik</option>
+                            <option value="Bidang Aktivasi Listrik">Bidang Aktivasi Listrik</option>
+                            <option value="Bidang NA3P">Bidang NA3P</option>
+                            <option value="Bidang Pemeliharaan">Bidang Pemeliharaan</option>
+                            <option value="Bidang Retail">Bidang Retail</option>
+                            <option value="Bidang SPAP">Bidang SPAP</option>
+                            <option value="Bidang Sarju">Bidang Sarju</option>
+                        </select>
+                        @error('bidang')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+                    <div class="col-md-12 col-12 mb-4">
+                        <div class="form-group">
+                            <label for="perusahaanInternal">Perusahaan</label>
+                            <input type="text" id="perusahaanInternal"
+                                class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan"
+                                value="PT ICON+">
+                            @error('perusahaan')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+
+                <div id="FormEksternal" style="display: none;">
+                    <div class="col-md-12 col-12 mb-4">
+                        <div class="form-group">
+                            <label for="bidangEksternal">Bidang</label>
+                            <input type="text" id="bidangEksternal"
+                                class="form-control @error('bidang') is-invalid @enderror" name="bidang"
+                                value="{{ old('bidang') }}">
+                            @error('bidang')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-12 mb-4">
+                        <div class="form-group">
+                            <label for="perusahaanEksternal">Perusahaan</label>
+                            <input type="text" id="perusahaanEksternal"
+                                class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan"
+                                value="{{ old('perusahaan') }}" value="PT ICON+">
+                            @error('perusahaan')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
@@ -74,6 +165,38 @@
         </div>
     </div>
 </div>
+<script>
+    // var pengguna = document.getElementsByName("pengguna");
+    var Internal = document.querySelector("#internal");
+    var Eksternal = document.querySelector("#eksternal");
+    var FormInternal = document.getElementById("FormInternal");
+    var FormEksternal = document.getElementById("FormEksternal");
+
+    var BidangInternal = document.getElementById("bidangInternal");
+    var PerusahaanInternal = document.getElementById("perusahaanInternal");
+
+    var BidangEksternal = document.getElementById("bidangEksternal");
+    var PerusahaanEksternal = document.getElementById("perusahaanEksternal");
+
+
+    Internal.addEventListener("click",function(){
+        FormInternal.style.display = "block";
+        FormEksternal.style.display = "none";
+        BidangEksternal.disabled = true;
+        PerusahaanEksternal.disabled = true;
+        BidangInternal.disabled = false;
+        PerusahaanInBidangInternal.disabled = false;
+    })
+
+    Eksternal.addEventListener("click",function(){
+        FormInternal.style.display = "none";
+        FormEksternal.style.display = "block";
+        BidangEksternal.disabled = false;
+        PerusahaanEksternal.disabled = false;
+        BidangInternal.disabled = true;
+        PerusahaanInBidangInternal.disabled = true;
+    })
+</script>
 @endsection
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"

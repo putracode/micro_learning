@@ -29,6 +29,6 @@ class ApprovedMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Welcome to Micro Learning')->markdown('email.approved');
+        return $this->subject('Welcome to Micro Learning')->view('email.approved');
     }
 }

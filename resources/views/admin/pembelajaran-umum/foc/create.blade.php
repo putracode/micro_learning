@@ -55,7 +55,7 @@
                     @enderror
                 </div>
                 
-                <input type="hidden" name="bidang" value="FOC">
+                <input type="hidden" name="materi" value="FOC">
                 <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
                 <a href="/admin/p/foc" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
             </form>
