@@ -51,6 +51,20 @@ class DatabaseSeeder extends Seeder
             'password_change' => true
         ]);
 
+        User::create([
+            'name' => 'Farhan Rian',
+            'role' => 'user',
+            // 'username' => 'rendi',
+            'email' => 'farhan@gmail.com',
+            'no_telepon' => '088932435572',
+            'password' => bcrypt('password'),
+            'perusahaan' => 'ICON+',
+            'bidang' => 'Bidang Retail',
+            'is_approve' => 2,
+            'pengguna' => 'Eksternal',
+            'password_change' => true
+        ]);
+
         // Post::factory(20)->create();
         // if($request->is_approve == 2){
         //     if(Auth::attempt($credentials)){

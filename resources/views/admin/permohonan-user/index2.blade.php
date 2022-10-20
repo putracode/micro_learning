@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 <!-- Theme style -->
 <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+
 @endsection
 
 @section('content')
@@ -19,8 +20,8 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title fw-bold">Data User</h3>
-                <a href="/admin/user/create" class="btn btn-primary btn-sm float-right px-4">Create</a>
+                <h3 class="card-title fw-bold">Permohonan User</h3>
+                {{-- <a href="/admin/user/create" class="btn btn-primary btn-sm float-right px-4">Create</a> --}}
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -28,13 +29,14 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Waktu Registrasi</th>
                             <th>Nama Lengkap</th>
+                            {{-- <th>Role</th> --}}
                             <th>Email</th>
-                            <th>Nomor Telepon</th>
+                            {{-- <th>Password</th> --}}
                             <th>Pengguna</th>
                             <th>Perusahaan</th>
                             <th>Bidang</th>
+                            <th>No Telepon</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -43,26 +45,33 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
 
-                            <td>{{ $row->created_at }}</td>
                             <td>{{ $row->name }}</td>
+                            {{-- <td>{{ $row->role }}</td> --}}
                             <td>{{ $row->email }}</td>
-                            <td>{{ $row->no_telepon }}</td>
+                            {{-- <td>{{ $row->password }}</td> --}}
                             <td>{{ $row->pengguna }}</td>
                             <td>{{ $row->perusahaan }}</td>
                             <td>{{ $row->bidang }}</td>
-                            <td >
+                            <td>{{ $row->no_telepon }}</td>
+
+                            <td class="">
                                 {{-- <a href="#"
                                 class="btn btn-danger btn-sm mr-1" onclick="buttonReject({{ $row->id }})">Tolak</a>
                                 --}}
-                                <button type="button" class="btn btn-danger mr-1 btn-sm px-5" data-toggle="modal"
+                                <button type="button" class="btn btn-danger mr-1 btn-sm" data-toggle="modal"
                                     data-target="#modal-default-{{ $row->id }}">
                                     Tolak
                                 </button>
                                 <a href="/admin/permohonan-user/{{ $row->id }}/terima"
-                                    class="btn btn-success btn-sm px-5">Terima</a>   
+                                    class="btn btn-success btn-sm">Terima</a>
+
+                                    
                             </td>
+                            {{-- /admin/permohonan-user/{{ $row->id }}/tolak --}}
+                            
                         </tr>
                         @endforeach
+                        
                     </tbody>
                 </table>
             </div>
@@ -72,8 +81,7 @@
     </div>
     <!-- /.col -->
 </div>
-
-@foreach ($user as $row)
+{{-- @foreach ($user as $row)
     
 <div class="modal fade" id="modal-default-{{ $row->id }}">
     <div class="modal-dialog modal-dialog-centered">
@@ -100,17 +108,14 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-@endforeach
+@endforeach --}}
+
 @endsection
 
 @section('script')
 
-
-<!-- jQuery -->
-{{-- <script src="/adminlte/plugins/jquery/jquery.min.js"></script> --}}
-<!-- Bootstrap 4 -->
-{{-- <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
 <!-- DataTables  & Plugins -->
+
 <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -123,8 +128,26 @@
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
-{{-- <script src="/adminlte/dist/js/adminlte.min.js"></script> --}}
+<script>
+    // const buttontolak = document.querySelectorAll('.buttontolak')
+    // for( let i = 0; i < buttontolak.length; i++){
+    //     $(buttontolak[i]).on('click',function(e){
+
+    //         e.preventDefault()
+    //         var form = $('#formtolak');
+    //         swal("Pesan Penolakan", {
+    //         content: "input",
+
+    //         })
+    //         .then((value) => {
+    //             console.log(value)
+    //             $('#inputtolak').val(value);    
+    //             form.submit()
+    //         }); 
+    //     })
+    // }
+
+</script>
 <!-- Page specific script -->
 <script>
     $(function () {
@@ -146,5 +169,4 @@
     });
 
 </script>
-    
 @endsection

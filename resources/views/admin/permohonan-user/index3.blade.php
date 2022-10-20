@@ -52,11 +52,13 @@
                             <td>{{ $row->bidang }}</td>
                             <td class="d-flex">
                                 {{-- <a href="#"
-                                class="btn btn-danger btn-sm mr-1" onclick="buttonReject({{ $row->id }})">Tolak</a> --}}
+                                class="btn btn-danger btn-sm mr-1" onclick="buttonReject({{ $row->id }})">Tolak</a>
+                                --}}
                                 <form action="/admin/permohonan-user/{{ $row->id }}/tolak" method="POST" id="formtolak">
                                     @csrf
                                     <input type="text" hidden id="inputtolak" name="pesan" value="">
-                                    <button class="btn btn-danger btn-sm mr-1 buttontolak" id="buttontolak" data-name="{{ $row->id }}">Tolak</button>
+                                    <button class="btn btn-danger btn-sm mr-1 buttontolak" id="buttontolak"
+                                        data-name="{{ $row->id }}">Tolak</button>
                                 </form>
                                 <a href="/admin/permohonan-user/{{ $row->id }}/terima"
                                     class="btn btn-success btn-sm">Terima</a>
@@ -100,7 +102,7 @@
     //         var form = $('#formtolak');
     //         swal("Pesan Penolakan", {
     //         content: "input",
-    
+
     //         })
     //         .then((value) => {
     //             console.log(value)
@@ -110,18 +112,19 @@
     //     })
     // }
     const buttontolak = document.querySelectorAll('.buttontolak')
-    $('#buttontolak').on('click',function(e){
+    $('#buttontolak').on('click', function (e) {
         e.preventDefault()
         var form = $('#formtolak');
         swal("Pesan Penolakan", {
-        content: "input",
-        })
-        .then((value) => {
-            console.log(value)
-            $('#inputtolak').val(value);    
-            form.submit()
-        }); 
+                content: "input",
+            })
+            .then((value) => {
+                console.lo g(value)
+                $('#inputtolak').val(value);
+                form.submit()
+            });
     })
+
 </script>
 <!-- Page specific script -->
 <script>
