@@ -19,6 +19,12 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
+            'no_telepon' => fake()->randomNumber(9, true),
+            'role' => mt_rand(1,2),
+            'pengguna' => fake()->name(),
+            'bidang' => fake()->name(),
+            'perusahaan' => fake()->name(),
+            'is_approve' => mt_rand(1,2),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

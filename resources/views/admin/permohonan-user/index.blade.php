@@ -28,10 +28,10 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Waktu Registrasi</th>
-                            <th>Nama Lengkap</th>
+                            <th>WaktuRegistrasi</th>
+                            <th>NamaLengkap</th>
                             <th>Email</th>
-                            <th>Nomor Telepon</th>
+                            <th>NomorTelepon</th>
                             <th>Pengguna</th>
                             <th>Perusahaan</th>
                             <th>Bidang</th>

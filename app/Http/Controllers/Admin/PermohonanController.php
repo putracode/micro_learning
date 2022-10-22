@@ -19,7 +19,7 @@ class PermohonanController extends Controller
     }
     
     public function tolak($id,Request $request){
-        dd($request);
+        // dd($request);
         if($request->pesan == ""){
             $pesan = "Maaf anda tidak dapat register di web kami";
         }else{
