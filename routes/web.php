@@ -43,7 +43,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('email.rejected');
+    return view('email.approved');
 });
 
 // LOGIN

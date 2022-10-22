@@ -152,9 +152,11 @@ table, td { color: #000000; } </style>
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
     <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px; color: #666666;">Hi {{ $user->name }},</span></p>
 <p style="font-size: 14px; line-height: 140%;"> </p>
-<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px; color: #666666;">Kami mengirimkan email ini kepada Anda sebagai tanggapan atas permintaan Anda untuk mendaftar di Micro Learning.</span></p>
-<p style="font-size: 14px; line-height: 140%;"> </p>
 <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px; color: #666666;">Selamat datang di Micro Learning <br> Username : {{ $user->email }} <br> Password : 1234567</span></p>
+<p style="font-size: 14px; line-height: 140%;"> </p>
+<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px; color: #666666;">Salam</span></p>
+
+<p style="font-size: 14px; line-height: 140%;"><span style="font-size: 12px; line-height: 16.8px; color: #666666;">Admin Microlearning</span></p>
   </div>
 
       </td>
