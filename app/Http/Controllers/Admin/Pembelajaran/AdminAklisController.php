@@ -12,7 +12,7 @@ class AdminAklisController extends Controller
 
 
     public function index(){
-        $pembelajaran = pembelajaran::all()->where('materi','Bidang Aktivasi Listrik ( Aklis )');
+        $pembelajaran = pembelajaran::all()->where('materi','Bidang Aktivasi Listrik');
         return view('admin.pembelajaran-bidang.aklis.index',[
             'pembelajaran' => $pembelajaran
         ]);

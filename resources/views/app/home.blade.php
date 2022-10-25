@@ -10,12 +10,16 @@
         <div class="row ">
             <div class="col-md-6 ">
 
-                SELAMAT BELAJAR (VIDEO OPENING ON PROGRESS DIBUAT)
+                <p class="text-subtitle text-muted">
+                    Selamat Belajar (Video Opening On Progress Dibuat)
+                </p>
                 <iframe width="100%" height="300" src="https://www.youtube.com/embed/kth3y5WK8O8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="col-md-6 ">
 
-                SELAMAT BELAJAR (VIDEO OPENING ON PROGRESS DIBUAT)
+                <p class="text-subtitle text-muted">
+                    Selamat Belajar (Video Opening On Progress Dibuat)
+                </p> 
                 <iframe width="100%" height="300" src="https://www.youtube.com/embed/kth3y5WK8O8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>

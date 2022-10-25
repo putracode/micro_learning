@@ -61,10 +61,10 @@
 
                             <ul class="submenu ">
                                 <li>
-                                    <a href="/home/p/bidang-aktivasi-publik">Bidang Aktivasi Publik (AKLIK)</a>
+                                    <a href="/home/p/bidang-aktivasi-publik">Bidang Aktivasi Publik</a>
                                 </li>
                                 <li>
-                                    <a href="/home/p/bidang-aktivasi-listrik">Bidang Aktivasi Listrik (AKLIS)</a>
+                                    <a href="/home/p/bidang-aktivasi-listrik">Bidang Aktivasi Listrik</a>
                                 </li>
                                 <li>
                                     <a href="/home/p/bidang-NA3P">Bidang NA3P</a>

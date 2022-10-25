@@ -1,73 +1,69 @@
-@extends('layout.admin')
+@extends('layout.sneat')
 
 @section('content')
 
+<h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Edit/</span> Pembelajaran Retail</h4>
 
-<div class="col-12 grid-margin stretch-card pt-3">
-    <div class="card">
-        <div class="card-header py-3">
-            {{-- <h4 class="card-title">Tambah User</h4> --}}
-            <h6 class="m-0 font-weight-bold text-primary">Edit Post</h6>
-        </div>
-        <div class="card-body">
-
-            <form class="forms-sample" action="/admin/p/retail/{{ $post->id }}" method="POST">
-
-                @csrf
-                <div class="mb-4">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control @error('title') @enderror" id="title" name="title" required value="{{ $post->title }}">
-                    @error('title')
-                    <div class="invalid-feedback">
-                        {{ $messege }}
+<div class="row">
+    <div class="col-xxl">
+        <div class="card mb-4">
+            <div class="card-body">
+                <form action="/admin/p/retail/{{ $pembelajaran->id }}" method="POST">
+                    @csrf
+                    <input type="hidden" name="materi" value="Bidang Retail">
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="title">Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('title') @enderror" id="title" name="title" required value="{{ $pembelajaran->title }}">
+                            @error('title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
-                    @enderror
-                </div>
-
-                <div class="mb-4">
-                    <label for="sub_title" class="form-label">Sub Title</label>
-                    <input type="text" class="form-control @error('sub_title') @enderror" id="sub_title" name="sub_title" required value="{{ $post->sub_title }}">
-                    @error('sub_title')
-                    <div class="invalid-feedback">
-                        {{ $messege }}
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="sub_title">Sub Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('sub_title') @enderror" id="sub_title" name="sub_title" required value="{{ $pembelajaran->sub_title }}">
+                            @error('sub_title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
-                    @enderror
-                </div>
-                
-                
-                <div class="mb-4">
-                    <label for="embed_form" class="form-label">Embed Form</label>
-                    <input type="text" class="form-control @error('embed_form') @enderror" id="embed_form" name="embed_form" required value="{{ $post->embed_form }}">
-                    @error('embed_form')
-                    <div class="invalid-feedback">
-                        {{ $messege }}
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="embed_form">Embed Form</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('embed_form') @enderror" id="embed_form" name="embed_form" required value="{{ $pembelajaran->embed_form }}">
+                            @error('embed_form')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
-                    @enderror
-                </div>
-                
-                
-                <div class="mb-4">
-                    <label for="embed_youtube" class="form-label">Embed Youtube</label>
-                    <input type="text" class="form-control @error('embed_youtube') @enderror" id="embed_youtube" name="embed_youtube" required value="{{ $post->embed_youtube }}">
-                    @error('embed_youtube')
-                    <div class="invalid-feedback">
-                        {{ $messege }}
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="embed_youtube">Embed Youtube</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('embed_youtube') @enderror" id="embed_youtube" name="embed_youtube" required value="{{ $pembelajaran->embed_youtube }}">
+                            @error('embed_youtube')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
                     </div>
-                    @enderror
-                </div>
-                
-                <input type="hidden" name="materi" value="Bidang Retail">
-                <button type="submit" class="btn btn-primary px-5 float-right">Submit</button>
-                <a href="/admin/p/retail" class="btn btn-danger px-5 mr-2 float-right">Cancel</a>
-            </form>
+                    <div class="row justify-content-end">
+                        <div class="col-sm-10">
+                            <button type="submit" class="btn btn-primary float-end px-5 btn-sm">Send</button>
+                            <a href="/admin/p/retail" class="btn btn-danger px-5 me-2 float-end btn-sm">Cancel</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 @endsection
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
-</script>

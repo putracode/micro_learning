@@ -10,7 +10,7 @@ use App\Models\Post;
 class AdminAklikController extends Controller
 {
     public function index(){
-        $pembelajaran = pembelajaran::all()->where('materi','Bidang Aktivasi Publik ( Aklik )');
+        $pembelajaran = pembelajaran::all()->where('materi','Bidang Aktivasi Publik');
         return view('admin.pembelajaran-bidang.aklik.index',[
             'pembelajaran' => $pembelajaran
         ]);

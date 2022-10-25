@@ -10,8 +10,8 @@ class PembelajaranController extends Controller
 {
     public function indexAKLIK(){
         return view('app.pembelajaran.index',[
-            'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Publik ( Aklik )'),
-            'judul' => 'Bidang Aktivasi Publik ( Aklik )',
+            'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Publik'),
+            'judul' => 'Bidang Aktivasi Publik',
             'link_materi' => 'materi-aklik',
             'link_quiz' => 'quiz-aklik',
         ]);
@@ -36,8 +36,8 @@ class PembelajaranController extends Controller
 
     public function indexAKLIS(){
         return view('app.pembelajaran.index',[
-            'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Listrik ( Aklis )'),
-            'judul' => 'Bidang Aktivasi Listrik ( Aklis )',
+            'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Listrik'),
+            'judul' => 'Bidang Aktivasi Listrik',
             'link_materi' => 'materi-aklis',
             'link_quiz' => 'quiz-aklis'
         ]);

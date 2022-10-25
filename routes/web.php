@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\Pembelajaran\AdminPemeliharaanController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminFocController;
 use App\Http\Controllers\Admin\Pembelajaran\AdminFotController;
 use App\Http\Controllers\App\DashboardPenilaianController;
+use App\Models\User;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -43,8 +44,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('email.approved');
+    return view('test');
 });
+
+// Route::get('/index', function ($id) {
+//     return view('edit',[
+//         'user' => User::find($id)
+//     ]);
+// });
 
 // LOGIN
 Route::get('/',[LoginController::class,'indexLogin'])->name('login')->middleware('guest');

@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.sneat')
 
 @section('content')
 <div class="row p-3">
