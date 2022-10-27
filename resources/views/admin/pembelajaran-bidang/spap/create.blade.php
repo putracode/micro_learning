@@ -1,5 +1,9 @@
 @extends('layout.sneat')
 
+@section('title')
+SPAP
+@endsection
+
 @section('content')
 
 <h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Create/</span> Pembelajaran SPAP</h4>

@@ -8,6 +8,12 @@ use App\Http\Controllers\Controller;
 
 class PembelajaranController extends Controller
 {
+
+    public function page(){
+        return view('app.pembelajaran.page',[
+
+        ]);
+    }
     public function indexAKLIK(){
         return view('app.pembelajaran.index',[
             'posts' => Pembelajaran::all()->where('materi','Bidang Aktivasi Publik'),
@@ -20,14 +26,14 @@ class PembelajaranController extends Controller
     public function materiAKLIK(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-aktivasi-publik'
+            'link' => 'aktivasi-publik'
         ]);
     }
 
     public function quizAKLIK(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-aktivasi-publik'
+            'link' => 'aktivasi-publik'
         ]);
     }
 
@@ -46,14 +52,14 @@ class PembelajaranController extends Controller
     public function materiAKLIS(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-aktivasi-listrik'
+            'link' => 'aktivasi-listrik'
         ]);
     }
 
     public function quizAKLIS(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-aktivasi-listrik'
+            'link' => 'aktivasi-listrik'
         ]);
     }
     
@@ -74,14 +80,14 @@ class PembelajaranController extends Controller
     public function materiNA3P(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-NA3P'
+            'link' => 'NA3P'
         ]);
     }
 
     public function quizNA3P(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-NA3P'
+            'link' => 'NA3P'
         ]);
     }
 
@@ -100,14 +106,14 @@ class PembelajaranController extends Controller
     public function materiPEMELIHARAAN(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-pemeliharaan'
+            'link' => 'pemeliharaan'
         ]);
     }
 
     public function quizPEMELIHARAAN(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-pemeliharaan'
+            'link' => 'pemeliharaan'
         ]);
     }
 
@@ -126,14 +132,14 @@ class PembelajaranController extends Controller
     public function materiRETAIL(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-retail'
+            'link' => 'retail'
         ]);
     }
 
     public function quizRETAIL(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-retail'
+            'link' => 'retail'
         ]);
     }
 
@@ -152,14 +158,14 @@ class PembelajaranController extends Controller
     public function materiSPAP(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-SPAP'
+            'link' => 'SPAP'
         ]);
     }
 
     public function quizSPAP(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-SPAP'
+            'link' => 'SPAP'
         ]);
     }
 
@@ -178,14 +184,14 @@ class PembelajaranController extends Controller
     public function materiSARJU(Pembelajaran $post){
         return view('app.pembelajaran.materi',[
             'post' => $post,
-            'link' => 'bidang-sarju'
+            'link' => 'sarju'
         ]);
     }
 
     public function quizSARJU(Pembelajaran $post){
         return view('app.pembelajaran.quiz',[
             'post' => $post,
-            'link' => 'bidang-sarju'
+            'link' => 'sarju'
         ]);
     }
 

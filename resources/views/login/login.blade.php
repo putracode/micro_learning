@@ -45,7 +45,7 @@
 </head>
 
 <body>
-    <div id="auth" style="background-image: url('/img/bgc.jpg'); background-size: cover; background-repeat: no-repeat">
+    <div id="auth" style="background-image: url('/img/pembelajaran/sarju.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
 
         <div class="container">
             <div class="row">

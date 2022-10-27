@@ -1,5 +1,9 @@
 @extends('layout.sneat')
 
+@section('title')
+Sarju
+@endsection
+
 @section('content')
 
 <h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Edit/</span> Pembelajaran Sarju</h4>

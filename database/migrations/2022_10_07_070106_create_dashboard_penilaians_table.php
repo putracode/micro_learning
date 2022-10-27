@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('dashboard_penilaians', function (Blueprint $table) {
             $table->id();
-            $table->string('embed');
+            $table->text('embed');
             $table->timestamps();
         });
     }

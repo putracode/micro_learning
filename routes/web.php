@@ -44,7 +44,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('test');
+    return view('layout.partials.main');
 });
 
 // Route::get('/index', function ($id) {
@@ -72,13 +72,13 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/home/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
 
     // PEMBELAJARAN
-    Route::get('/home/p/bidang-aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK')->middleware('internal');
-    Route::get('/home/p/bidang-aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS')->middleware('internal');
-    Route::get('/home/p/bidang-NA3P',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P')->middleware('internal');
-    Route::get('/home/p/bidang-pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN')->middleware('internal');
-    Route::get('/home/p/bidang-retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('internal');
-    Route::get('/home/p/bidang-SPAP',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('internal');
-    Route::get('/home/p/bidang-sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('internal');
+    Route::get('/home/p/aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK')->middleware('internal');
+    Route::get('/home/p/aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS')->middleware('internal');
+    Route::get('/home/p/na3p',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P')->middleware('internal');
+    Route::get('/home/p/pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN')->middleware('internal');
+    Route::get('/home/p/retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('internal');
+    Route::get('/home/p/spap',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('internal');
+    Route::get('/home/p/sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('internal');
     Route::get('/home/p/foc',[PembelajaranController::class,'indexFOC'])->name('indexFOC');
     Route::get('/home/p/fot',[PembelajaranController::class,'indexFOT'])->name('indexFOT');
     
@@ -104,6 +104,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/home/p/quiz-foc/{post:id}',[PembelajaranController::class,'quizFOC']);
     Route::get('/home/p/quiz-fot/{post:id}',[PembelajaranController::class,'quizFOT']);
     
+    // Pembelajaran
+    Route::get('/home/pembelajaran',[PembelajaranController::class,'page'])->name('pembelajaran');
     // Tentang Kami
     Route::get('/home/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');
     

@@ -1,23 +1,21 @@
-@extends('layout.sneat')
+@extends('layout.home')
 
 @section('content')
 
-<div class="container">
-    <p>
-    
+<div class="card">
+    <div class="card-header">
         TENTANG APLIKASI
-        <br>
-        <br>
+    </div>
+    <div class="card-body">
         Aplikasi ini merupakan aplikasi temporer untuk Micro Learning di lingkungan SBU Jakban.
         Semoga dengan aplikasi sederhana ini menambah keberkahan untuk kita semua.
         SBU Jakban ..... !!!  Juara ... Juara ... Juara ...
-    </p>
-    
-    <br>
-    
-    <p>
+        <br>
         Jika ada kendala atau masukan silahkan <a href="https://wa.me/628111993122" style="font-style: italic" target="blank">hubungi kami</a> 
-    </p>
+    </div>
 </div>
+
+
+
 @endsection
 

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('list_pembelajarans', function (Blueprint $table) {
             $table->id();
-            $table->string('embed_pembelajaran');
+            $table->text('embed_pembelajaran');
             $table->timestamps();
         });
     }

@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('bidang');
             // $table->string('slug')->unique();
             // $table->string('image')->nullable();
-            $table->string('embed_youtube');
-            $table->string('embed_form');
+            $table->text('embed_youtube');
+            $table->text('embed_form');
             // $table->text('excerpt');
             // $table->text('body');
             // $table->timestamp('published_at')->nullable();

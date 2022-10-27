@@ -1,12 +1,27 @@
-@extends('layout.app')
+@extends('layout.home')
 
+@section('styles')
+    <style>
+        iframe{
+            width: 100%;
+            height: 500px;
+        }
+    </style>
+@endsection
 @section('content')
-<center>
 
-    <h1>{{ $post->sub_title }}</h1>
+<div class="card">
 
-    {!! $post->embed_youtube !!}
+    <div class="card-header">
+        <h4>{{ $post->sub_title }}</h4>
+    </div>
+    <div class="card-body">
+        {!! $post->embed_youtube !!}
+        <a href="/home/p/{{ $link }}" style="display: block">Kembali</a>
+    </div>
+</div>
 
-    <a href="/home/p/{{ $link }}" style="display: block">Kembali</a>
-</center>
+
+
+
 @endsection

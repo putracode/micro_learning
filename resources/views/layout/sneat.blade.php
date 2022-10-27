@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Dashboard - @yield('title')</title>
 
     <meta name="description" content="" />
 
@@ -309,7 +309,7 @@
                     </li>
                     <li>
                       <a class="dropdown-item" href="/home">
-                        <i class="bx bx-user me-2"></i>
+                        <i class="bx bx-home me-2"></i>
                         <span class="align-middle">Homepage</span>
                       </a>
                     </li>

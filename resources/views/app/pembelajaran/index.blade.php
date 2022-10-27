@@ -1,35 +1,40 @@
-@extends('layout.app')
+@extends('layout.home')
 
 @section('content')
 
-<center class="ml-5">
+<div class="card">
+    <div class="card-header">
+        <h3 class="mb-1">Materi {{ $judul }}</h3>
+    </div>
+    <div class="card-body">
 
-    
-    <h1 class="mb-5">Materi {{ $judul }}</h1>
-  
-    <div class="container d-flex flex-wrap justify-content-center">
-        <div class="row">
-            @foreach ($posts as $post)
-            <div class="col-md-12" style="text-align: start">
+            <div class="row">
+                @foreach ($posts as $post)
+                <hr class="mb-5">
+                <div class="col-md-12" style="text-align: start">
+        
 
-                <ul class="justify-content-center">
-                    <h3>
-                        {{ $post->title }}
-                    </h3>
-                    
-                    <h5>
-
-                        {{ $post->sub_title }}
-                    </h5>
-                    <li style="list-style: none;" class="mb-5"><a href="/home/p/{{ $link_materi }}/{{ $post->id }}">Materi Video</a> - <a
-                            href="/home/p/{{ $link_quiz }}/{{ $post->id }}">Quiz</a></li>
-                </ul>
+                        <h4>
+                            {{ $post->title }}
+                        </h4>
+        
+                        <h5>
+                            {{ $post->sub_title }}
+                        </h5>
+                        <li style="list-style: none;" class="mb-5"><a href="/home/p/{{ $link_materi }}/{{ $post->id }}"><i class='bx bxs-videos' ></i> Materi
+                        Video</a> <span class="mx-3">-</span>  <a href="/home/p/{{ $link_quiz }}/{{ $post->id }}"><i class='bx bx-file'></i>Quiz</a></li>
+                </div>
+                
+                @endforeach
             </div>
-    
-            @endforeach
-            </div>
-        </div>
-</center>
+
+    </div>
+</div>
+
+
+
+
+
 
 
 
