@@ -16,7 +16,12 @@ return new class extends Migration
         Schema::create('galleries', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('embed_youtube');
+            $table->text('embed_youtube')->nullable();
+            $table->text('foto1');
+            $table->text('foto2')->nullable();
+            $table->text('foto3')->nullable();
+            $table->text('foto4')->nullable();
+            $table->text('foto5')->nullable();
             $table->timestamps();
         });
     }

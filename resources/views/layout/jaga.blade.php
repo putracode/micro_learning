@@ -61,25 +61,18 @@
     <!-- Helpers -->
     <script src="/sneat/assets/vendor/js/helpers.js"></script>
 
-    {{-- Light Gallery --}}
-    
-
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/sneat/assets/js/config.js"></script>
-    
-    <style>
-      .w3-animate-left{position:relative;animation:animateleft 0.3s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
-
-      .w3-animate-right{position:relative;animation:animateright 0.3s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
-    </style>
   </head>
 
   <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar layout-without-menu" id="layout">
+    <div class="layout-wrapper layout-content-navbar">
       <div class="layout-container">
         <!-- Menu -->
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none;">
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="/home" class="app-brand-link">
               <span class="app-brand-logo demo">
@@ -88,7 +81,7 @@
               {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span> --}}
             </a>
             {{-- <h5 class="fw-bold text-primary">DASHBOARD ADMIN</h5> --}}
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block" id="panah">
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
           </div>
@@ -156,13 +149,13 @@
 
           <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar" style="z-index: 1000"
+            id="layout-navbar"
           >
-          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0" id="pagar">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-              <i class="bx bx-menu bx-sm"></i>
-            </a>
-          </div>
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
 
             <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
 
@@ -271,52 +264,29 @@
     
 
     <script>
-      function buttonConfirm(id) {
-          // let id = $('#confirmbutton').attr('data-id')
-          let url = $('#confirmbutton').attr('data-name')
-          swal({
-                  title: "Apa Kamu Yakin?",
-                  text: "Setelah dihapus, Anda tidak dapat memulihkan data ini",
-                  icon: "warning",
-                  buttons: true,
-                  dangerMode: true,
-              })
-              .then((willDelete) => {
-                  if (willDelete) {
-                      swal("Data berhasil di hapus!", {
-                          icon: "success",
-                          timer: 1000,
-                      });
-                      setTimeout(function() {
-                          window.location.href = "/admin/" + url + "/" + id;
-                      }, 500);
-
-                  }
-              });
-      }
+        function buttonConfirm(id){
+            // let id = $('#confirmbutton').attr('data-id')
+            let url = $('#confirmbutton').attr('data-name')
+            swal({
+            title: "Apa Kamu Yakin?",
+            text: "Setelah dihapus, Anda tidak dapat memulihkan data ini",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+            .then((willDelete) => {
+            if (willDelete) {
+                swal("Data berhasil di hapus!", {
+                    icon: "success",
+                    timer: 1000,
+                });
+                setTimeout(function () {
+                    window.location.href = "/admin/" + url + "/" + id; 
+                }, 500);
+                
+            } 
+            });
+        }
     </script>
-    <script>
-        let pagar = document.querySelector('#pagar');
-        let panah = document.querySelector('#panah');
-        let layout = document.querySelector('#layout');
-        let layoutmenu = document.querySelector('#layout-menu');
-
-        panah.addEventListener('click', function() {
-            layout.classList.toggle('layout-without-menu');
-            layoutmenu.classList.toggle('d-block');
-            layoutmenu.classList.toggle('w3-animate-left');
-            // layoutmenu.classList.toggle('w3-animate-right');
-            // pagar.style.display = "block";
-        })
-        pagar.addEventListener('click', function() {
-            layout.classList.toggle('layout-without-menu');
-            layoutmenu.classList.toggle('d-block');
-            layoutmenu.classList.toggle('w3-animate-left');
-            // layoutmenu.classList.toggle('w3-animate-right');
-            // pagar.style.display = "none";
-        })
-    </script>
-    
-    
   </body>
 </html>

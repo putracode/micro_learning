@@ -44,7 +44,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('layout.partials.main');
+    return view('layout.jaga');
 });
 
 // Route::get('/index', function ($id) {

@@ -12,7 +12,7 @@ Galeri
     <div class="col-xxl">
         <div class="card mb-4">
             <div class="card-body">
-                <form action="/admin/gallery" method="POST">
+                <form action="/admin/gallery" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="title">Title</label>
@@ -27,10 +27,64 @@ Galeri
                         </div>
                     </div>
                     <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="foto1">Foto 1</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control @error('foto1') @enderror" id="foto1" name="foto1">
+                            @error('foto1')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="foto2">Foto 2</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control @error('foto2') @enderror" id="foto2" name="foto2">
+                            @error('foto2')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="foto3">Foto 3</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control @error('foto3') @enderror" id="foto3" name="foto3">
+                            @error('foto3')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="foto4">Foto 4</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control @error('foto4') @enderror" id="foto4" name="foto4">
+                            @error('foto4')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="foto5">Foto 5</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control @error('foto5') @enderror" id="foto5" name="foto5">
+                            @error('foto5')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="embed_youtube">Embed Youtube</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('embed_youtube') @enderror" id="embed_youtube" name="embed_youtube"
-                                required>
+                            <input type="text" class="form-control @error('embed_youtube') @enderror" id="embed_youtube" name="embed_youtube">
                             @error('embed_youtube')
                             <div class="invalid-feedback">
                                 {{ $message }}

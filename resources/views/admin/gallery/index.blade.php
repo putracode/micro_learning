@@ -24,7 +24,11 @@ Galeri
             <thead>
                 <tr class="text-nowrap">
                     <th>ID</th>
-                    <th>Title</th>
+                    <th>Foto 1</th>
+                    <th>Foto 2</th>
+                    <th>Foto 3</th>
+                    <th>Foto 4</th>
+                    <th>Foto 5</th>
                     <th>Embed Youtube</th>
                     <th>Action</th>
                 </tr>
@@ -33,7 +37,12 @@ Galeri
                 @foreach ($list as $row)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $row->title }}</td>
+                    {{-- <td>{{ $row->title }}</td> --}}
+                    <td>{{ $row->foto1 }}</td>
+                    <td>{{ $row->foto2 }}</td>
+                    <td>{{ $row->foto3 }}</td>
+                    <td>{{ $row->foto4 }}</td>
+                    <td>{{ $row->foto5 }}</td>
                     <td>{{ $row->embed_youtube }}</td>
                     <td>
                         <a href="/admin/gallery/{{ $row->id }}/edit">
