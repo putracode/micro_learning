@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
+use App\Mail\ApprovedMail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\ForgotPasswordMail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 
 class ChangePasswordController extends Controller
 {
@@ -22,6 +25,9 @@ class ChangePasswordController extends Controller
             return redirect()->back()->with("error","New Password cannot be same as your current password. Please choose a different password.");
         }
 
+        if(strcmp($request->get('confirm_password'), $request->get('new_password'))){
+            return redirect()->back()->with("error","Your confirm password does not matches with your new password. Please try again.");
+        }
         // $validatedData = $request->validate([
         //     'current_password' => 'required',
         //     'new_password' => 'required|string|min:6|confirmed',
@@ -45,6 +51,17 @@ class ChangePasswordController extends Controller
 
     public function change(){
         return view('login.changepassword');
+    }
+
+    public function forgotpassword(){
+        return view('login.forgotpassword');
+    }
+
+    public function emailpassword(Request $request){
+        $user = User::where('email',$request->email)->first();
+        Mail::to($user->email)->send(new ForgotPasswordMail($user));
+
+        return redirect()->back()->with("info","Your password is being sent to your email");
     }
 
 

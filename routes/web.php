@@ -44,7 +44,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('layout.jaga');
+    return view('email.forgot');
 });
 
 // Route::get('/index', function ($id) {
@@ -59,6 +59,8 @@ Route::post('/',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
 Route::get('/register',[LoginController::class,'indexRegister'])->middleware('guest');
 Route::post('/register',[LoginController::class,'store'])->middleware('guest');
+Route::get('/forgot-password',[ChangePasswordController::class,'forgotpassword'])->middleware('guest');
+Route::post('/forgot-password',[ChangePasswordController::class,'emailpassword'])->middleware('guest');
 Route::get('/change-password',[ChangePasswordController::class,'change'])->middleware('auth');
 Route::post('/change-password',[ChangePasswordController::class,'changePassword'])->middleware('auth');
 

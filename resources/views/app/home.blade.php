@@ -1,7 +1,7 @@
 @extends('layout.home')
 
 @section('content')
-
+{{-- style="background-image: url('/img/test.png'); background-size: cover; background-repeat: no-repeat; background-position: center;" --}}
 <div class="card">
     <div class="card-header">
         <div class="page-title">

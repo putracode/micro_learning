@@ -70,6 +70,7 @@
       .w3-animate-left{position:relative;animation:animateleft 0.3s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
 
       .w3-animate-right{position:relative;animation:animateright 0.3s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
+
     </style>
   </head>
 
@@ -78,12 +79,12 @@
     <div class="layout-wrapper layout-content-navbar layout-without-menu" id="layout">
       <div class="layout-container">
         <!-- Menu -->
-
+        {{-- background-image: url('/img/sidebar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; --}}
         <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none;">
           <div class="app-brand demo">
             <a href="/home" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <img src="/img/logo.png" alt="" style="background-size: cover; width:10rem; position: relative; left: 17px;">
+                <img src="/img/logo.png" alt="" style="background-size: cover; width:10rem;">
               </span>
               {{-- <span class="app-brand-text demo menu-text fw-bolder ms-2">Sneat</span> --}}
             </a>
@@ -97,7 +98,7 @@
 
           <ul class="menu-inner py-1">
             <!-- Dashboard -->
-            <li class="menu-header small text-uppercase">
+            <li class="menu-header small text-uppercase" >
               <span class="menu-header-text">Main Menu</span>
             </li>
             <li class="menu-item {{ Request::is('home') ? 'active' : '' }}">
@@ -137,7 +138,7 @@
             <li class="menu-item {{ Request::is('home/gallery*') ? 'active' : '' }}">
               <a href="/home/gallery" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-image"></i>
-                <div data-i18n="Analytics">Gallery</div>
+                <div data-i18n="Analytics">Galeri</div>
               </a>
             </li>
             <li class="menu-item {{ Request::is('home/tentang-aplikasi*') ? 'active' : '' }}">
@@ -151,12 +152,12 @@
         <!-- / Menu -->
 
         <!-- Layout container -->
-        <div class="layout-page">
+        <div class="layout-page ">
           <!-- Navbar -->
-
+          {{-- background-image: url('/img/navbar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; --}}
           <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar" style="z-index: 1000"
+            id="layout-navbar" style="z-index: 1000;"
           >
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0" id="pagar">
             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
@@ -188,7 +189,7 @@
                           </div>
                           <div class="flex-grow-1">
                             <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
-                            <small class="text-muted">Admin</small>
+                            <small class="text-muted">{{ auth()->user()->role }}</small>
                           </div>
                         </div>
                       </a>
@@ -196,12 +197,14 @@
                     <li>
                       <div class="dropdown-divider"></div>
                     </li>
+                    @can('admin')
                     <li>
                       <a class="dropdown-item" href="/admin/dashboard">
                         <i class="bx bxs-dashboard me-1"></i>
                         <span class="align-middle">Dashboard</span>
                       </a>
                     </li>
+                    @endcan
                     <li>
                       <form action="/logout" method="post" class="form-class m-0">
                         @csrf

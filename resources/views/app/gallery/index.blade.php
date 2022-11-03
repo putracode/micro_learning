@@ -19,7 +19,7 @@
 @endsection
 
 <style>
-    img{
+    .img-galeri{
         width: 275px;
         height: 150px;
     }
@@ -104,7 +104,7 @@
                         <div class="lightbox" data-src="{{ asset('storage/' . $row->foto1) }}">
                             <a href>
                                 <figure>
-                                    <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded">
+                                    <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded img-galeri">
                                     <figcaption>{{ $row->title }}</figcaption>
                                 </figure>
                             </a>
@@ -114,7 +114,7 @@
                         <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto2) }}">
                             <a href>
                                 <figure>
-                                    <img src="{{ asset('storage/' . $row->foto2) }}" alt="" class=" rounded">
+                                    <img src="{{ asset('storage/' . $row->foto2) }}" alt="" class=" rounded img-galeri">
                                     <figcaption>{{ $row->title }}</figcaption>
                                 </figure>
                             </a>
@@ -124,7 +124,7 @@
                         <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto3) }}">
                             <a href>
                                 <figure>
-                                    <img src="{{ asset('storage/' . $row->foto3) }}" alt="" class=" rounded">
+                                    <img src="{{ asset('storage/' . $row->foto3) }}" alt="" class=" rounded img-galeri">
                                     <figcaption>{{ $row->title }}</figcaption>
                                 </figure>
                             </a>
@@ -134,7 +134,7 @@
                         <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto4) }}">
                             <a href>
                                 <figure>
-                                    <img src="{{ asset('storage/' . $row->foto4) }}" alt="" class=" rounded">
+                                    <img src="{{ asset('storage/' . $row->foto4) }}" alt="" class=" rounded img-galeri">
                                     <figcaption>{{ $row->title }}</figcaption>
                                 </figure>
                             </a>
@@ -144,7 +144,7 @@
                         <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto5) }}">
                             <a href>
                                 <figure>
-                                    <img src="{{ asset('storage/' . $row->foto5) }}" alt="" class=" rounded">
+                                    <img src="{{ asset('storage/' . $row->foto5) }}" alt="" class=" rounded img-galeri">
                                     <figcaption>{{ $row->title }}</figcaption>
                                 </figure>
                             </a>
@@ -154,7 +154,7 @@
                         <div class="lightbox d-none" data-src="{{ $row->embed_youtube }}">
                             <a href>
                                 <figure>
-                                    <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded">
+                                    <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded img-galeri">
                                     <figcaption>{{ $row->title }}</figcaption>
                                 </figure>
                             </a>
@@ -170,7 +170,7 @@
                                         <div class="lightbox iframex" data-src="{{ $row->embed_youtube }}">
                                             <a href>
                                                 <figure>
-                                                    <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded">
+                                                    <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded img-galeri">
                                                     <figcaption>{{ $row->title }}</figcaption>
                                                 </figure>
                                             </a>

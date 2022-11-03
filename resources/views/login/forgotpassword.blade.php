@@ -27,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Register</title>
+    <title>Forgot Password</title>
 
     <meta name="description" content="" />
 
@@ -62,12 +62,6 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/sneat/assets/js/config.js"></script>
-    <style>
-      .authentication-wrapper.authentication-basic .authentication-inner {
-        max-width: 500px;
-        position: relative;
-      }
-    </style>
   </head>
 
   <body>
@@ -75,8 +69,8 @@
 
     <div class="container-xxl" style="background-image: url('/img/pembelajaran/sarju.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
       <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner">
-          <!-- Register Card -->
+        <div class="authentication-inner py-4">
+          <!-- Forgot Password -->
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
@@ -141,155 +135,46 @@
                 </a>
               </div> --}}
               <!-- /Logo -->
-              <h4 class="mb-2 text-center">Register Here!</h4>
-              <p class="mb-4 text-center">Please fill the form to create your account.</p>
-
-              <form id="formAuthentication" class="mb-3" action="/register" method="POST">
+              <h4 class="mb-2">Forgot Password? 🔒</h4>
+              <p class="mb-4">Enter your email and we'll send your password</p>
+              <form id="formAuthentication" class="mb-3" action="/forgot-password" method="POST">
                 @csrf
-                <input type="hidden" name="is_approve" value="1">
-                <input type="hidden" name="role" value="1">
-                <input type="hidden" name="password" value="1234567">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Nama Lengkap</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nama Lengkap" autofocus value="{{ old('name') }}"/>
-                    @error('name')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Email" value="{{ old('email') }}"/>
-                  @error('email')
-                  <div class="invalid-feedback">
-                      {{ $message }}
-                  </div>
-                  @enderror
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    autofocus
+                  />
                 </div>
-                <div class="mb-3">
-                  <label for="no_telepon" class="form-label">No Telepon</label>
-                  <input type="number" class="form-control @error('no_telepon') is-invalid @enderror" id="no_telepon" name="no_telepon" placeholder="No Telepon" value="{{ old('no_telepon') }}" maxlength="12"/>
-                  @error('no_telepon')
-                  <div class="invalid-feedback">
-                      {{ $message }}
-                  </div>
-                  @enderror
-                </div>
-                <div class="col-md-12 col-12 mb-4">
-                    <label class="mb-3 form-label">Pengguna</label>
-                    <div class="form-group d-flex">
-                        
-
-                        <input type="radio" id="internal"
-                            class="form-check-input @error('pengguna') is-invalid @enderror  radio-button"
-                            name="pengguna" value="Internal">
-                        <label for="internal" class="ms-1">Internal</label>
-
-                        
-
-                        <input type="radio" id="eksternal"
-                            class="form-check-input @error('pengguna') is-invalid @enderror radio-button ms-3"
-                            name="pengguna" value="Eksternal">
-                        <label for="eksternal" class="ms-1">Eksternal</label>
-
-                        @error('pengguna')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                        @enderror
-                    </div>
-                </div>
-                <div id="FormInternal" style="display: none;">
-                    <div class="col-md-12 col-12 mb-3">
-                        <label for="bidang"><small>BIDANG</small></label>
-                        <select class="form-select @error('bidang') is-invalid @enderror" id="bidangInternal"
-                            name="bidang">
-                            <option selected disabled hidden></option>
-                            <option value="Bidang Aktivasi Publik">Bidang Aktivasi Publik</option>
-                            <option value="Bidang Aktivasi Listrik">Bidang Aktivasi Listrik</option>
-                            <option value="Bidang NA3P">Bidang NA3P</option>
-                            <option value="Bidang Pemeliharaan">Bidang Pemeliharaan</option>
-                            <option value="Bidang Retail">Bidang Retail</option>
-                            <option value="Bidang SPAP">Bidang SPAP</option>
-                            <option value="Bidang Sarju">Bidang Sarju</option>
-                        </select>
-                        @error('bidang')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="col-md-12 col-12 mb-3">
-                        <div class="form-group">
-                            <label for="perusahaanInternal">Perusahaan</label>
-                            <input type="text" id="perusahaanInternal"
-                                class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan"
-                                value="PT ICON+">
-                            @error('perusahaan')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-                <div id="FormEksternal" style="display: none;">
-                    <div class="col-md-12 col-12 mb-3">
-                        <label for="bidang"><small>BIDANG</small></label>
-                        <select class="form-select @error('bidang') is-invalid @enderror" id="bidangEksternal"
-                            name="bidang">
-                            <option selected disabled hidden></option>
-                            <option value="Bidang Aktivasi">Bidang Aktivasi</option>
-                            <option value="Bidang Pemeliharaan">Bidang Pemeliharaan</option>
-                            <option value="Bidang Retail">Bidang Retail</option>
-                            <option value="Bidang Pembangunan">Bidang Pembangunan</option>
-                            <option value="Lainnya">Lainnya</option>
-                        </select>
-                        @error('bidang')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-
-                    <div class="col-md-12 col-12 mb-3">
-                        <div class="form-group">
-                            <label for="perusahaanEksternal">Perusahaan</label>
-                            <input type="text" id="perusahaanEksternal"
-                                class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan"
-                                value="{{ old('perusahaan') }}" value="PT ICON+">
-                            @error('perusahaan')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <button class="btn btn-primary d-grid w-100">Sign up</button>
+                <button class="btn btn-primary d-grid w-100">Send</button>
               </form>
-
-              <p class="text-center">
-                <span>Already have an account?</span>
-                <a href="/">
-                  <span>Sign in instead</span>
+              <div class="text-center">
+                <a href="/" class="d-flex align-items-center justify-content-center">
+                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
+                  Back to login
                 </a>
-              </p>
+              </div>
             </div>
           </div>
-          <!-- Register Card -->
+          <!-- /Forgot Password -->
         </div>
       </div>
     </div>
 
     <!-- / Content -->
 
-
+    <div class="buy-now">
+      <a
+        href="https://themeselection.com/products/sneat-bootstrap-html-admin-template/"
+        target="_blank"
+        class="btn btn-danger btn-buy-now"
+        >Upgrade to Pro</a
+      >
+    </div>
 
     <!-- Core JS -->
     <!-- build:js assets/vendor/js/core.js -->
@@ -310,37 +195,5 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
-    <script>
-        // var pengguna = document.getElementsByName("pengguna");
-        var Internal = document.querySelector("#internal");
-        var Eksternal = document.querySelector("#eksternal");
-        var FormInternal = document.getElementById("FormInternal");
-        var FormEksternal = document.getElementById("FormEksternal");
-
-        var BidangInternal = document.getElementById("bidangInternal");
-        var PerusahaanInternal = document.getElementById("perusahaanInternal");
-
-        var BidangEksternal = document.getElementById("bidangEksternal");
-        var PerusahaanEksternal = document.getElementById("perusahaanEksternal");
-
-
-        Internal.addEventListener("click",function(){
-            FormInternal.style.display = "block";
-            FormEksternal.style.display = "none";
-            BidangEksternal.disabled = true;
-            PerusahaanEksternal.disabled = true;
-            BidangInternal.disabled = false;
-            PerusahaanInBidangInternal.disabled = false;
-        })
-
-        Eksternal.addEventListener("click",function(){
-            FormInternal.style.display = "none";
-            FormEksternal.style.display = "block";
-            BidangEksternal.disabled = false;
-            PerusahaanEksternal.disabled = false;
-            BidangInternal.disabled = true;
-            PerusahaanInBidangInternal.disabled = true;
-        })
-    </script>
   </body>
 </html>
