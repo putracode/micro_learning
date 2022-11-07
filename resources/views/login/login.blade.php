@@ -189,9 +189,9 @@
                 <div class="mb-4 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    {{-- <a href="/forgot-password">
+                    <a href="/forgot-password">
                       <small>Forgot Password?</small>
-                    </a> --}}
+                    </a>
                   </div>
                   <div class="input-group input-group-merge">
                     <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" required value="{{ old('password') }}" autocomplete="off" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="password" />

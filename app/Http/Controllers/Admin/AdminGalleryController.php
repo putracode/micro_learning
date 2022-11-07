@@ -24,14 +24,27 @@ class AdminGalleryController extends Controller
     public function store(Request $request){
         $validatedData = $this->validate($request,[
             'title' => ['required'],
-            'embed_youtube' => ['max:1000'],
+            'thumbnail' => ['required'],
+            'embed_youtube1' => ['max:1000'],
+            'embed_youtube2' => ['max:1000'],
+            'embed_youtube3' => ['max:1000'],
+            'embed_youtube4' => ['max:1000'],
+            'embed_youtube5' => ['max:1000'],
             'foto1' => ['image'],
             'foto2' => ['image'],
             'foto3' => ['image'],
             'foto4' => ['image'],
-            'foto5' => ['image']
+            'foto5' => ['image'],
+            'foto6' => ['image'],
+            'foto7' => ['image'],
+            'foto8' => ['image'],
+            'foto9' => ['image'],
+            'foto10' => ['image'],
         ]);
 
+        if($request->file('thumbnail')){
+            $validatedData['thumbnail'] = $request->file('thumbnail')->store('foto-galeri');
+        }
         if($request->file('foto1')){
             $validatedData['foto1'] = $request->file('foto1')->store('foto-galeri');
         }
@@ -62,12 +75,21 @@ class AdminGalleryController extends Controller
     public function update(Request $request,$id){
         $validatedData = $this->validate($request,[
             'title' => ['required'],
-            'embed_youtube' => ['max:1000'],
+            'embed_youtube1' => ['max:1000'],
+            'embed_youtube2' => ['max:1000'],
+            'embed_youtube3' => ['max:1000'],
+            'embed_youtube4' => ['max:1000'],
+            'embed_youtube5' => ['max:1000'],
             'foto1' => ['image'],
             'foto2' => ['image'],
             'foto3' => ['image'],
             'foto4' => ['image'],
-            'foto5' => ['image']
+            'foto5' => ['image'],
+            'foto6' => ['image'],
+            'foto7' => ['image'],
+            'foto8' => ['image'],
+            'foto9' => ['image'],
+            'foto10' => ['image'],
         ]);
 
         if($request->file('foto1')){
@@ -107,6 +129,9 @@ class AdminGalleryController extends Controller
     
     public function destroy($id){
         $list = Gallery::find($id);
+        if($list->thumbnail){
+            Storage::delete($list->thumbnail);
+        }
         if($list->foto1){
             Storage::delete($list->foto1);
         }
@@ -121,6 +146,21 @@ class AdminGalleryController extends Controller
         }
         if($list->foto5){
             Storage::delete($list->foto5);
+        }
+        if($list->foto6){
+            Storage::delete($list->foto6);
+        }
+        if($list->foto7){
+            Storage::delete($list->foto7);
+        }
+        if($list->foto8){
+            Storage::delete($list->foto8);
+        }
+        if($list->foto9){
+            Storage::delete($list->foto9);
+        }
+        if($list->foto10){
+            Storage::delete($list->foto10);
         }
         $list->delete();
         

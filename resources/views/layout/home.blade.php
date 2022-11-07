@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <!-- =========================================================
@@ -70,7 +71,7 @@
       .w3-animate-left{position:relative;animation:animateleft 0.3s}@keyframes animateleft{from{left:-300px;opacity:0} to{left:0;opacity:1}}
 
       .w3-animate-right{position:relative;animation:animateright 0.3s}@keyframes animateright{from{right:-300px;opacity:0} to{right:0;opacity:1}}
-
+      
     </style>
   </head>
 
@@ -80,7 +81,7 @@
       <div class="layout-container">
         <!-- Menu -->
         {{-- background-image: url('/img/sidebar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; --}}
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none;">
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none; background-image: url('/img/sidebar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; z-index: 1000;">
           <div class="app-brand demo">
             <a href="/home" class="app-brand-link">
               <span class="app-brand-logo demo">
@@ -174,9 +175,13 @@
                 <!-- User -->
                 <li class="nav-item navbar-dropdown dropdown-user dropdown">
                   <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+                    
                     <div class="avatar avatar-online">
+                      
                       <img src="/sneat/assets/img/avatars/avatar5.png" alt class="w-px-40 h-auto rounded-circle" />
+                      
                     </div>
+                    
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li>
@@ -213,6 +218,7 @@
                       </form>
                     </li>
                   </ul>
+                  
                 </li>
                 <!--/ User -->
               </ul>
@@ -239,7 +245,7 @@
       </div>
 
       <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle"></div>
+      <div class="layout-overlay layout-menu-toggle" id="abuabu"></div>
     </div>
     <!-- / Layout wrapper -->
 
@@ -303,7 +309,13 @@
         let panah = document.querySelector('#panah');
         let layout = document.querySelector('#layout');
         let layoutmenu = document.querySelector('#layout-menu');
+        let abuabu = document.querySelector('#abuabu');
 
+        abuabu.addEventListener('click', function(){
+            layout.classList.toggle('layout-without-menu');
+            layoutmenu.classList.toggle('d-block');
+            layoutmenu.classList.toggle('w3-animate-left');
+        })
         panah.addEventListener('click', function() {
             layout.classList.toggle('layout-without-menu');
             layoutmenu.classList.toggle('d-block');

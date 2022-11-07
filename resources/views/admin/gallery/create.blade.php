@@ -27,70 +27,32 @@ Galeri
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="foto1">Foto 1</label>
+                        <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control @error('foto1') @enderror" id="foto1" name="foto1">
-                            @error('foto1')
+                            <input type="file" class="form-control @error('thumbnail') @enderror" id="thumbnail" name="thumbnail"
+                                required>
+                            @error('thumbnail')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="foto2">Foto 2</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control @error('foto2') @enderror" id="foto2" name="foto2">
-                            @error('foto2')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
+                    <div id="foto-galeri">
+
                     </div>
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="foto3">Foto 3</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control @error('foto3') @enderror" id="foto3" name="foto3">
-                            @error('foto3')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
+                    <div id="video-youtube">
+
                     </div>
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="foto4">Foto 4</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control @error('foto4') @enderror" id="foto4" name="foto4">
-                            @error('foto4')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="foto5">Foto 5</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control @error('foto5') @enderror" id="foto5" name="foto5">
-                            @error('foto5')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="embed_youtube">Embed Youtube</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control @error('embed_youtube') @enderror" id="embed_youtube" name="embed_youtube">
-                            @error('embed_youtube')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
+                    <div class="kumpulanButton">
+
+                        <button class="btn btn-success btn-sm " onclick="addFoto()" type="button" id="tambahfoto" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Tambah Foto</span>"><i class='bx bx-image-add'></i></button>
+
+                        <button class="btn btn-danger btn-sm " onclick="removeFoto()" type="button" id="removefoto" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Hapus Foto</span>"><i class='bx bx-image'></i></i></button>
+
+                        <button class="btn btn-success btn-sm" onclick="addVideo()" type="button" id="tambahvideo" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Tambah Link Video</span>"><i class='bx bx-video-plus'></i></button>
+                        
+                        <button class="btn btn-danger btn-sm" onclick="removeVideo()" type="button" id="removevideo" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Hapus Link Video</span>"><i class='bx bx-video'></i></button>
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
@@ -103,4 +65,79 @@ Galeri
         </div>
     </div>
 </div>
+@endsection
+
+@section('script')
+<script>
+    var foto = document.querySelector('#foto-galeri');
+    var video = document.querySelector('#video-youtube');
+    var btnFoto = document.querySelector('#tambahfoto');
+    var btnVideo = document.querySelector('#tambahvideo');
+
+
+
+    var i = 0
+    var y = 0
+
+    function addFoto() {
+        i++
+        foto.innerHTML += '<div class="row mb-4 classFoto" id="xfoto' + i + '">' +
+            '<label class="col-sm-2 col-form-label" for="foto' + i + '">Foto ' + i + '</label>' +
+            '<div class="col-sm-10">' +
+            '<input type="file" class="form-control jumlah @error("foto' + i + '") @enderror" id="foto' + i +
+            '"required name="foto' + i + '">' +
+            '@error("foto' + i + '")' +
+            '<div class="invalid-feedback">' +
+            '{{ $message }}' +
+            '</div>' +
+            '@enderror' +
+            '</div>' +
+            // '<div class="col-md-1">'+'<button class="btn btn-danger btn-sm" onclick="hapusFoto(xfoto'+ i +')" type="button" id="tambahvideo"><i class="bx bx-x"></i></button>'+'</div>' +
+            '</div>'
+
+        if (i == 10) {
+            btnFoto.style.display = 'none'
+        }
+    }
+
+
+    function addVideo() {
+        y++
+        video.innerHTML += '<div class="row mb-4" id="xembed_youtube' + y + '">' +
+            '<label class="col-sm-2 col-form-label" for="embed_youtube' + y + '">embed_youtube ' + y + '</label>' +
+            '<div class="col-sm-10">' +
+            '<input type="text" class="form-control jumlah @error("embed_youtube' + y +
+            '") @enderror" id="embed_youtube' + y + '"required name="embed_youtube' + y + '">' +
+            '@error("embed_youtube' + y + '")' +
+            '<div class="invalid-feedback">' +
+            '{{ $message }}' +
+            '</div>' +
+            '@enderror' +
+            '</div>' +
+            // '<div class="col-md-1">'+'<button class="btn btn-danger btn-sm" onclick="hapusembed_youtube(xembed_youtube'+y+')" type="button" id="tambahvideo"><i class="bx bx-x"></i></button>'+'</div>' +
+            '</div>'
+        if (y == 5) {
+            btnVideo.style.display = 'none'
+        }
+    }
+
+    function removeFoto() {
+        var foto = document.querySelector('#foto-galeri');
+        foto.removeChild(foto.lastChild)
+        i--
+        if (i < 10) {
+            btnFoto.style.display = 'inline-block'
+        }
+    }
+
+    function removeVideo() {
+        var video = document.querySelector('#video-youtube');
+        video.removeChild(video.lastChild)
+        y--
+        if (y < 5) {
+            btnVideo.style.display = 'inline-block'
+        }
+    }
+
+</script>
 @endsection

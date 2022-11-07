@@ -24,12 +24,8 @@ Galeri
             <thead>
                 <tr class="text-nowrap">
                     <th>ID</th>
-                    <th>Foto 1</th>
-                    <th>Foto 2</th>
-                    <th>Foto 3</th>
-                    <th>Foto 4</th>
-                    <th>Foto 5</th>
-                    <th>Embed Youtube</th>
+                    <th>Title</th>
+                    <th>Thumbnail</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -37,15 +33,10 @@ Galeri
                 @foreach ($list as $row)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    {{-- <td>{{ $row->title }}</td> --}}
-                    <td>{{ $row->foto1 }}</td>
-                    <td>{{ $row->foto2 }}</td>
-                    <td>{{ $row->foto3 }}</td>
-                    <td>{{ $row->foto4 }}</td>
-                    <td>{{ $row->foto5 }}</td>
-                    <td>{{ $row->embed_youtube }}</td>
+                    <td>{{ $row->title }}</td>
+                    <td><img src="{{ asset('storage/' . $row->thumbnail) }}" style="width: 100px;" alt=""></td>
                     <td>
-                        <a href="/admin/gallery/{{ $row->id }}/edit">
+                        {{-- <a href="/admin/gallery/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                     viewBox="0 0 24 24">
@@ -54,7 +45,7 @@ Galeri
                                         fill="#ffffff" fill-rule="evenodd" />
                                 </svg>
                             </button>
-                        </a>
+                        </a> --}}
                         <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="gallery" id="confirmbutton">
                             <button type="button" class="btn btn-icon btn-danger">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"

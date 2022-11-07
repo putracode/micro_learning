@@ -16,6 +16,9 @@ class HomeController extends Controller
         $this->middleware(['approved']);
     }
     public function index(){
+        
+   
+
         if ((Auth::user()->password_change == false)) {
             return redirect('/change-password');
         }else{

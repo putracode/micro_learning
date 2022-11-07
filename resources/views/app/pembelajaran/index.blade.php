@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="card">
+<div class="card" style="background-image: url('/img/card.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div class="card-header">
         <h3 class="mb-1">Materi {{ $judul }}</h3>
     </div>

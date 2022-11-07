@@ -59,6 +59,10 @@ class ChangePasswordController extends Controller
 
     public function emailpassword(Request $request){
         $user = User::where('email',$request->email)->first();
+        if (count($user) < 1) {
+            return redirect()->back()->with('info','User does not exist');
+        }
+        
         Mail::to($user->email)->send(new ForgotPasswordMail($user));
 
         return redirect()->back()->with("info","Your password is being sent to your email");
