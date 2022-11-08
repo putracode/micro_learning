@@ -81,7 +81,7 @@
       <div class="layout-container">
         <!-- Menu -->
         {{-- background-image: url('/img/sidebar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; --}}
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none; background-image: url('/img/sidebar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; z-index: 1000;">
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none; background-image: url('/img/sidebar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; z-index: 1100;">
           <div class="app-brand demo">
             <a href="/home" class="app-brand-link">
               <span class="app-brand-logo demo">
@@ -158,7 +158,7 @@
           {{-- background-image: url('/img/navbar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; --}}
           <nav
             class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar" style="z-index: 1000;"
+            id="layout-navbar" style="z-index: 1098;"
           >
           <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0" id="pagar">
             <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
