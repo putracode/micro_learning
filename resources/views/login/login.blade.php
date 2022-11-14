@@ -62,6 +62,7 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/sneat/assets/js/config.js"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -91,6 +92,11 @@
     @if (session()->has('success'))
         <script>
             toastr.info("{!! Session::get('success') !!}")
+        </script>
+    @endif
+    @if (session()->has('changed'))
+        <script>
+            toastr.success("{!! Session::get('changed') !!}")
         </script>
     @endif
     @if (session()->has('NotApproved'))

@@ -1,6 +1,135 @@
 @extends('layout.home')
 
 @section('content')
+
+<style>
+    .image-pembelajaran{ height: 175px;}
+</style>
+<div class="card " style="background-image: url('/img/card_pembelajaran_bidang.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="card-header">
+        <h5>Pembelajaran Bidang</h5>
+    </div>
+    <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/aklik.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang Aktivasi Publik</h5>
+                        <a href="/home/p/aktivasi-publik">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/aklis.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang Aktivasi Listrik</h5>
+                        <a href="/home/p/aktivasi-listrik">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/na3p.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang NA3P</h5>
+                        <a href="/home/p/na3p">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/pemeliharaan.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang Pemeliharaan</h5>
+                        <a href="/home/p/pemeliharaan">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/retail.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang Retail</h5>
+                        <a href="/home/p/retail">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/spap.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang SPAP</h5>
+                        <a href="/home/p/spap">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/sarju.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">Bidang Sarju</h5>
+                        <a href="/home/p/sarju">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="card " style="background-image: url('/img/card_pembelajaran_bidang.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="card-header">
+        <h5>Pembelajaran Umum</h5>
+    </div>
+    <div class="card-body">
+        <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/foc.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">FOC</h5>
+                        <a href="/home/p/foc">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100 shadow">
+                    <img class="card-img-top image-pembelajaran" src="/img/pembelajaran/fot.jpg" alt="Card image cap" />
+                    <div class="card-body">
+                        <h5 class="card-title ">FOT</h5>
+                        <a href="/home/p/fot">
+                            <button class="btn btn-primary" style="width: 100%">Mulai</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection
+
+{{-- @extends('layout.home')
+
+@section('content')
 @can('internal')    
 <div class="card mb-3" style="background-image: url('/img/card_pembelajaran_bidang.png'); background-size: cover; background-repeat: no-repeat; background-position: center;">
     <div class="card-header">
@@ -116,4 +245,4 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}

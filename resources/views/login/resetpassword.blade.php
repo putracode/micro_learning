@@ -1,4 +1,17 @@
 <!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
 <html
   lang="en"
   class="light-style customizer-hide"
@@ -14,7 +27,7 @@
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Forgot Password</title>
+    <title>Login Basic - Pages | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
 
     <meta name="description" content="" />
 
@@ -49,7 +62,6 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="/sneat/assets/js/config.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
@@ -72,6 +84,12 @@
         "hideMethod": "fadeOut"
     }
     </script>
+    <style>
+        .authentication-wrapper.authentication-basic .authentication-inner {
+          max-width: 500px;
+          position: relative;
+        }
+    </style>
   </head>
 
   <body>
@@ -81,16 +99,10 @@
             toastr.error("{!! Session::get('error') !!}")
         </script>
     @endif
-    @if (session()->has('info'))
-        <script>
-            toastr.info("{!! Session::get('info') !!}")
-        </script>
-    @endif
-
     <div class="container-xxl" style="background-image: url('/img/pembelajaran/sarju.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
       <div class="authentication-wrapper authentication-basic container-p-y">
-        <div class="authentication-inner py-4">
-          <!-- Forgot Password -->
+        <div class="authentication-inner">
+          <!-- Register -->
           <div class="card">
             <div class="card-body">
               <!-- Logo -->
@@ -155,25 +167,73 @@
                 </a>
               </div> --}}
               <!-- /Logo -->
-              <h4 class="mb-2">Forgot Password? 🔒</h4>
-              <p class="mb-4">Enter your email and we'll send your reset link</p>
-              <form id="formAuthentication" class="mb-3" action="/forgot-password" method="POST">
+              <h4 class="mb-2 text-center">Reset Password!</h4>
+              <p class="mb-5 text-center">Please change your password to continue to Micro Learning.</p>
+
+              <form id="formAuthentication" class="mb-3" action="/reset-password/{{ $token }}" method="POST">
                 @csrf
-                <div class="mb-3">
-                  <label for="email" class="form-label">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" autofocus/>
+                <div class="mb-3 form-password-toggle">
+                    <div class="d-flex justify-content-between">
+                      <label class="form-label" for="email">Email</label>
+                    </div>
+                    <div class="input-group input-group-merge">
+                      <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" required value="{{ old('email') }}" autocomplete="off" placeholder="Email" aria-describedby="email" />
+                      <span class="input-group-text cursor-pointer"></span>
+                      @error('email')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                      @enderror
+                    </div>
+                  </div>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="new_password">New Password</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input type="password" id="new_password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" required value="{{ old('new_password') }}" autocomplete="off" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="new_password" />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
                 </div>
-                <button class="btn btn-primary d-grid w-100" type="submit">Send Reset Link</button>
+                <div class="mb-3 form-password-toggle">
+                  <div class="d-flex justify-content-between">
+                    <label class="form-label" for="confirm_password">Confirm Password</label>
+                  </div>
+                  <div class="input-group input-group-merge">
+                    <input type="password" id="confirm_password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" required value="{{ old('confirm_password') }}" autocomplete="off" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="confirm_password" />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                  </div>
+                </div>
+                {{-- <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="remember-me" />
+                    <label class="form-check-label" for="remember-me"> Remember Me </label>
+                  </div>
+                </div> --}}
+                <div class="mb-3">
+                  <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
+                </div>
               </form>
-              <div class="text-center">
-                <a href="/" class="d-flex align-items-center justify-content-center">
-                  <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
-                  Back to login
+
+              {{-- <p class="text-center">
+                <span>Don't have an account?</span>
+                <a href="/register">
+                  <span>Create an account</span>
                 </a>
-              </div>
+              </p> --}}
             </div>
           </div>
-          <!-- /Forgot Password -->
+          <!-- /Register -->
         </div>
       </div>
     </div>

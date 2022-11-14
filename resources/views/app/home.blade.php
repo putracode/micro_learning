@@ -2,8 +2,23 @@
 
 @section('content')
 {{-- style="background-image: url('/img/test.png'); background-size: cover; background-repeat: no-repeat; background-position: center;" --}}
-
-<div class="card card-home" style="background-image: url('/img/test.png'); background-size: cover; background-repeat: no-repeat; background-position: center; position: relative; ">
+<style>
+    .card-home{
+        background-image: url('/img/test.png'); 
+        background-size: cover; 
+        background-repeat: no-repeat; 
+        background-position: center;
+    }
+    @media all and (max-width: 968px){
+        .card-home{
+            background-image: url('/img/test_kecil.png'); 
+            background-size: contain; 
+            background-repeat: no-repeat; 
+            background-position: center; 
+        }
+    }
+</style>
+<div class="card card-home">
     <div class="card-header">
         <div class="page-title">
             <h3>Micro Learning</h3>

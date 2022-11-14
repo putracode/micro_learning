@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use App\Mail\ApprovedMail;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Mail\ForgotPasswordMail;
+use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -53,28 +56,74 @@ class ChangePasswordController extends Controller
         return view('login.changepassword');
     }
 
-    public function forgotpassword(){
+    public function getforgotpassword(){
         return view('login.forgotpassword');
     }
 
-    public function emailpassword(Request $request){
-        $user = User::where('email',$request->email)->first();
-        if (count($user) < 1) {
-            return redirect()->back()->with('info','User does not exist');
-        }
+    private function generateToken()
+    {
+        $key = config('app.key');
         
-        Mail::to($user->email)->send(new ForgotPasswordMail($user));
+        if (Str::startsWith($key, 'base64:')) {
+            $key = base64_decode(substr($key, 7));
+        }
+        return hash_hmac('sha256', Str::random(40), $key);
+    }
+    
+    public function postforgotpassword(Request $request){
+        $user = User::where('email',$request->email)->first();
+        $generateToken = $this->generateToken();
+        if (!$user || $user->is_approve == 'Not Approved') {
+            return redirect()->back()->with('error','User does not exist');
+        }else{
+            DB::table('password_resets')->insert([
+                'email' => $request->email,
+                'token' => $generateToken,
+                'created_at' => Carbon::now()
+            ]);
 
-        return redirect()->back()->with("info","Your password is being sent to your email");
+            $token = DB::table('password_resets')->where('token', $generateToken)->first();
+            Mail::to($user->email)->send(new ForgotPasswordMail($user,$token->token));
+            return redirect()->back()->with("info","Your password is being sent to your email");
+        }
+    }
+    
+    public function getresetpassword($token){
+        $buttonReset = DB::table('password_resets')->where('token',$token)->first();
+        if(!$buttonReset || Carbon::now()->subMinutes(10) > $buttonReset->created_at){
+            $buttonReset->delete();
+            return redirect()->route('getforgotpassword')->with('error','Invalid password reset link or link expired.');
+        }else{
+            return view('login.resetpassword',[
+                'token' => $token
+            ]);
+        }
     }
 
+    public function postresetpassword($token,Request $request){
+        $buttonReset = DB::table('password_resets')->where('token',$token)->first();
+        if(!$buttonReset || Carbon::now()->subMinutes(10) > $buttonReset->created_at){
+            return redirect()->route('getforgotpassword')->with('error','Invalid password reset link or link expired.');
+        }else{
+            if(strcmp($request->get('confirm_password'), $request->get('new_password'))){
+                return redirect()->back()->with("error","Your confirm password does not matches with your new password. Please try again.");
+            }
+    
+            $tokens = DB::table('password_resets')->where('token',$token);
+            $reset_password = $tokens->first();
+            $user = User::all()->where('email',$reset_password->email)->first();
 
-    // public function update(Request $request,$id){
-    //     $user = user::find($id);
+            if($user->email != $request->get('email')){
+                return redirect()->back()->with("error","Enter your correct email.");
+            }else{
+                $tokens->delete();
+                $user->update([
+                    'password' => bcrypt($request->new_password),
+                    'password_change' => true
+                ]);
+                return redirect('/')->with("success","Password changed successfully!");
+            }
+        }
+    }
 
-    //     // $request['password'] = bcrypt($request['password']);
-    //     $user->update($request->all());
-        
-    //     return redirect()->route('login')->with('Edit','Password berhasil Diubah!');
-    // }
 }

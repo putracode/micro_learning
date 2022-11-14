@@ -95,7 +95,7 @@ Galeri
             // '<div class="col-md-1">'+'<button class="btn btn-danger btn-sm" onclick="hapusFoto(xfoto'+ i +')" type="button" id="tambahvideo"><i class="bx bx-x"></i></button>'+'</div>' +
             '</div>'
 
-        if (i == 10) {
+        if (i == 5) {
             btnFoto.style.display = 'none'
         }
     }
@@ -116,7 +116,7 @@ Galeri
             '</div>' +
             // '<div class="col-md-1">'+'<button class="btn btn-danger btn-sm" onclick="hapusembed_youtube(xembed_youtube'+y+')" type="button" id="tambahvideo"><i class="bx bx-x"></i></button>'+'</div>' +
             '</div>'
-        if (y == 5) {
+        if (y == 2) {
             btnVideo.style.display = 'none'
         }
     }
@@ -125,7 +125,7 @@ Galeri
         var foto = document.querySelector('#foto-galeri');
         foto.removeChild(foto.lastChild)
         i--
-        if (i < 10) {
+        if (i < 5) {
             btnFoto.style.display = 'inline-block'
         }
     }
@@ -134,7 +134,7 @@ Galeri
         var video = document.querySelector('#video-youtube');
         video.removeChild(video.lastChild)
         y--
-        if (y < 5) {
+        if (y < 2) {
             btnVideo.style.display = 'inline-block'
         }
     }

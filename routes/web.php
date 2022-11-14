@@ -44,7 +44,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('test');
+    return view('layout.homelama');
 });
 
 // Route::get('/index', function ($id) {
@@ -59,10 +59,13 @@ Route::post('/',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
 Route::get('/register',[LoginController::class,'indexRegister'])->middleware('guest');
 Route::post('/register',[LoginController::class,'store'])->middleware('guest');
-Route::get('/forgot-password',[ChangePasswordController::class,'forgotpassword'])->middleware('guest');
-Route::post('/forgot-password',[ChangePasswordController::class,'emailpassword'])->middleware('guest');
 Route::get('/change-password',[ChangePasswordController::class,'change'])->middleware('auth');
 Route::post('/change-password',[ChangePasswordController::class,'changePassword'])->middleware('auth');
+
+Route::get('/forgot-password',[ChangePasswordController::class,'getforgotpassword'])->middleware('guest')->name('getforgotpassword');
+Route::post('/forgot-password',[ChangePasswordController::class,'postforgotpassword'])->middleware('guest');
+Route::get('/reset-password/{token}',[ChangePasswordController::class,'getresetpassword'])->middleware('guest')->name('getresetpassword');
+Route::post('/reset-password/{token}',[ChangePasswordController::class,'postresetpassword'])->middleware('guest');
 
 
 Route::middleware(['auth'])->group(function(){
@@ -115,7 +118,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/home/list-pembelajaran',[ListPembelajaranController::class,'index'])->name('list-pembelajaran');
     
     // Gallery
-    Route::get('/home/gallery',[GalleryController::class,'index'])->name('gallery');
+    Route::get('/home/gallery',[GalleryController::class,'index'])->name('gallery')->middleware('internal');
     
     // Dashboard Penilaian
     Route::get('/home/dashboard-penilaian',[DashboardPenilaianController::class,'index'])->name('gallery');

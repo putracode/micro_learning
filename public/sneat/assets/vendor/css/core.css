@@ -15522,7 +15522,7 @@ html:not(.layout-footer-fixed) .content-wrapper {
   }
 
   .layout-overlay {
-    z-index: 1099;
+    z-index: 1038;
   }
 }
 @media (min-width: 1200px) {

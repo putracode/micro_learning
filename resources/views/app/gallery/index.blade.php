@@ -20,9 +20,11 @@
 
 <style>
     .img-galeri{
-        width: 275px;
+        width: 285px;
         height: 150px;
+        box-sizing: border-box;
     }
+
 </style>
 
 @section('content')
@@ -103,109 +105,67 @@
     <div class="card-header">
         <h5>Galeri</h5>
     </div>
-    <div class="card-body d-flex flex-wrap justify">
+    <div class="card-body d-flex flex-wrap">
         @foreach ($gallery as $row)
-            <div class="gambar  me-3" id="gambar">
+            <div class="gambar  me-2" id="gambar"   >
                 <div class="lightbox" data-src="{{ asset('storage/' . $row->thumbnail) }}">
                     <a href>
                         <figure>
                             <img src="{{ asset('storage/' . $row->thumbnail) }}" alt="" class=" rounded img-galeri">
-                            <figcaption>{{ $row->title }}</figcaption>
+                            <figcaption class="text-center">{{ $row->title }}</figcaption>
                         </figure>
                     </a>
                 </div>
-                @if ($row->foto1)    
+                @if ($row->foto1)
                     <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto1) }}">
                         <a href>
                             <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded img-galeri">
                         </a>
                     </div>
-                @elseif ($row->foto2)    
+                @endif
+                @if ($row->foto2)
                     <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto2) }}">
                         <a href>
                             <img src="{{ asset('storage/' . $row->foto2) }}" alt="" class=" rounded img-galeri">
                         </a>
                     </div>
-                @elseif ($row->foto3)
+                @endif
+                @if ($row->foto3)
                     <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto3) }}">
                         <a href>
                             <img src="{{ asset('storage/' . $row->foto3) }}" alt="" class=" rounded img-galeri">
                         </a>
                     </div>
-                @elseif ($row->foto4)
+                @endif
+                @if ($row->foto4)
                     <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto4) }}">
                         <a href>
                             <img src="{{ asset('storage/' . $row->foto4) }}" alt="" class=" rounded img-galeri">
                         </a>
                     </div>
-                @elseif ($row->foto5)
+                @endif
+                @if ($row->foto5)
                     <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto5) }}">
                         <a href>
                             <img src="{{ asset('storage/' . $row->foto5) }}" alt="" class=" rounded img-galeri">
                         </a>
                     </div>
-                @elseif ($row->foto6)
-                    <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto6) }}">
-                        <a href>
-                            <img src="{{ asset('storage/' . $row->foto6) }}" alt="" class=" rounded img-galeri">
-                        </a>
-                    </div>
-                @elseif ($row->foto7)
-                    <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto7) }}">
-                        <a href>
-                            <img src="{{ asset('storage/' . $row->foto7) }}" alt="" class=" rounded img-galeri">
-                        </a>
-                    </div>
-                @elseif ($row->foto8)
-                    <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto8) }}">
-                        <a href>
-                            <img src="{{ asset('storage/' . $row->foto8) }}" alt="" class=" rounded img-galeri">
-                        </a>
-                    </div>
-                @elseif ($row->foto9)
-                    <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto9) }}">
-                        <a href>
-                            <img src="{{ asset('storage/' . $row->foto9) }}" alt="" class=" rounded img-galeri">
-                        </a>
-                    </div>
-                @elseif ($row->foto10)
-                    <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto10) }}">
-                        <a href>
-                            <img src="{{ asset('storage/' . $row->foto10) }}" alt="" class=" rounded img-galeri">
-                        </a>
-                    </div>
-                @elseif ($row->embed_youtube1)
+                @endif
+               
+                @if ($row->embed_youtube1)
                     <div class="lightbox d-none" data-src="{{ $row->embed_youtube1 }}">
                         <a href>
                             
                         </a>
                     </div>
-                @elseif ($row->embed_youtube2)
+                @endif
+                @if ($row->embed_youtube2)
                     <div class="lightbox d-none" data-src="{{ $row->embed_youtube2 }}">
                         <a href>
                             
                         </a>
                     </div>
-                @elseif ($row->embed_youtube3)
-                    <div class="lightbox d-none" data-src="{{ $row->embed_youtube3 }}">
-                        <a href>
-                            
-                        </a>
-                    </div>
-                @elseif ($row->embed_youtube4)
-                    <div class="lightbox d-none" data-src="{{ $row->embed_youtube4 }}">
-                        <a href>
-                            
-                        </a>
-                    </div>
-                @elseif ($row->embed_youtube5)
-                    <div class="lightbox d-none" data-src="{{ $row->embed_youtube5 }}">
-                        <a href>
-                            
-                        </a>
-                    </div>
                 @endif
-                
             </div>
         @endforeach
     </div>
