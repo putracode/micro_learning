@@ -44,7 +44,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('layout.homelama');
+    return view('test');
 });
 
 // Route::get('/index', function ($id) {

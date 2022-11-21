@@ -60,11 +60,11 @@
 
   <body>
     <!-- Layout wrapper -->
-    <div class="layout-wrapper layout-content-navbar layout-without-menu" id="layout">
+    <div class="layout-wrapper layout-content-navbar " id="layout">
       <div class="layout-container">
         <!-- Menu -->
 
-        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme" style="display: none;">
+        <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
           <div class="app-brand demo">
             <a href="index.html" class="app-brand-link">
               <span class="app-brand-logo demo">
@@ -73,7 +73,7 @@
 
             </a>
 
-            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block " id="panah">
+            <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none" id="panah">
               <i class="bx bx-chevron-left bx-sm align-middle"></i>
             </a>
           </div>
@@ -148,7 +148,7 @@
             class="layout-navbar container-fluid navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
             id="layout-navbar" style="z-index: 1039;"
           >
-            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0" id="pagar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none" id="pagar">
               <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
                 <i class="bx bx-menu bx-sm"></i>
               </a>
@@ -283,33 +283,7 @@
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 
-    <script>
-      let pagar = document.querySelector('#pagar');
-      let panah = document.querySelector('#panah');
-      let layout = document.querySelector('#layout');
-      let layoutmenu = document.querySelector('#layout-menu');
-      let abuabu = document.querySelector('#abuabu');
 
-      abuabu.addEventListener('click', function(){
-          layout.classList.toggle('layout-without-menu');
-          layoutmenu.classList.toggle('d-block');
-          layoutmenu.classList.toggle('w3-animate-left');
-      })
-      panah.addEventListener('click', function() {
-          layout.classList.toggle('layout-without-menu');
-          layoutmenu.classList.toggle('d-block');
-          layoutmenu.classList.toggle('w3-animate-left');
-          // layoutmenu.classList.toggle('w3-animate-right');
-          // pagar.style.display = "block";
-      })
-      pagar.addEventListener('click', function() {
-          layout.classList.toggle('layout-without-menu');
-          layoutmenu.classList.toggle('d-block');
-          layoutmenu.classList.toggle('w3-animate-left');
-          // layoutmenu.classList.toggle('w3-animate-right');
-          // pagar.style.display = "none";
-      })
-  </script>
   @yield('script')
   </body>
 </html>

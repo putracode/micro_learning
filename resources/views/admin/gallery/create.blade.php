@@ -46,13 +46,13 @@ Galeri
                     </div>
                     <div class="kumpulanButton">
 
-                        <button class="btn btn-success btn-sm " onclick="addFoto()" type="button" id="tambahfoto" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Tambah Foto</span>"><i class='bx bx-image-add'></i></button>
+                        <button class="btn btn-success btn-sm " onclick="addFoto()" type="button" id="tambahfoto" style="display: inline-block" title="Tambah Foto "><i class='bx bx-image-add'></i></button>
 
-                        <button class="btn btn-danger btn-sm " onclick="removeFoto()" type="button" id="removefoto" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Hapus Foto</span>"><i class='bx bx-image'></i></i></button>
+                        <button class="btn btn-danger btn-sm " onclick="removeFoto()" type="button" id="removefoto" style="display: inline-block" title="Hapus Foto "><i class='bx bx-image'></i></i></button>
 
-                        <button class="btn btn-success btn-sm" onclick="addVideo()" type="button" id="tambahvideo" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Tambah Link Video</span>"><i class='bx bx-video-plus'></i></button>
+                        <button class="btn btn-success btn-sm" onclick="addVideo()" type="button" id="tambahvideo" style="display: inline-block" title="Tambah Link Video "><i class='bx bx-video-plus'></i></button>
                         
-                        <button class="btn btn-danger btn-sm" onclick="removeVideo()" type="button" id="removevideo" style="display: inline-block" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="bottom" data-bs-html="true" title="<span>Hapus Link Video</span>"><i class='bx bx-video'></i></button>
+                        <button class="btn btn-danger btn-sm" onclick="removeVideo()" type="button" id="removevideo" style="display: inline-block" title="Hapus Link Video "><i class='bx bx-video'></i></button>
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">

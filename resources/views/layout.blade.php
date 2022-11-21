@@ -1,3 +1,112 @@
+{{-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="/img/logo.png" alt=""
+                    style="background-size: cover; width:10rem;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <a data-bs-toggle="offcanvas" href="#offcanvasExample" role="button"
+                        aria-controls="offcanvasExample">
+                        <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div>
+                Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images,
+                lists, etc.
+            </div>
+            <div class="dropdown mt-3">
+                <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
+                    <li class="menu-header small text-uppercase" >
+                      <span class="menu-header-text">Main Menu</span>
+                    </li>
+                    <li class="menu-item {{ Request::is('home') ? 'active' : '' }}">
+<a href="/home" class="menu-link">
+    <i class="menu-icon tf-icons bx bx-home"></i>
+    <div data-i18n="Analytics">Beranda</div>
+</a>
+</li>
+
+<li class="menu-header small text-uppercase">
+    <span class="menu-header-text">Pembelajaran</span>
+</li>
+
+<li class="menu-item {{ Request::is('home/pembelajaran*') ? 'active' : '' }}">
+    <a href="/home/pembelajaran" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-book"></i>
+        <div data-i18n="Analytics">Pembelajaran</div>
+    </a>
+</li>
+<li class="menu-item {{ Request::is('home/list-pembelajaran*') ? 'active' : '' }}">
+    <a href="/home/list-pembelajaran" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-book"></i>
+        <div data-i18n="Analytics">List Pembelajaran</div>
+    </a>
+</li>
+<li class="menu-item {{ Request::is('home/dashboard-penilaian*') ? 'active' : '' }}">
+    <a href="/home/dashboard-penilaian" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-book-reader"></i>
+        <div data-i18n="Analytics">Dashboard Penilaian</div>
+    </a>
+</li>
+
+<li class="menu-header small text-uppercase">
+    <span class="menu-header-text">Tentang Kami</span>
+</li>
+@can('internal')
+<li class="menu-item {{ Request::is('home/gallery*') ? 'active' : '' }}">
+    <a href="/home/gallery" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-image"></i>
+        <div data-i18n="Analytics">Galeri</div>
+    </a>
+</li>
+@endcan
+<li class="menu-item {{ Request::is('home/tentang-aplikasi*') ? 'active' : '' }}">
+    <a href="/home/tentang-aplikasi" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-world"></i>
+        <div data-i18n="Analytics">Tentang Aplikasi</div>
+    </a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+</body>
+
+</html> --}}
+
 
 <!DOCTYPE html>
 
@@ -105,7 +214,7 @@
             <li class="menu-item {{ Request::is('home') ? 'active' : '' }}">
               <a href="/home" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home"></i>
-                <div data-i18n="Analytics">Berandaa</div>
+                <div data-i18n="Analytics">Beranda</div>
               </a>
             </li>
 
@@ -157,72 +266,22 @@
         <div class="layout-page ">
           <!-- Navbar -->
           {{-- background-image: url('/img/navbar.png'); background-size: cover; background-repeat: no-repeat; background-position: center; --}}
-          <nav
-            class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme"
-            id="layout-navbar" style="z-index: 1038;"
-          >
-          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0" id="pagar">
-            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
-              <i class="bx bx-menu bx-sm"></i>
-            </a>
-          </div>
-
-            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-
-
-              <ul class="navbar-nav flex-row align-items-center ms-auto">
-
-
-                <!-- User -->
-                <li class="nav-item navbar-dropdown dropdown-user dropdown">
-                  <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
+          <nav class="navbar navbar-expand-lg navbar-dark bg-light">
+            <div class="container-fluid">
+                <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0" id="pagar">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                      <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     
-                    <div class="avatar avatar-online">
-                      
-                      <img src="/sneat/assets/img/avatars/avatar5.png" alt class="w-px-40 h-auto rounded-circle" />
-                      
-                    </div>
                     
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        <div class="d-flex">
-                          <div class="flex-shrink-0 me-3">
-                            <div class="avatar avatar-online">
-                              <img src="/sneat/assets/img/avatars/avatar5.png" alt class="w-px-40 h-auto rounded-circle" />
-                            </div>
-                          </div>
-                          <div class="flex-grow-1">
-                            <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
-                            <small class="text-muted">{{ auth()->user()->role }}</small>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <li>
-                      <div class="dropdown-divider"></div>
-                    </li>
-                    @can('admin')
-                    <li>
-                      <a class="dropdown-item" href="/admin/dashboard">
-                        <i class="bx bxs-dashboard me-1"></i>
-                        <span class="align-middle">Dashboard</span>
-                      </a>
-                    </li>
-                    @endcan
-                    <li>
-                      <form action="/logout" method="post" class="form-class m-0">
-                        @csrf
-                        
-                        <button type="submit" class="dropdown-item "><i class="bx bx-power-off me-2"></i><span class="align-middle">Logout</span></button>
-                      </form>
-                    </li>
-                  </ul>
-                  
-                </li>
-                <!--/ User -->
-              </ul>
+                </ul>
+              </div>
             </div>
           </nav>
 
@@ -246,7 +305,7 @@
       </div>
 
       <!-- Overlay -->
-      <div class="layout-overlay layout-menu-toggle" id="abuabu"></div>
+      <div class="layout-overlay " id="abuabu"></div>
     </div>
     <!-- / Layout wrapper -->
 
