@@ -122,18 +122,22 @@ Galeri
     }
 
     function removeFoto() {
-        var foto = document.querySelector('#foto-galeri');
-        foto.removeChild(foto.lastChild)
-        i--
+        if(i >= 1){
+            var foto = document.querySelector('#foto-galeri');
+            foto.removeChild(foto.lastChild)
+            i--
+        }
         if (i < 5) {
             btnFoto.style.display = 'inline-block'
         }
     }
 
     function removeVideo() {
-        var video = document.querySelector('#video-youtube');
-        video.removeChild(video.lastChild)
-        y--
+        if(y >= 1){
+            var video = document.querySelector('#video-youtube');
+            video.removeChild(video.lastChild)
+            y--
+        }
         if (y < 2) {
             btnVideo.style.display = 'inline-block'
         }

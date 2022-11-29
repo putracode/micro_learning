@@ -1,16 +1,17 @@
-@extends('layout.home')
+@extends('layout.page')
 
 @section('styles')
     <style>
         iframe{
-            width: 100%;
-            height: 100vh;
+            width: 100% ;
+            height: 136vh ;
         }
+
     </style>
 @endsection
 
 @section('content')
-<div class="card">
+{{-- <div class="card">
     <div class="card-header ">
         <h5>Dashboard Penilaian</h5>
     </div>
@@ -18,14 +19,27 @@
         @if ($nilai->count())
         @foreach ($nilai as $row)
     
-        <div class="embed" style="width: 100%;">
-
-            {!! $row->embed !!}
-        </div>
+            <div class="embed" >
+                {!! $row->embed !!}
+            </div>
         @endforeach
         @else
             tidak ada data
         @endif
     </div>
-</div>
+</div> --}}
+@if ($nilai->count())
+        @foreach ($nilai as $row)
+    
+            <div class="embed" >
+                {!! $row->embed !!}
+            </div>
+        @endforeach
+        @else
+            tidak ada data
+        @endif
+@endsection
+
+@section('title')
+    Dashboard Penilaian
 @endsection

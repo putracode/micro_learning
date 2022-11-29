@@ -32,15 +32,20 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" />
+    {{-- <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" /> --}}
+    <link href="/img/favicon.jpg" rel="icon">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    {{-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
-    />
+    /> --}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="/sneat/assets/vendor/fonts/boxicons.css" />
@@ -66,6 +71,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     <script>
     toastr.options = {
         "closeButton": false,
@@ -84,7 +90,13 @@
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
     }
+
     </script>
+    <style>
+      *{
+        font-family: 'Jost', sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -110,7 +122,7 @@
             toastr.error("{!! Session::get('loginError') !!}")
         </script>
     @endif
-    <div class="container-xxl" style="background-image: url('/img/pembelajaran/sarju.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="container-xxl" style="background-image: url('/img/sea.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner">
           <!-- Register -->
@@ -181,7 +193,7 @@
               <h4 class="mb-2 text-center">Welcome to Micro Learning!</h4>
               <p class="mb-4 text-center">Please sign in to continue to Microlearning</p>
 
-              <form id="formAuthentication" class="mb-3" action="/" method="POST">
+              <form id="formAuthentication" class="mb-3" action="/login" method="POST">
                 @csrf
                 <div class="mb-4">
                   <label for="email" class="form-label">Email</label>
@@ -232,7 +244,7 @@
         </div>
       </div>
     </div>
-
+    <div id="preloader"></div>
     <!-- / Content -->
 
     

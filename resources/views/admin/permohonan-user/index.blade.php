@@ -198,7 +198,7 @@ Permohonan User
                 <div class="row">
                     <div class="col">
                         {{-- <label for="pesan" class="form-label">Pesan Penolakan</label> --}}
-                        <input type="text" id="pesan" class="form-control" placeholder="Masukkan pesan.." name="pesan">
+                        <input type="text" id="pesan" class="form-control" placeholder="Masukkan pesan.." name="pesan" required autocomplete="off">
                     </div>
                 </div>
             </div>

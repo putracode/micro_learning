@@ -1,4 +1,4 @@
-@extends('layout.home')
+@extends('layout.page')
 
 @section('styles')
 <style>
@@ -6,7 +6,10 @@
         width: 100%;
         height: 100%;
     }
-
+    .img-galeri{
+        width: 100%;
+        height: 125px;
+    }
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.0/css/lightgallery.min.css">
@@ -18,96 +21,14 @@
 
 @endsection
 
-<style>
-    .img-galeri{
-        width: 285px;
-        height: 150px;
-        box-sizing: border-box;
-    }
 
-</style>
 
 @section('content')
 
-{{-- <div class="card">
-    <div class="card-header">
-        <h5>Galeri</h5>
-    </div>
-    <div class="card-body d-flex">
-        @foreach ($gallery as $row)
-        <div class="row gambar" id="gallery">
-            @if ($row->foto1)
-            <div class="col-md-3" data-src="{{ asset('storage/' . $row->foto1) }}">
-                <a href>
-                    <figure>
-                        <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded>
-                        <figcaption>{{ $row->title }}</figcaption>
-                    </figure>
-                </a>
-            </div>
-            @endif
-            @if ($row->foto2)
-            <div class="col-md-3 d-none" data-src="{{ asset('storage/' . $row->foto2) }}">
-                <a href>
-                    <figure>
-                        <img src="{{ asset('storage/' . $row->foto2) }}" alt="">
-                        <figcaption>{{ $row->title }}</figcaption>
-                    </figure>
-                </a>
-            </div>
-            @endif
-            @if ($row->foto3)
-            <div class="col-md-3 d-none" data-src="{{ asset('storage/' . $row->foto3) }}">
-                <a href>
-                    <figure>
-                        <img src="{{ asset('storage/' . $row->foto3) }}" alt="">
-                        <figcaption>{{ $row->title }}</figcaption>
-                    </figure>
-                </a>
-            </div>
-            @endif
-            @if ($row->foto4)
-            <div class="col-md-3 d-none" data-src="{{ asset('storage/' . $row->foto4) }}">
-                <a href>
-                    <figure>
-                        <img src="{{ asset('storage/' . $row->foto4) }}" alt="">
-                        <figcaption>{{ $row->title }}</figcaption>
-                    </figure>
-                </a>
-            </div>
-            @endif
-            @if ($row->foto5)
-            <div class="col-md-3 d-none" data-src="{{ asset('storage/' . $row->foto5) }}">
-                <a href>
-                    <figure>
-                        <img src="{{ asset('storage/' . $row->foto5) }}" alt="">
-                        <figcaption>{{ $row->title }}</figcaption>
-                    </figure>
-                </a>
-            </div>
-            @endif
-            @if ($row->embed_youtube)
-            <div class="col-md-3 d-none" data-src="{{ $row->embed_youtube }}"></div>
-            @endif
-        </div>
-        @endforeach
-    </div>
-</div> --}}
-{{-- <div class="lightbox" data-src="{{ asset('storage/' . $row->foto1) }}">
-    <a href>
-        <figure>
-            <img src="{{ asset('storage/' . $row->thumbnail) }}" alt="" class=" rounded img-galeri">
-            <figcaption>{{ $row->title }}</figcaption>
-        </figure>
-    </a>
-</div> --}}
-<div class="card">
-    <div class="card-header">
-        <h5>Galeri</h5>
-    </div>
-    <div class="card-body d-flex flex-wrap">
-        @foreach ($gallery as $row)
-            <div class="gambar  me-2" id="gambar"   >
+{{-- <div class="row">
+    @foreach ($gallery as $row)
+        <div class="col-md-3">
+            <div class="gambar me-2" id="gambar"   >
                 <div class="lightbox" data-src="{{ asset('storage/' . $row->thumbnail) }}">
                     <a href>
                         <figure>
@@ -151,7 +72,7 @@
                         </a>
                     </div>
                 @endif
-               
+            
                 @if ($row->embed_youtube1)
                     <div class="lightbox d-none" data-src="{{ $row->embed_youtube1 }}">
                         <a href>
@@ -167,13 +88,79 @@
                     </div>
                 @endif
             </div>
-        @endforeach
+        </div>
+    @endforeach
+</div> --}}
+
+<div class="row">
+    @foreach ($gallery as $row)
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-2">
+        <div class="gambar" id="gambar"   >
+            <div class="lightbox" data-src="{{ asset('storage/' . $row->thumbnail) }}">
+                <a href>
+                    <figure>
+                        <img src="{{ asset('storage/' . $row->thumbnail) }}" alt="" class=" rounded img-galeri" style="object-fit: cover">
+                        <figcaption class="text-center">{{ $row->title }}</figcaption>
+                    </figure>
+                </a>
+            </div>
+            @if ($row->foto1)
+                <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto1) }}">
+                    <a href>
+                        <img src="{{ asset('storage/' . $row->foto1) }}" alt="" class=" rounded img-galeri">
+                    </a>
+                </div>
+            @endif
+            @if ($row->foto2)
+                <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto2) }}">
+                    <a href>
+                        <img src="{{ asset('storage/' . $row->foto2) }}" alt="" class=" rounded img-galeri">
+                    </a>
+                </div>
+            @endif
+            @if ($row->foto3)
+                <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto3) }}">
+                    <a href>
+                        <img src="{{ asset('storage/' . $row->foto3) }}" alt="" class=" rounded img-galeri">
+                    </a>
+                </div>
+            @endif
+            @if ($row->foto4)
+                <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto4) }}">
+                    <a href>
+                        <img src="{{ asset('storage/' . $row->foto4) }}" alt="" class=" rounded img-galeri">
+                    </a>
+                </div>
+            @endif
+            @if ($row->foto5)
+                <div class="lightbox d-none" data-src="{{ asset('storage/' . $row->foto5) }}">
+                    <a href>
+                        <img src="{{ asset('storage/' . $row->foto5) }}" alt="" class=" rounded img-galeri">
+                    </a>
+                </div>
+            @endif
+        
+            @if ($row->embed_youtube1)
+                <div class="lightbox d-none" data-src="{{ $row->embed_youtube1 }}">
+                    <a href>
+                        
+                    </a>
+                </div>
+            @endif
+            @if ($row->embed_youtube2)
+                <div class="lightbox d-none" data-src="{{ $row->embed_youtube2 }}">
+                    <a href>
+                        
+                    </a>
+                </div>
+            @endif
+        </div>
     </div>
+    @endforeach
 </div>
-
-
-
-
+@endsection
+@section('title')
+    Galeri
 @endsection
 @section('script')
 
@@ -203,35 +190,3 @@
 
 @endsection
 
-{{-- <div class="row" id="gallery">
-        <div class="col-md-3 mb-2" data-src="/img/pembelajaran/aklik.jpg">
-            <a href>
-                <img src="/img/pembelajaran/aklik.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 mb-2" data-src="/img/pembelajaran/aklis.jpg">
-            <a href>
-                <img src="/img/pembelajaran/aklis.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 mb-2" data-src="/img/pembelajaran/retail.jpg">
-            <a href>
-                <img src="/img/pembelajaran/retail.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 mb-2" data-src="/img/pembelajaran/sarju.jpg">
-            <a href>
-                <img src="/img/pembelajaran/sarju.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 mb-2" data-src="/img/pembelajaran/foc.jpg">
-            <a href>
-                <img src="/img/pembelajaran/foc.jpg" alt="">
-            </a>
-        </div>
-        <div class="col-md-3 mb-2" data-src="/img/pembelajaran/fot.jpg">
-            <a href>
-                <img src="/img/pembelajaran/fot.jpg" alt="">
-            </a>
-        </div>
-    </div> --}}

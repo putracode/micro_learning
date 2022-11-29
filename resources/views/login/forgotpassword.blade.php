@@ -19,15 +19,20 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" />
+    {{-- <link rel="icon" type="image/x-icon" href="/sneat/assets/img/favicon/favicon.ico" /> --}}
+    <link href="/img/favicon.jpg" rel="icon">
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    {{-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
       rel="stylesheet"
-    />
+    /> --}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <!-- Icons. Uncomment required icon fonts -->
     <link rel="stylesheet" href="/sneat/assets/vendor/fonts/boxicons.css" />
@@ -72,6 +77,11 @@
         "hideMethod": "fadeOut"
     }
     </script>
+    <style>
+      *{
+        font-family: 'Jost', sans-serif;
+      }
+    </style>
   </head>
 
   <body>
@@ -87,7 +97,7 @@
         </script>
     @endif
 
-    <div class="container-xxl" style="background-image: url('/img/pembelajaran/sarju.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
+    <div class="container-xxl" style="background-image: url('/img/sea.jpg'); background-size: cover; background-repeat: no-repeat; background-position: center;">
       <div class="authentication-wrapper authentication-basic container-p-y">
         <div class="authentication-inner py-4">
           <!-- Forgot Password -->
@@ -166,7 +176,7 @@
                 <button class="btn btn-primary d-grid w-100" type="submit">Send Reset Link</button>
               </form>
               <div class="text-center">
-                <a href="/" class="d-flex align-items-center justify-content-center">
+                <a href="/login" class="d-flex align-items-center justify-content-center">
                   <i class="bx bx-chevron-left scaleX-n1-rtl bx-sm"></i>
                   Back to login
                 </a>

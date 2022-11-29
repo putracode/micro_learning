@@ -60,7 +60,8 @@ class LoginController extends Controller
         $validatedData['password'] = bcrypt($validatedData['password']);
         User::create($validatedData);
 
-        return redirect()->route('login')->with('success','Anda Berhasil Registrasi!. Username dan password akan dikirim via Email');
+        return redirect()->route('login')->with('success','You have successfully registered. username and password will be sent to your email');
+        // return redirect()->route('login')->with('success','Anda Berhasil Registrasi!. Username dan password akan dikirim via Email');
     }
 
 

@@ -192,7 +192,7 @@ table, td { color: #000000; } #u_body a { color: #161a39; text-decoration: under
       <td style="overflow-wrap:break-word;word-break:break-word;padding:35px 40px 30px;font-family:arial,helvetica,sans-serif;" align="left">
         
   <div style="line-height: 140%; text-align: left; word-wrap: break-word;">
-    <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Hi,</span></p>
+    <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 18px; line-height: 25.2px; color: #666666;">Hi, {{ $user->name }}</span></p>
 <p style="font-size: 14px; line-height: 140%;"> </p>
 <p style="font-size: 14px; line-height: 140%;">Kami mengirimkan email ini kepada Anda sebagai tanggapan atas permintaan Anda untuk mengatur ulang kata sandi anda.</p>
 <p style="font-size: 14px; line-height: 140%;"> </p>
@@ -216,6 +216,8 @@ table, td { color: #000000; } #u_body a { color: #161a39; text-decoration: under
     <a href="{{  url('') }}/reset-password/{{ $token }}" target="_blank" class="v-button" style="box-sizing: border-box;display: inline-block;font-family:arial,helvetica,sans-serif;text-decoration: none;-webkit-text-size-adjust: none;text-align: center;color: #FFFFFF; background-color: #18163a; border-radius: 1px;-webkit-border-radius: 1px; -moz-border-radius: 1px; width:auto; max-width:100%; overflow-wrap: break-word; word-break: break-word; word-wrap:break-word; mso-border-alt: none;">
       <span style="display:block;padding:15px 30px;line-height:100%;"><span style="font-size: 16px; line-height: 16px;">Reset Password</span></span>
     </a>
+    <p style="font-size: 14px; line-height: 140%;"> </p>
+    <p style="font-size: 11px; line-height: 140%;">Reset link akan hangus dalam 10 menit</p>
   <!--[if mso]></center></v:roundrect><![endif]-->
 </div>
 

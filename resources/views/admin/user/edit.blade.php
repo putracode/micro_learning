@@ -60,17 +60,17 @@ User
                             @enderror
                         </div>
                     </div>
-                    <div class="row mb-4">
+                    {{-- <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="password">password</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control @error('password') @enderror" id="password" name="password" required placeholder="Password">
+                            <input type="password" class="form-control @error('password') @enderror" id="password" name="password" required placeholder="Password" value="{{ $user->password }}">
                             @error('password')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="no_telepon">No Telepon</label>
                         <div class="col-sm-10">

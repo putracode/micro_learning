@@ -35,5 +35,19 @@ class AppServiceProvider extends ServiceProvider
             return $user->pengguna === 'Internal';
         });
         
+        view()->composer('layout.sneat', function ($view) {
+            $user = user::all()->where('is_approve','Not Approved')->count();
+            return $view->with('permohonan',$user);
+        });
+        
+        view()->composer('layout.page', function ($view) {
+            $user = user::all()->where('is_approve','Not Approved')->count();
+            return $view->with('permohonan',$user);
+        });
+
+        view()->composer('app.home', function ($view) {
+            $user = user::all()->where('is_approve','Not Approved')->count();
+            return $view->with('permohonan',$user);
+        });
     }
 }

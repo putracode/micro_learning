@@ -44,7 +44,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('test');
+    return view('email.forgot');
 });
 
 // Route::get('/index', function ($id) {
@@ -54,13 +54,13 @@ Route::get('/test', function () {
 // });
 
 // LOGIN
-Route::get('/',[LoginController::class,'indexLogin'])->name('login')->middleware('guest');
-Route::post('/',[LoginController::class,'authenticate'])->middleware('guest');
+Route::get('/login',[LoginController::class,'indexLogin'])->name('login')->middleware('guest');
+Route::post('/login',[LoginController::class,'authenticate'])->middleware('guest');
 Route::post('/logout',[LoginController::class,'logout'])->middleware('auth');
 Route::get('/register',[LoginController::class,'indexRegister'])->middleware('guest');
 Route::post('/register',[LoginController::class,'store'])->middleware('guest');
-Route::get('/change-password',[ChangePasswordController::class,'change'])->middleware('auth');
-Route::post('/change-password',[ChangePasswordController::class,'changePassword'])->middleware('auth');
+Route::get('/change-password',[ChangePasswordController::class,'change'])->middleware('auth','approved');
+Route::post('/change-password',[ChangePasswordController::class,'changePassword'])->middleware('auth','approved');
 
 Route::get('/forgot-password',[ChangePasswordController::class,'getforgotpassword'])->middleware('guest')->name('getforgotpassword');
 Route::post('/forgot-password',[ChangePasswordController::class,'postforgotpassword'])->middleware('guest');
@@ -68,60 +68,61 @@ Route::get('/reset-password/{token}',[ChangePasswordController::class,'getresetp
 Route::post('/reset-password/{token}',[ChangePasswordController::class,'postresetpassword'])->middleware('guest');
 
 
-Route::middleware(['auth'])->group(function(){
+Route::get('/',[HomeController::class,'index'])->middleware('guest');
+Route::middleware(['auth','approved','newpassword'])->group(function(){
     
     // HOME
-    Route::get('/home',[HomeController::class,'index'])->middleware('approved','newpassword');
+    Route::get('/home',[HomeController::class,'indexHome']);
 
     // LIST PEMBELAJARAN
-    Route::get('/home/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
+    Route::get('/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
 
     // PEMBELAJARAN
-    Route::get('/home/p/aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK')->middleware('internal');
-    Route::get('/home/p/aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS')->middleware('internal');
-    Route::get('/home/p/na3p',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P')->middleware('internal');
-    Route::get('/home/p/pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN')->middleware('internal');
-    Route::get('/home/p/retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('internal');
-    Route::get('/home/p/spap',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('internal');
-    Route::get('/home/p/sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('internal');
-    Route::get('/home/p/foc',[PembelajaranController::class,'indexFOC'])->name('indexFOC');
-    Route::get('/home/p/fot',[PembelajaranController::class,'indexFOT'])->name('indexFOT');
+    Route::get('/pembelajaran/aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK')->middleware('internal');
+    Route::get('/pembelajaran/aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS')->middleware('internal');
+    Route::get('/pembelajaran/na3p',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P')->middleware('internal');
+    Route::get('/pembelajaran/pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN')->middleware('internal');
+    Route::get('/pembelajaran/retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('internal');
+    Route::get('/pembelajaran/spap',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('internal');
+    Route::get('/pembelajaran/sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('internal');
+    Route::get('/pembelajaran/foc',[PembelajaranController::class,'indexFOC'])->name('indexFOC');
+    Route::get('/pembelajaran/fot',[PembelajaranController::class,'indexFOT'])->name('indexFOT');
     
     // MATERI
-    Route::get('/home/p/materi-aklik/{post:id}',[PembelajaranController::class,'materiAKLIK'])->middleware('internal');
-    Route::get('/home/p/materi-aklis/{post:id}',[PembelajaranController::class,'materiAKLIS'])->middleware('internal');
-    Route::get('/home/p/materi-na3p/{post:id}',[PembelajaranController::class,'materiNA3P'])->middleware('internal');
-    Route::get('/home/p/materi-pemeliharaan/{post:id}',[PembelajaranController::class,'materiPEMELIHARAAN'])->middleware('internal');
-    Route::get('/home/p/materi-retail/{post:id}',[PembelajaranController::class,'materiRETAIL'])->middleware('internal');
-    Route::get('/home/p/materi-spap/{post:id}',[PembelajaranController::class,'materiSPAP'])->middleware('internal');
-    Route::get('/home/p/materi-sarju/{post:id}',[PembelajaranController::class,'materiSARJU'])->middleware('internal');
-    Route::get('/home/p/materi-foc/{post:id}',[PembelajaranController::class,'materiFOC']);
-    Route::get('/home/p/materi-fot/{post:id}',[PembelajaranController::class,'materiFOT']);
+    Route::get('/pembelajaran/materi-aklik/{post:id}',[PembelajaranController::class,'materiAKLIK'])->middleware('internal');
+    Route::get('/pembelajaran/materi-aklis/{post:id}',[PembelajaranController::class,'materiAKLIS'])->middleware('internal');
+    Route::get('/pembelajaran/materi-na3p/{post:id}',[PembelajaranController::class,'materiNA3P'])->middleware('internal');
+    Route::get('/pembelajaran/materi-pemeliharaan/{post:id}',[PembelajaranController::class,'materiPEMELIHARAAN'])->middleware('internal');
+    Route::get('/pembelajaran/materi-retail/{post:id}',[PembelajaranController::class,'materiRETAIL'])->middleware('internal');
+    Route::get('/pembelajaran/materi-spap/{post:id}',[PembelajaranController::class,'materiSPAP'])->middleware('internal');
+    Route::get('/pembelajaran/materi-sarju/{post:id}',[PembelajaranController::class,'materiSARJU'])->middleware('internal');
+    Route::get('/pembelajaran/materi-foc/{post:id}',[PembelajaranController::class,'materiFOC']);
+    Route::get('/pembelajaran/materi-fot/{post:id}',[PembelajaranController::class,'materiFOT']);
     
     // QUIZ
-    Route::get('/home/p/quiz-aklik/{post:id}',[PembelajaranController::class,'quizAKLIK'])->middleware('internal');
-    Route::get('/home/p/quiz-aklis/{post:id}',[PembelajaranController::class,'quizAKLIS'])->middleware('internal');
-    Route::get('/home/p/quiz-na3p/{post:id}',[PembelajaranController::class,'quizNA3P'])->middleware('internal');
-    Route::get('/home/p/quiz-pemeliharaan/{post:id}',[PembelajaranController::class,'quizPEMELIHARAAN'])->middleware('internal');
-    Route::get('/home/p/quiz-retail/{post:id}',[PembelajaranController::class,'quizRETAIL'])->middleware('internal');
-    Route::get('/home/p/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP'])->middleware('internal');
-    Route::get('/home/p/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU'])->middleware('internal');
-    Route::get('/home/p/quiz-foc/{post:id}',[PembelajaranController::class,'quizFOC']);
-    Route::get('/home/p/quiz-fot/{post:id}',[PembelajaranController::class,'quizFOT']);
+    Route::get('/pembelajaran/quiz-aklik/{post:id}',[PembelajaranController::class,'quizAKLIK'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-aklis/{post:id}',[PembelajaranController::class,'quizAKLIS'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-na3p/{post:id}',[PembelajaranController::class,'quizNA3P'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-pemeliharaan/{post:id}',[PembelajaranController::class,'quizPEMELIHARAAN'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-retail/{post:id}',[PembelajaranController::class,'quizRETAIL'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU'])->middleware('internal');
+    Route::get('/pembelajaran/quiz-foc/{post:id}',[PembelajaranController::class,'quizFOC']);
+    Route::get('/pembelajaran/quiz-fot/{post:id}',[PembelajaranController::class,'quizFOT']);
     
     // Pembelajaran
-    Route::get('/home/pembelajaran',[PembelajaranController::class,'page'])->name('pembelajaran');
+    Route::get('/pembelajaran',[PembelajaranController::class,'page'])->name('pembelajaran');
     // Tentang Kami
-    Route::get('/home/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');
+    Route::get('/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');
     
     // List Pembelajaran
-    Route::get('/home/list-pembelajaran',[ListPembelajaranController::class,'index'])->name('list-pembelajaran');
+    Route::get('/list-pembelajaran',[ListPembelajaranController::class,'index'])->name('list-pembelajaran');
     
     // Gallery
-    Route::get('/home/gallery',[GalleryController::class,'index'])->name('gallery')->middleware('internal');
+    Route::get('/galeri',[GalleryController::class,'index'])->name('gallery')->middleware('internal');
     
     // Dashboard Penilaian
-    Route::get('/home/dashboard-penilaian',[DashboardPenilaianController::class,'index'])->name('gallery');
+    Route::get('/dashboard-penilaian',[DashboardPenilaianController::class,'index'])->name('gallery');
 });
 
 

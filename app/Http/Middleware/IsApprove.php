@@ -20,8 +20,10 @@ class IsApprove
         if(Auth::user()->is_approve == 'Not Approved' ){
             Auth::logout();
 
-            return redirect()->back()->with('NotApproved','Akun Terdaftar!
-            Mohon Menunggu Persetujuan Admin');
+            // return redirect()->back()->with('NotApproved','Akun Terdaftar!
+            // Mohon Menunggu Persetujuan Admin');
+
+            return redirect('/login')->with("NotApproved","Please wait for Admin approval!");
         }
 
         return $next($request);

@@ -44,11 +44,12 @@ class ChangePasswordController extends Controller
         $user->password_change = true;
         $user->save();
 
+        Auth::logout();
 
         // Auth::user()->password_change = true;
 
 
-        return redirect('/home')->with("success","Password changed successfully !");
+        return redirect('/login')->with("success","Password changed successfully!");
 
     }
 
@@ -84,14 +85,14 @@ class ChangePasswordController extends Controller
 
             $token = DB::table('password_resets')->where('token', $generateToken)->first();
             Mail::to($user->email)->send(new ForgotPasswordMail($user,$token->token));
-            return redirect()->back()->with("info","Your password is being sent to your email");
+            return redirect()->back()->with("info","Your reset link is being sent to your email");
         }
     }
     
     public function getresetpassword($token){
         $buttonReset = DB::table('password_resets')->where('token',$token)->first();
         if(!$buttonReset || Carbon::now()->subMinutes(10) > $buttonReset->created_at){
-            $buttonReset->delete();
+            // $buttonReset->delete();
             return redirect()->route('getforgotpassword')->with('error','Invalid password reset link or link expired.');
         }else{
             return view('login.resetpassword',[
@@ -121,7 +122,7 @@ class ChangePasswordController extends Controller
                     'password' => bcrypt($request->new_password),
                     'password_change' => true
                 ]);
-                return redirect('/')->with("success","Password changed successfully!");
+                return redirect('/login')->with("success","Password changed successfully!");
             }
         }
     }
