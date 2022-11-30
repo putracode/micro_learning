@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Models\User;
 use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -49,5 +50,7 @@ class AppServiceProvider extends ServiceProvider
             $user = user::all()->where('is_approve','Not Approved')->count();
             return $view->with('permohonan',$user);
         });
+
+        Paginator::useBootstrapFive();
     }
 }

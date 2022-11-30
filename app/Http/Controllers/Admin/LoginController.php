@@ -50,7 +50,7 @@ class LoginController extends Controller
             'name' => ['required'],
             'role' => ['required'],
             'email' => ['required','unique:users'],
-            'no_telepon' => ['required'],
+            'no_telepon' => ['required','regex:/^(^\+62|62|^08)(\d{3,4}-?){2}\d{3,4}$/'],
             'password' => ['required'],
             'bidang' => ['required'],
             'pengguna' => ['required'],

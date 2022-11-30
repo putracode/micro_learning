@@ -4,6 +4,12 @@
 
 <style>
     .image-pembelajaran{ height: 199px;}
+    .rounded-top{
+        object-fit: cover
+    }
+    .btn-primary{
+        background-color: #3C4C6A;
+    }
 </style>
 
 @can('internal')    
@@ -11,7 +17,7 @@
         <h3 class="card-title mb-3" >Materi Bidang</h3>
         <div class="col-lg-4 col-md-6 col-sm-6 mb-3" >
             <div class="card rounded">
-                <img src="/img/pembelajaran/aklik.jpg" class="card-img-top rounded-top image-pembelajaran" alt="...">
+                <img src="/img/pembelajaran/aklik.jpeg" class="card-img-top rounded-top image-pembelajaran" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Aktivasi Publik</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -23,7 +29,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 mb-3" >
             <div class="card rounded">
-                <img src="/img/pembelajaran/aklis.jpg" class="card-img-top rounded-top image-pembelajaran" alt="...">
+                <img src="/img/pembelajaran/aklis.jpeg" class="card-img-top rounded-top image-pembelajaran" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">Aktivasi Listrik</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -35,7 +41,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 mb-3" >
             <div class="card rounded">
-                <img src="/img/pembelajaran/na3p.jpg" class="card-img-top rounded-top image-pembelajaran" alt="...">
+                <img src="/img/pembelajaran/na3p.jpeg" class="card-img-top rounded-top image-pembelajaran" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">NA3P</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk
@@ -71,7 +77,7 @@
         </div>
         <div class="col-lg-4 col-md-6 col-sm-6 mb-3" >
             <div class="card rounded">
-                <img src="/img/pembelajaran/spap.jpg" class="card-img-top rounded-top image-pembelajaran" alt="...">
+                <img src="/img/pembelajaran/spap.jpeg" class="card-img-top rounded-top image-pembelajaran" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">SPAP</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk

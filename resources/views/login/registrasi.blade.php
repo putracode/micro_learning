@@ -201,12 +201,13 @@
                             name="pengguna" value="Eksternal">
                         <label for="eksternal" class="ms-1">Eksternal</label>
 
-                        @error('pengguna')
+                        
+                    </div>
+                    @error('pengguna')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
-                        @enderror
-                    </div>
+                    @enderror
                 </div>
                 <div id="FormInternal" style="display: none;">
                     <div class="col-md-12 col-12 mb-3">
