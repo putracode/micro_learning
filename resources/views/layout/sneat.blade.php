@@ -203,7 +203,7 @@
             </li>
             <li class="menu-item {{ Request::is('admin/permohonan-user*') ? 'active' : '' }}">
               <a href="/admin/permohonan-user" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-user"></i>
+                <i class="menu-icon tf-icons bx bx-user-check"></i>
                 <div data-i18n="Analytics">Permohonan User</div>
                 <span class="badge badge-center rounded-pill bg-info ms-2">{{ $permohonan }}</span>
               </a>

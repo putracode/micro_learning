@@ -11,7 +11,7 @@ class GalleryController extends Controller
     public function index(){
         return view('app.gallery.index',[
             // 'gallery' => Gallery::all()
-            'gallery' => Gallery::latest()->filter(request(['search']))->paginate(6)->withQueryString()
+            'gallery' => Gallery::latest()->filter(request(['search']))->paginate(4)->withQueryString()
         ]);
     }
 }
