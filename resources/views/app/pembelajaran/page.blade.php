@@ -113,7 +113,7 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk
                     of the card's content.</p>
                 <hr>
-                <a href="/pembelajaran/aktivasi-publik" class="btn btn-primary" style="width: 100%;">Selengkapnya</a>
+                <a href="/pembelajaran/foc" class="btn btn-primary" style="width: 100%;">Selengkapnya</a>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk
                     of the card's content.</p>
                 <hr>
-                <a href="/pembelajaran/aktivasi-publik" class="btn btn-primary" style="width: 100%;">Selengkapnya</a>
+                <a href="/pembelajaran/fot" class="btn btn-primary" style="width: 100%;">Selengkapnya</a>
             </div>
         </div>
     </div>

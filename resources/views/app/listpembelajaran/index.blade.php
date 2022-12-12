@@ -7,9 +7,14 @@
         height: 115vh;
     }
 </style>
-@foreach ($list as $row)
-    {!! $row->embed_pembelajaran !!}
-@endforeach
+
+@if ($list->count())    
+    @foreach ($list as $row)
+        {!! $row->embed_pembelajaran !!}
+    @endforeach
+@else
+    List Pembelajaran Sedang dibuat..
+@endif
 {{-- <div class="card">
     <div class="card-header">
         <h5>List Pembelajaran</h5>

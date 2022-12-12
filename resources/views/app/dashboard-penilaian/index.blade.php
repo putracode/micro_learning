@@ -36,7 +36,7 @@
             </div>
         @endforeach
         @else
-            tidak ada data
+            Dashboard Penilain Sedang dibuat..
         @endif
 @endsection
 
