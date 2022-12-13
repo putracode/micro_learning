@@ -28,7 +28,7 @@ class AdminDashboardPenilaianController extends Controller
 
         DashboardPenilaian::create($validatedData);
 
-        return redirect('/admin/dashboard-penilaian')->with('Success','Data berhasil Ditambahkan!');
+        return redirect('/admin/dashboard-penilaian')->with('success','Data berhasil ditambahkan!');
     }
 
     public function edit($id){
@@ -43,13 +43,13 @@ class AdminDashboardPenilaianController extends Controller
         ]);
 
         DashboardPenilaian::where('id',$id)->update($validatedData);
-        return redirect('/admin/dashboard-penilaian')->with('Edit','Data berhasil di ubah!');
+        return redirect('/admin/dashboard-penilaian')->with('success','Data berhasil diubah!');
     }
     
     public function destroy($id){
         $nilai = DashboardPenilaian::find($id);
         $nilai->delete();
         
-        return redirect('/admin/dashboard-penilaian');
+        return redirect('/admin/dashboard-penilaian')->with('success','Data berhasil dihapus!');
     }
 }

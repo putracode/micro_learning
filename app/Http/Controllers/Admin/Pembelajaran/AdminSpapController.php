@@ -37,7 +37,7 @@ class AdminSpapController extends Controller
         // $validatedData['password'] = bcrypt($validatedData['password']);
         pembelajaran::create($validatedData);
 
-        return redirect()->route('PembelajaranSpap')->with('Success','Data berhasil Ditambahkan!');
+        return redirect()->route('PembelajaranSpap')->with('success','Data berhasil ditambahkan!');
     }
 
     public function edit($id){
@@ -59,13 +59,13 @@ class AdminSpapController extends Controller
         ]);
 
         pembelajaran::where('id',$id)->update($validasi);
-        return redirect()->route('PembelajaranSpap')->with('Edit','Data berhasil di ubah!');
+        return redirect()->route('PembelajaranSpap')->with('success','Data berhasil diubah!');
     }
     
     public function destroy($id){
         $pembelajaran = Pembelajaran::find($id);
         $pembelajaran->delete();
         
-        return redirect()->route('PembelajaranSpap');
+        return redirect()->route('PembelajaranSpap')->with('success','Data berhasil dihapus!');
     }
 }

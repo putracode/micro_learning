@@ -37,7 +37,7 @@ class AdminFocController extends Controller
         // $validatedData['password'] = bcrypt($validatedData['password']);
         pembelajaran::create($validatedData);
 
-        return redirect()->route('PembelajaranFOC')->with('Success','Data berhasil Ditambahkan!');
+        return redirect()->route('PembelajaranFOC')->with('success','Data berhasil ditambahkan!');
     }
 
     public function edit($id){
@@ -59,13 +59,13 @@ class AdminFocController extends Controller
         ]);
 
         pembelajaran::where('id',$id)->update($validasi);
-        return redirect()->route('PembelajaranFOC')->with('Edit','Data berhasil di ubah!');
+        return redirect()->route('PembelajaranFOC')->with('success','Data berhasil diubah!');
     }
     
     public function destroy($id){
         $pembelajaran = Pembelajaran::find($id);
         $pembelajaran->delete();
         
-        return redirect()->route('PembelajaranFOC');
+        return redirect()->route('PembelajaranFOC')->with('success','Data berhasil dihapus!');
     }
 }

@@ -63,7 +63,7 @@ class AdminGalleryController extends Controller
 
         Gallery::create($validatedData);
 
-        return redirect()->route('AdminGallery')->with('Success','Data berhasil Ditambahkan!');
+        return redirect()->route('AdminGallery')->with('success','Data berhasil ditambahkan!');
     }
 
     public function edit($id){
@@ -124,7 +124,7 @@ class AdminGalleryController extends Controller
         }
 
         Gallery::where('id',$id)->update($validatedData);
-        return redirect()->route('AdminGallery')->with('Edit','Data berhasil di ubah!');
+        return redirect()->route('AdminGallery')->with('success','Data berhasil diubah!');
     }
     
     public function destroy($id){
@@ -164,6 +164,6 @@ class AdminGalleryController extends Controller
         }
         $list->delete();
         
-        return redirect()->route('AdminGallery');
+        return redirect()->route('AdminGallery')->with('success','Data berhasil dihapus!');
     }
 }

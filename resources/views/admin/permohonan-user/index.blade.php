@@ -153,7 +153,7 @@ Permohonan User
                 <tr class="text-nowrap">
                     <th>ID</th>
                     <th>Tanggal Registrasi</th>
-                    <th>NamaLengkap</th>
+                    <th>Nama Lengkap</th>
                     <th>Email</th>
                     <th>Nomor Telepon</th>
                     <th>Pengguna</th>
@@ -166,7 +166,7 @@ Permohonan User
                 @foreach ($user as $row)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $row->created_at }}</td>
+                    <td>{{ date('d F Y',strtotime($row->created_at)) }}</td>
                     <td>{{ $row->name }}</td>
                     <td>{{ $row->email }}</td>
                     <td>{{ $row->no_telepon }}</td>

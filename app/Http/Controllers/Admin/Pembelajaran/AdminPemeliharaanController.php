@@ -37,7 +37,7 @@ class AdminPemeliharaanController extends Controller
         // $validatedData['password'] = bcrypt($validatedData['password']);
         pembelajaran::create($validatedData);
 
-        return redirect()->route('PembelajaranPemeliharaan')->with('Success','Data berhasil Ditambahkan!');
+        return redirect()->route('PembelajaranPemeliharaan')->with('success','Data berhasil ditambahkan!');
     }
 
     public function edit($id){
@@ -59,13 +59,13 @@ class AdminPemeliharaanController extends Controller
         ]);
 
         pembelajaran::where('id',$id)->update($validasi);
-        return redirect()->route('PembelajaranPemeliharaan')->with('Edit','Data berhasil di ubah!');
+        return redirect()->route('PembelajaranPemeliharaan')->with('success','Data berhasil diubah!');
     }
     
     public function destroy($id){
         $pembelajaran = Pembelajaran::find($id);
         $pembelajaran->delete();
         
-        return redirect()->route('PembelajaranPemeliharaan');
+        return redirect()->route('PembelajaranPemeliharaan')->with('success','Data berhasil dihapus!');
     }
 }

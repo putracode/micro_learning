@@ -27,7 +27,7 @@ class AdminListPembelajaranController extends Controller
 
         ListPembelajaran::create($validatedData);
 
-        return redirect()->route('AdminListPembelajaran')->with('Success','Data berhasil Ditambahkan!');
+        return redirect()->route('AdminListPembelajaran')->with('success','Data berhasil ditambahkan!');
     }
 
     public function edit($id){
@@ -42,13 +42,13 @@ class AdminListPembelajaranController extends Controller
         ]);
 
         ListPembelajaran::where('id',$id)->update($validatedData);
-        return redirect()->route('AdminListPembelajaran')->with('Edit','Data berhasil di ubah!');
+        return redirect()->route('AdminListPembelajaran')->with('success','Data berhasil diubah!');
     }
     
     public function destroy($id){
         $list = ListPembelajaran::find($id);
         $list->delete();
         
-        return redirect()->route('AdminListPembelajaran');
+        return redirect()->route('AdminListPembelajaran')->with('success','Data berhasil dihapus!');
     }
 }
