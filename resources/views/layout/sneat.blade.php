@@ -95,7 +95,7 @@
             <li class="menu-header small text-uppercase">
               <span class="menu-header-text">Dashboard</span>
             </li>
-            <li class="menu-item {{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+            <li class="menu-item {{ Request::is('admin/dashboard') ? 'active' : '' }}">
               <a href="/admin/dashboard" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -113,69 +113,20 @@
               </a>
             </li>
 
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Layouts">Materi Bidang</div>
+            <li class="menu-item {{ Request::is('admin/materi*') ? 'active' : '' }}">
+              <a href="/admin/materi" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <div data-i18n="Analytics">Materi Pembelajaran</div>
               </a>
-
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/admin/p/aklik" class="menu-link">
-                    <div data-i18n="Without menu">Bidang Aktivasi Publik</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/aklis" class="menu-link">
-                    <div data-i18n="Without navbar">Bidang Aktivasi Listrik</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/na3p" class="menu-link">
-                    <div data-i18n="Container">Bidang NA3P</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/pemeliharaan" class="menu-link">
-                    <div data-i18n="Fluid">Bidang Pemeliharaan</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/retail" class="menu-link">
-                    <div data-i18n="Blank">Bidang Retail</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/spap" class="menu-link">
-                    <div data-i18n="Blank">Bidang SPAP</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/sarju" class="menu-link">
-                    <div data-i18n="Blank">Bidang Sarju</div>
-                  </a>
-                </li>
-              </ul>
             </li>
-            <li class="menu-item">
-              <a href="javascript:void(0);" class="menu-link menu-toggle">
+
+            <li class="menu-item {{ Request::is('admin/pembelajaran*') ? 'active' : '' }}">
+              <a href="/admin/pembelajaran" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Layouts">Materi Umum</div>
+                <div data-i18n="Analytics">Pembelajaran</div>
               </a>
-
-              <ul class="menu-sub">
-                <li class="menu-item">
-                  <a href="/admin/p/foc" class="menu-link">
-                    <div data-i18n="Without menu">FOC</div>
-                  </a>
-                </li>
-                <li class="menu-item">
-                  <a href="/admin/p/fot" class="menu-link">
-                    <div data-i18n="Without navbar">FOT</div>
-                  </a>
-                </li>
-              </ul>
             </li>
+
             <li class="menu-item {{ Request::is('admin/dashboard-penilaian*') ? 'active' : '' }}">
               <a href="/admin/dashboard-penilaian" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book-reader"></i>
@@ -363,6 +314,30 @@
             } 
             });
         }
+
+        const buttonConfirmResource = document.querySelectorAll('.confirmdelete');
+          for( let i = 0; i < buttonConfirmResource.length; i++){
+            $(buttonConfirmResource[i]).on('click', function (e) {
+                e.preventDefault();
+                let data = $('#confirmbutton').attr('data-name')
+                var form = $(this).parents('form');
+                swal({
+                    icon: "warning",
+                    title: "Are you sure?",
+                    text: "You want to delete this item?",
+                    buttons: true,
+                    dangerMode: true
+                }).then((isConfirm) => {
+                    if (isConfirm) {
+                        form.submit();
+                        swal({
+                            icon: "success",
+                            title: data + ' successfully deleted!',
+                        });
+                    }
+                });
+            });
+          }
     </script>
   </body>
 </html>

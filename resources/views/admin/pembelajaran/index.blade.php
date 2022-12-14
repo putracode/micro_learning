@@ -1,22 +1,26 @@
 @extends('layout.sneat')
 
 @section('title')
-NA3P
+Materi Pembelajaran   
 @endsection
 
 @section('styles')
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
 <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+<!-- DataTables -->
 <link rel="stylesheet" href="/adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" href="/adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 <link rel="stylesheet" href="/adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+<!-- Theme style -->
+{{-- <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css"> --}}
 @endsection
 
 @section('content')
 <div class="card p-4">
     <div class=" d-flex justify-content-between align-items-center pb-3">
-        <h5 class="p-0 m-0">Pembelajaran NA3P</h5>
-        <a href="/admin/p/na3p/create" class="btn-sm btn-primary float-end px-4 ">Create</a>
+        <h5 class="p-0 m-0">Data Pembelajaran</h5>
+        <a href="/admin/pembelajaran/create" class="btn-sm btn-primary float-end px-4 ">Create</a>
     </div>
 
     <div class="table-responsive text-nowrap">
@@ -27,8 +31,8 @@ NA3P
                     <th>Title</th>
                     <th>Sub Title</th>
                     <th>Materi</th>
-                    <th>Embed Form</th>
-                    <th>Embed Youtube</th>
+                    <th>Quiz</th>
+                    <th>Video</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -38,11 +42,11 @@ NA3P
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $row->title }}</td>
                     <td>{{ $row->sub_title }}</td>
-                    <td>{{ $row->materi }}</td>
-                    <td>{{ $row->embed_form }}</td>
-                    <td>{{ $row->embed_youtube }}</td>
+                    <td>{{ $row->materi->materi }}</td>
+                    <td>{{ $row->quiz }}</td>
+                    <td>{{ $row->video }}</td>
                     <td>
-                        <a href="/admin/p/na3p/{{ $row->id }}/edit">
+                        <a href="/admin/pembelajaran/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning ">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                     viewBox="0 0 24 24">
@@ -52,19 +56,21 @@ NA3P
                                 </svg>
                             </button>
                         </a>
-                        <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="p/na3p" id="confirmbutton">
-                            <button type="button" class="btn btn-icon btn-danger">
+                        <form action="/admin/pembelajaran/{{ $row->id }}" method="POST" style="display: inline">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Data" id="confirmbutton">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
-                                    viewBox="0 0 24 24">
-                                    <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round">
-                                        <path d="M3 6h18" />
-                                        <path
-                                            d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                    </g>
-                                </svg>
+                                        viewBox="0 0 24 24">
+                                        <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <path d="M3 6h18" />
+                                            <path
+                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                        </g>
+                                    </svg>
                             </button>
-                        </a>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
@@ -75,6 +81,13 @@ NA3P
 @endsection
 
 @section('script')
+
+
+<!-- jQuery -->
+{{-- <script src="/adminlte/plugins/jquery/jquery.min.js"></script> --}}
+<!-- Bootstrap 4 -->
+{{-- <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+<!-- DataTables  & Plugins -->
 <script src="/adminlte/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -87,6 +100,9 @@ NA3P
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+{{-- <script src="/adminlte/dist/js/adminlte.min.js"></script> --}}
+<!-- Page specific script -->
 <script>
     $(function () {
         $("#example1").DataTable({
@@ -107,5 +123,5 @@ NA3P
     });
 
 </script>
-
+    
 @endsection

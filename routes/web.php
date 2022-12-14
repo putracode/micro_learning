@@ -19,15 +19,8 @@ use App\Http\Controllers\App\TentangAplikasiController;
 use App\Http\Controllers\Admin\ChangePasswordController;
 use App\Http\Controllers\App\ListPembelajaranController;
 use App\Http\Controllers\Admin\AdminListPembelajaranController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminNa3pController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminSpapController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminAklikController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminAklisController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminSarjuController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminRetailController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminPemeliharaanController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminFocController;
-use App\Http\Controllers\Admin\Pembelajaran\AdminFotController;
+use App\Http\Controllers\Admin\AdminPembelajaranController;
+use App\Http\Controllers\Admin\MateriController;
 use App\Http\Controllers\App\DashboardPenilaianController;
 use App\Models\User;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -44,7 +37,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/test', function () {
-    return view('email.forgot');
+    return view('test',['user' => User::all()]);
 });
 
 // Route::get('/index', function ($id) {
@@ -73,42 +66,11 @@ Route::middleware(['auth','approved','newpassword'])->group(function(){
     
     // HOME
     Route::get('/home',[HomeController::class,'indexHome']);
-
+    
     // LIST PEMBELAJARAN
     Route::get('/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
 
-    // PEMBELAJARAN
-    Route::get('/pembelajaran/aktivasi-publik',[PembelajaranController::class,'indexAKLIK'])->name('indexAKLIK')->middleware('internal');
-    Route::get('/pembelajaran/aktivasi-listrik',[PembelajaranController::class,'indexAKLIS'])->name('indexAKLIS')->middleware('internal');
-    Route::get('/pembelajaran/na3p',[PembelajaranController::class,'indexNA3P'])->name('indexNA3P')->middleware('internal');
-    Route::get('/pembelajaran/pemeliharaan',[PembelajaranController::class,'indexPEMELIHARAAN'])->name('indexPEMELIHARAAN')->middleware('internal');
-    Route::get('/pembelajaran/retail',[PembelajaranController::class,'indexRETAIL'])->name('indexRETAIL')->middleware('internal');
-    Route::get('/pembelajaran/spap',[PembelajaranController::class,'indexSPAP'])->name('indexSPAP')->middleware('internal');
-    Route::get('/pembelajaran/sarju',[PembelajaranController::class,'indexSARJU'])->name('indexSARJU')->middleware('internal');
-    Route::get('/pembelajaran/foc',[PembelajaranController::class,'indexFOC'])->name('indexFOC');
-    Route::get('/pembelajaran/fot',[PembelajaranController::class,'indexFOT'])->name('indexFOT');
-    
-    // MATERI
-    Route::get('/pembelajaran/materi-aklik/{post:id}',[PembelajaranController::class,'materiAKLIK'])->middleware('internal');
-    Route::get('/pembelajaran/materi-aklis/{post:id}',[PembelajaranController::class,'materiAKLIS'])->middleware('internal');
-    Route::get('/pembelajaran/materi-na3p/{post:id}',[PembelajaranController::class,'materiNA3P'])->middleware('internal');
-    Route::get('/pembelajaran/materi-pemeliharaan/{post:id}',[PembelajaranController::class,'materiPEMELIHARAAN'])->middleware('internal');
-    Route::get('/pembelajaran/materi-retail/{post:id}',[PembelajaranController::class,'materiRETAIL'])->middleware('internal');
-    Route::get('/pembelajaran/materi-spap/{post:id}',[PembelajaranController::class,'materiSPAP'])->middleware('internal');
-    Route::get('/pembelajaran/materi-sarju/{post:id}',[PembelajaranController::class,'materiSARJU'])->middleware('internal');
-    Route::get('/pembelajaran/materi-foc/{post:id}',[PembelajaranController::class,'materiFOC']);
-    Route::get('/pembelajaran/materi-fot/{post:id}',[PembelajaranController::class,'materiFOT']);
-    
-    // QUIZ
-    Route::get('/pembelajaran/quiz-aklik/{post:id}',[PembelajaranController::class,'quizAKLIK'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-aklis/{post:id}',[PembelajaranController::class,'quizAKLIS'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-na3p/{post:id}',[PembelajaranController::class,'quizNA3P'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-pemeliharaan/{post:id}',[PembelajaranController::class,'quizPEMELIHARAAN'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-retail/{post:id}',[PembelajaranController::class,'quizRETAIL'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-spap/{post:id}',[PembelajaranController::class,'quizSPAP'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-sarju/{post:id}',[PembelajaranController::class,'quizSARJU'])->middleware('internal');
-    Route::get('/pembelajaran/quiz-foc/{post:id}',[PembelajaranController::class,'quizFOC']);
-    Route::get('/pembelajaran/quiz-fot/{post:id}',[PembelajaranController::class,'quizFOT']);
+
     
     // Pembelajaran
     Route::get('/pembelajaran',[PembelajaranController::class,'page'])->name('pembelajaran');
@@ -123,6 +85,10 @@ Route::middleware(['auth','approved','newpassword'])->group(function(){
     
     // Dashboard Penilaian
     Route::get('/dashboard-penilaian',[DashboardPenilaianController::class,'index'])->name('gallery');
+
+    Route::get('/pembelajaran/{materi:slug}',[PembelajaranController::class,'index']);
+    Route::get('/pembelajaran/{materi:slug}/video/{pembelajaran:slug}',[PembelajaranController::class,'materi']);
+    Route::get('/pembelajaran/{materi:slug}/quiz/{pembelajaran:slug}',[PembelajaranController::class,'quiz']);
 });
 
 
@@ -148,69 +114,6 @@ Route::middleware(['admin','auth'])->group(function(){
     Route::post('/admin/permohonan-user/{id}/tolak',[PermohonanController::class,'tolak']);
     Route::get('/admin/permohonan-user/{id}/terima',[PermohonanController::class,'terima']);
     
-    Route::get('/admin/p/aklik',[AdminAklikController::class,'index'])->name('PembelajaranAklik');
-    Route::get('/admin/p/aklik/create',[AdminAklikController::class,'create']);
-    Route::post('/admin/p/aklik',[AdminAklikController::class,'store']);
-    Route::get('/admin/p/aklik/{id}/edit',[AdminAklikController::class,'edit']);
-    Route::post('/admin/p/aklik/{id}',[AdminAklikController::class,'update']);
-    Route::get('/admin/p/aklik/{id}',[AdminAklikController::class,'destroy']);
-    
-    Route::get('/admin/p/aklis',[AdminAklisController::class,'index'])->name('PembelajaranAklis');
-    Route::get('/admin/p/aklis/create',[AdminAklisController::class,'create']);
-    Route::post('/admin/p/aklis',[AdminAklisController::class,'store']);
-    Route::get('/admin/p/aklis/{id}/edit',[AdminAklisController::class,'edit']);
-    Route::post('/admin/p/aklis/{id}',[AdminAklisController::class,'update']);
-    Route::get('/admin/p/aklis/{id}',[AdminAklisController::class,'destroy']);
-    
-    Route::get('/admin/p/na3p',[AdminNa3pController::class,'index'])->name('PembelajaranNa3p');
-    Route::get('/admin/p/na3p/create',[AdminNa3pController::class,'create']);
-    Route::post('/admin/p/na3p',[AdminNa3pController::class,'store']);
-    Route::get('/admin/p/na3p/{id}/edit',[AdminNa3pController::class,'edit']);
-    Route::post('/admin/p/na3p/{id}',[AdminNa3pController::class,'update']);
-    Route::get('/admin/p/na3p/{id}',[AdminNa3pController::class,'destroy']);
-    
-    Route::get('/admin/p/pemeliharaan',[AdminPemeliharaanController::class,'index'])->name('PembelajaranPemeliharaan');
-    Route::get('/admin/p/pemeliharaan/create',[AdminPemeliharaanController::class,'create']);
-    Route::post('/admin/p/pemeliharaan',[AdminPemeliharaanController::class,'store']);
-    Route::get('/admin/p/pemeliharaan/{id}/edit',[AdminPemeliharaanController::class,'edit']);
-    Route::post('/admin/p/pemeliharaan/{id}',[AdminPemeliharaanController::class,'update']);
-    Route::get('/admin/p/pemeliharaan/{id}',[AdminPemeliharaanController::class,'destroy']);
-    
-    Route::get('/admin/p/retail',[AdminRetailController::class,'index'])->name('PembelajaranRetail');
-    Route::get('/admin/p/retail/create',[AdminRetailController::class,'create']);
-    Route::post('/admin/p/retail',[AdminRetailController::class,'store']);
-    Route::get('/admin/p/retail/{id}/edit',[AdminRetailController::class,'edit']);
-    Route::post('/admin/p/retail/{id}',[AdminRetailController::class,'update']);
-    Route::get('/admin/p/retail/{id}',[AdminRetailController::class,'destroy']);
-    
-    Route::get('/admin/p/sarju',[AdminSarjuController::class,'index'])->name('PembelajaranSarju');
-    Route::get('/admin/p/sarju/create',[AdminSarjuController::class,'create']);
-    Route::post('/admin/p/sarju',[AdminSarjuController::class,'store']);
-    Route::get('/admin/p/sarju/{id}/edit',[AdminSarjuController::class,'edit']);
-    Route::post('/admin/p/sarju/{id}',[AdminSarjuController::class,'update']);
-    Route::get('/admin/p/sarju/{id}',[AdminSarjuController::class,'destroy']);
-    
-    Route::get('/admin/p/spap',[AdminSpapController::class,'index'])->name('PembelajaranSpap');
-    Route::get('/admin/p/spap/create',[AdminSpapController::class,'create']);
-    Route::post('/admin/p/spap',[AdminSpapController::class,'store']);
-    Route::get('/admin/p/spap/{id}/edit',[AdminSpapController::class,'edit']);
-    Route::post('/admin/p/spap/{id}',[AdminSpapController::class,'update']);
-    Route::get('/admin/p/spap/{id}',[AdminSpapController::class,'destroy']);
-    
-    Route::get('/admin/p/foc',[AdminFocController::class,'index'])->name('PembelajaranFOC');
-    Route::get('/admin/p/foc/create',[AdminFocController::class,'create']);
-    Route::post('/admin/p/foc',[AdminFocController::class,'store']);
-    Route::get('/admin/p/foc/{id}/edit',[AdminFocController::class,'edit']);
-    Route::post('/admin/p/foc/{id}',[AdminFocController::class,'update']);
-    Route::get('/admin/p/foc/{id}',[AdminFocController::class,'destroy']);
-    
-    Route::get('/admin/p/fot',[AdminFotController::class,'index'])->name('PembelajaranFOT');
-    Route::get('/admin/p/fot/create',[AdminFotController::class,'create']);
-    Route::post('/admin/p/fot',[AdminFotController::class,'store']);
-    Route::get('/admin/p/fot/{id}/edit',[AdminFotController::class,'edit']);
-    Route::post('/admin/p/fot/{id}',[AdminFotController::class,'update']);
-    Route::get('/admin/p/fot/{id}',[AdminFotController::class,'destroy']);
-    
     Route::get('/admin/list-pembelajaran',[AdminListPembelajaranController::class,'index'])->name('AdminListPembelajaran');
     Route::get('/admin/list-pembelajaran/create',[AdminListPembelajaranController::class,'create']);
     Route::post('/admin/list-pembelajaran',[AdminListPembelajaranController::class,'store']);
@@ -232,4 +135,10 @@ Route::middleware(['admin','auth'])->group(function(){
     Route::post('/admin/dashboard-penilaian/{id}',[AdminDashboardPenilaianController::class,'update']);
     Route::get('/admin/dashboard-penilaian/{id}',[AdminDashboardPenilaianController::class,'destroy']);
 
+    
+    Route::resource('/admin/materi',MateriController::class);
+    Route::resource('/admin/pembelajaran',AdminPembelajaranController::class);
+
+    Route::get('/admin/slugMateri',[MateriController::class,'slugMateri']);
+    Route::get('/admin/slugPembelajaran',[MateriController::class,'slugPembelajaran']);
 });

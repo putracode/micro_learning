@@ -24,18 +24,14 @@ class HomeController extends Controller
         //     ]);
         // }
 
-        return view('app.landing',[
-            'post' => Post::all()
-        ]);
+        return view('app.landing');
     }
 
     public function indexHome(){
         if ((Auth::user()->password_change == false)) {
             return redirect('/change-password');
         }else{
-            return view('app.home',[
-                'post' => Post::all()
-            ]);
+            return view('app.home');
         }
         return view('app.home');
     }
