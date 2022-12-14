@@ -70,10 +70,12 @@ Route::middleware(['auth','approved','newpassword'])->group(function(){
     // LIST PEMBELAJARAN
     Route::get('/list-pembelajaran',[HomeController::class,'indexListPembelajaran'])->name('list-pembelajaran');
 
-
-    
     // Pembelajaran
     Route::get('/pembelajaran',[PembelajaranController::class,'page'])->name('pembelajaran');
+    Route::get('/pembelajaran/{materi:slug}',[PembelajaranController::class,'index']);
+    Route::get('/pembelajaran/{materi:slug}/video/{pembelajaran:slug}',[PembelajaranController::class,'materi']);
+    Route::get('/pembelajaran/{materi:slug}/quiz/{pembelajaran:slug}',[PembelajaranController::class,'quiz']);
+
     // Tentang Kami
     Route::get('/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');
     
@@ -85,10 +87,6 @@ Route::middleware(['auth','approved','newpassword'])->group(function(){
     
     // Dashboard Penilaian
     Route::get('/dashboard-penilaian',[DashboardPenilaianController::class,'index'])->name('gallery');
-
-    Route::get('/pembelajaran/{materi:slug}',[PembelajaranController::class,'index']);
-    Route::get('/pembelajaran/{materi:slug}/video/{pembelajaran:slug}',[PembelajaranController::class,'materi']);
-    Route::get('/pembelajaran/{materi:slug}/quiz/{pembelajaran:slug}',[PembelajaranController::class,'quiz']);
 });
 
 
