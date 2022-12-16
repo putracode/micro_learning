@@ -45,7 +45,7 @@ Materi Pembelajaran
                         <label for="kategori" class="form-label col-sm-2 col-form-label">Kategori</label>
                         <div class="col-sm-10">
                             <select class="form-select @error('kategori') is-invalid @enderror" id="kategori" name="kategori">
-                                <option selected disabled></option>
+                                <option selected disabled hidden></option>
                                 <option value="Bidang" {{ $materi->kategori == "Bidang" ? 'selected' : '' }}>Bidang</option>
                                 <option value="Umum" {{ $materi->kategori == "Umum" ? 'selected' : '' }}>Umum</option>
                             </select>
