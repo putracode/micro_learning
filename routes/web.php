@@ -72,9 +72,9 @@ Route::middleware(['auth','approved','newpassword'])->group(function(){
 
     // Pembelajaran
     Route::get('/pembelajaran',[PembelajaranController::class,'page'])->name('pembelajaran');
-    Route::get('/pembelajaran/{materi:slug}',[PembelajaranController::class,'index']);
-    Route::get('/pembelajaran/{materi:slug}/video/{pembelajaran:slug}',[PembelajaranController::class,'materi']);
-    Route::get('/pembelajaran/{materi:slug}/quiz/{pembelajaran:slug}',[PembelajaranController::class,'quiz']);
+    Route::get('/pembelajaran/{pembelajaran:slug}',[PembelajaranController::class,'index']);
+    Route::get('/pembelajaran/{pembelajaran:slug}/video/{materi:slug}',[PembelajaranController::class,'materi']);
+    Route::get('/pembelajaran/{pembelajaran:slug}/quiz/{materi:slug}',[PembelajaranController::class,'quiz']);
 
     // Tentang Kami
     Route::get('/tentang-aplikasi',[TentangAplikasiController::class,'index'])->name('tentang-aplikasi');

@@ -14,20 +14,20 @@ Pembelajaran
     <div class="col-xxl">
         <div class="card mb-4">
             <div class="card-body">
-                <form action="/admin/pembelajaran" method="POST">
+                <form action="/admin/pembelajaran" method="POST" enctype="multipart/form-data">
                     @csrf
-                    
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="title">Title</label>
+                        <label class="col-sm-2 col-form-label" for="materi">Nama Pelajaran</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required value="{{ old('title') }}" autocomplete="off">
-                            @error('title')
+                            <input type="text" class="form-control @error('materi') is-invalid @enderror" id="materi" name="materi" required value="{{ old('materi') }}" autocomplete="off">
+                            @error('materi')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
+
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="slug">Slug</label>
                         <div class="col-sm-10">
@@ -39,11 +39,24 @@ Pembelajaran
                             @enderror
                         </div>
                     </div>
+
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="sub_title">Sub Title</label>
+                        <label for="kategori" class="form-label col-sm-2 col-form-label">Kategori</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('sub_title') is-invalid @enderror" id="sub_title" name="sub_title" required value="{{ old('sub_title') }}" autocomplete="off">
-                            @error('sub_title')
+                            <select class="form-select @error('kategori') is-invalid @enderror" id="kategori" name="kategori">
+                                @if (old('kategori') == 'Bidang')  
+                                    <option value="Bidang" selected>Bidang</option>
+                                    <option value="Umum">Umum</option>
+                                @elseif(old('kategori') == 'Umum')
+                                    <option value="Bidang">Bidang</option>
+                                    <option value="Umum" selected>Umum</option>
+                                @else
+                                <option selected disabled hidden></option>
+                                <option value="Bidang">Bidang</option>
+                                <option value="Umum">Umum</option>
+                                @endif
+                            </select>
+                            @error('kategori')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -52,36 +65,23 @@ Pembelajaran
                     </div>
 
                     <div class="row mb-4">
-                        <label for="materi_id" class="col-sm-2 col-form-label">Materi</label>
+                        <label class="col-sm-2 col-form-label" for="deskripsi">Deskripsi</label>
                         <div class="col-sm-10">
-                            <select class="form-select" name="materi_id">
-                                <option selected disabled></option>
-                                @foreach ($materi as $row)
-                                    @if(old('materi_id') == $row->id)
-                                        <option value="{{ $row->id }}" selected>{{ $row->materi }}</option>
-                                    @else
-                                        <option value="{{ $row->id }}">{{ $row->materi }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="quiz">Embed Quiz</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control @error('quiz') is-invalid @enderror" id="quiz" name="quiz" required value="{{ old('quiz') }}" autocomplete="off">
-                            @error('quiz')
+                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required value="{{ old('deskripsi') }}" autocomplete="off">
+                            @error('deskripsi')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
+
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="video">Embed Video</label>
+                        <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('video') is-invalid @enderror" id="video" name="video" required value="{{ old('video') }}" autocomplete="off">
-                            @error('video')
+                            <img class="img-preview mb-3 img-fluid col-sm-5">
+                            <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="thumbnail" name="thumbnail" required value="{{ old('thumbnail') }}" autocomplete="off" onchange="previewImage()">
+                            @error('thumbnail')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -102,7 +102,7 @@ Pembelajaran
 </div>
 
 <script>
-    const title = document.querySelector('#title');
+    const title = document.querySelector('#materi');
     const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function(){
@@ -110,6 +110,16 @@ Pembelajaran
             .then(response => response.json())
             .then(data => slug.value = data.slug)
     });
+
+    function previewImage(){
+        const image = document.querySelector("#thumbnail");
+        const imgPreview = document.querySelector(".img-preview");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
+    }
 </script>
 
 @endsection

@@ -28,7 +28,7 @@ class MateriController extends Controller
      */
     public function create()
     {
-        return view('admin.materi.create');
+        return view('admin.materi.create',['pembelajaran' => Pembelajaran::orderBy('materi','asc')->get()]);
     }
 
     /**
@@ -39,18 +39,14 @@ class MateriController extends Controller
      */
     public function store(Request $request)
     {
-
         $validasi = $this->validate($request,[
-            'materi' => ['required'],
-            'kategori' => ['required'],
-            'deskripsi' => ['max:255'],
-            'thumbnail' => ['required'],
-            'slug' => ['required','unique:materis'],
+            'title' => ['required'],
+            'sub_title' => ['required'],
+            'pembelajaran_id' => ['required'],
+            'video' => ['required'],
+            'quiz' => ['required'],
+            'slug' => ['required'],
         ]);
-
-        if($request->file('thumbnail')){
-            $validasi['thumbnail'] = $request->file('thumbnail')->store('thumbnail-materi');
-        }
 
         Materi::create($validasi);
         return redirect('/admin/materi')->with('success','Data berhasil ditambahkan!');
@@ -75,7 +71,7 @@ class MateriController extends Controller
      */
     public function edit(Materi $materi)
     {
-        return view('admin.materi.edit',['materi' => $materi]);
+        return view('admin.materi.edit',['materi' => $materi, 'pembelajaran' => Pembelajaran::all()]);
     }
 
     /**
@@ -88,19 +84,12 @@ class MateriController extends Controller
     public function update(Request $request, Materi $materi)
     {   
         $rules = [
-            'materi' => ['required'],
-            'kategori' => ['required'],
-            'deskripsi' => ['max:255'],
-            'thumbnail' => ['image'],
+            'title' => ['required'],
+            'sub_title' => ['required'],
+            'pembelajaran_id' => ['required'],
+            'video' => ['required'],
+            'quiz' => ['required'],
         ];
-
-        // $validasi = $this->validate($request,[
-        //     'materi' => ['required'],
-        //     'kategori' => ['required'],
-        //     'deskripsi' => ['max:255'],
-        //     'thumbnail' => ['image'],
-        //     'slug' => ['required'],
-        // ]);
 
         if($request->slug != $materi->slug){
             $rules['slug'] = 'required|unique:materis';
@@ -108,14 +97,7 @@ class MateriController extends Controller
 
         $validasi = $request->validate($rules);
 
-        if($request->file('thumbnail')){
-            if($request->lama){
-                Storage::delete($request->lama);
-            }
-            $validasi['thumbnail'] = $request->file('thumbnail')->store('thumbnail-materi');
-        }
-        
-        Materi::where('id',$materi->id)->update($validasi);
+        materi::where('id',$materi->id)->update($validasi);
         return redirect('/admin/materi')->with('success','Data berhasil diubah!');
     }
 
@@ -127,10 +109,7 @@ class MateriController extends Controller
      */
     public function destroy(Materi $materi)
     {
-        if($materi->thumbnail){
-            Storage::delete($materi->thumbnail);
-        }
-        Materi::destroy($materi->id);
+        materi::destroy($materi->id);
         return redirect('/admin/materi')->with('success','Data berhasil dihapus!');
     }
 

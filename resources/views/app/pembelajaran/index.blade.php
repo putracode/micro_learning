@@ -2,15 +2,15 @@
 
 @section('content')
 
-@if ($pembelajaran->count())    
+@if ($materi->count())    
     <div class="card">
         <div class="card-body">
             <h3 class="mb-1"></h3>
             <div class="row">
                 @php
-                    $count = $pembelajaran->count()
+                    $count = $materi->count()
                 @endphp
-                @foreach ($pembelajaran as $key => $row)
+                @foreach ($materi as $key => $row)
 
                 <div class="col-md-12 py-3" style="text-align: start">
         
@@ -23,8 +23,8 @@
                             <p>
                                 {{ $row->sub_title }}
                             </p>
-                            <li style="list-style: none;" class="mb-5"><a href="/pembelajaran/{{ $row->materi->slug }}/video/{{ $row->slug }}"><i class='bx bxs-videos' ></i> Materi
-                            Video</a> <span class="mx-3">-</span>  <a href="/pembelajaran/{{ $row->materi->slug }}/quiz/{{ $row->slug }}"><i class='bx bx-file'></i>Quiz</a></li>
+                            <li style="list-style: none;" class="mb-5"><a href="/pembelajaran/{{ $row->pembelajaran->slug }}/video/{{ $row->slug }}"><i class='bx bxs-videos' ></i> Materi
+                            Video</a> <span class="mx-3">-</span>  <a href="/pembelajaran/{{ $row->pembelajaran->slug }}/quiz/{{ $row->slug }}"><i class='bx bx-file'></i>Quiz</a></li>
                         </div>
                         @if ($key + 1 != $count)
                             <hr>

@@ -14,15 +14,15 @@ class Materi extends Model
     protected $guarded = [""];
     protected $table = 'materis';
 
-    protected function pembelajaran(){
-        return $this->hasMany(pembelajaran::class);
+    public function pembelajaran(){
+        return $this->belongsTo(pembelajaran::class);
     }
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'materi'
+                'source' => 'title'
             ]
         ];
     }

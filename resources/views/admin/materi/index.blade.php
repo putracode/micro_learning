@@ -28,11 +28,11 @@ Materi Pembelajaran
             <thead>
                 <tr class="text-nowrap">
                     <th>ID</th>
+                    <th>Title</th>
+                    <th>Sub Title</th>
                     <th>Materi</th>
-                    <th>Slug</th>
-                    <th>Kategori</th>
-                    <th>Thumbnail</th>
-                    <th>Deskripsi</th>
+                    <th>Quiz</th>
+                    <th>Video</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -40,11 +40,11 @@ Materi Pembelajaran
                 @foreach ($materi as $row)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $row->materi }}</td>
-                    <td>{{ $row->slug }}</td>
-                    <td>{{ $row->kategori }}</td>
-                    <td><img src="{{ asset('storage/' . $row->thumbnail) }}" style="width: 100px;" alt=""></td>
-                    <td>{{ $row->deskripsi }}</td>
+                    <td>{{ $row->title }}</td>
+                    <td>{{ $row->sub_title }}</td>
+                    <td>{{ $row->pembelajaran->materi }}</td>
+                    <td>{{ $row->quiz }}</td>
+                    <td>{{ $row->video }}</td>
                     <td>
                         <a href="/admin/materi/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning ">
@@ -59,7 +59,7 @@ Materi Pembelajaran
                         <form action="/admin/materi/{{ $row->id }}" method="POST" style="display: inline">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Materi" id="confirmbutton">
+                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Data" id="confirmbutton">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                         viewBox="0 0 24 24">
                                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"

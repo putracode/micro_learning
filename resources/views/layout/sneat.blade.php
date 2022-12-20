@@ -106,10 +106,10 @@
               <span class="menu-header-text">Pembelajaran</span>
             </li>
             <!-- Layouts -->
-            <li class="menu-item {{ Request::is('admin/list-pembelajaran*') ? 'active' : '' }}">
-              <a href="/admin/list-pembelajaran" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-content"></i>
-                <div data-i18n="Analytics">List Pembelajaran</div>
+            <li class="menu-item {{ Request::is('admin/pembelajaran*') ? 'active' : '' }}">
+              <a href="/admin/pembelajaran" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book"></i>
+                <div data-i18n="Analytics">Pembelajaran</div>
               </a>
             </li>
 
@@ -120,13 +120,13 @@
               </a>
             </li>
 
-            <li class="menu-item {{ Request::is('admin/pembelajaran*') ? 'active' : '' }}">
-              <a href="/admin/pembelajaran" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book"></i>
-                <div data-i18n="Analytics">Pembelajaran</div>
+            <li class="menu-item {{ Request::is('admin/list-pembelajaran*') ? 'active' : '' }}">
+              <a href="/admin/list-pembelajaran" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <div data-i18n="Analytics">List Pembelajaran</div>
               </a>
             </li>
-
+            
             <li class="menu-item {{ Request::is('admin/dashboard-penilaian*') ? 'active' : '' }}">
               <a href="/admin/dashboard-penilaian" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-book-reader"></i>

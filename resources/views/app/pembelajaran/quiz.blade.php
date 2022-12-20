@@ -12,8 +12,8 @@
 @section('content')
 <center>
 
-    <h4>Quiz {{ $pembelajaran->sub_title }}</h4>
-    {!! $pembelajaran->quiz !!}
+    <h4>Quiz {{ $materi->sub_title }}</h4>
+    {!! $materi->quiz !!}
     {{-- <a href="/home/p/{{ $link }}" style="display: block;"><button class="btn btn-danger btn-sm"><span style="font-size: 12px">Kembali</span></button></a> --}}
     <a href="{{ url()->previous() }}" style="display: block;" class="m-0 p-0">Kembali</a>
 </center>

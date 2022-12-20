@@ -12,29 +12,29 @@ class PembelajaranController extends Controller
 
     public function page(){
         return view('app.pembelajaran.page',[
-            'materib' => Materi::all()->where('kategori','Bidang'),
-            'materiu' => Materi::all()->where('kategori','Umum'),
+            'materib' => Pembelajaran::all()->where('kategori','Bidang'),
+            'materiu' => Pembelajaran::all()->where('kategori','Umum'),
         ]);
     }
     
-    public function index(Materi $materi){
+    public function index(Pembelajaran $pembelajaran){
         return view('app.pembelajaran.index',[
-            'pembelajaran' => Pembelajaran::all()->where('materi_id',$materi->id),
-            'judul' => $materi,
+            'materi' => Materi::all()->where('pembelajaran_id',$pembelajaran->id),
+            'judul' => $pembelajaran,
         ]);
     }
 
-    public function materi(Materi $materi, $pembelajaran){
+    public function materi(Pembelajaran $pembelajaran, $materi){
         return view('app.pembelajaran.materi',[
-            'pembelajaran' => Pembelajaran::all()->where('slug',$pembelajaran)->first(),
-            'judul' => $materi,
+            'materi' => materi::all()->where('slug',$materi)->first(),
+            'judul' => $pembelajaran,
         ]);
     }
 
-    public function quiz(Materi $materi, $pembelajaran){
+    public function quiz(Pembelajaran $pembelajaran, $materi){
         return view('app.pembelajaran.quiz',[
-            'pembelajaran' => Pembelajaran::all()->where('slug',$pembelajaran)->first(),
-            'judul' => $materi,
+            'materi' => Materi::all()->where('slug',$materi)->first(),
+            'judul' => $pembelajaran,
         ]);
     }
 }

@@ -18,17 +18,16 @@ Materi Pembelajaran
                     @csrf
                     
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="materi">Nama Materi</label>
+                        <label class="col-sm-2 col-form-label" for="title">Title</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('materi') is-invalid @enderror" id="materi" name="materi" required value="{{ old('materi') }}" autocomplete="off">
-                            @error('materi')
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required value="{{ old('title') }}" autocomplete="off">
+                            @error('title')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
-
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="slug">Slug</label>
                         <div class="col-sm-10">
@@ -40,55 +39,55 @@ Materi Pembelajaran
                             @enderror
                         </div>
                     </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="sub_title">Sub Title</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('sub_title') is-invalid @enderror" id="sub_title" name="sub_title" required value="{{ old('sub_title') }}" autocomplete="off">
+                            @error('sub_title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
 
                     <div class="row mb-4">
-                        <label for="kategori" class="form-label col-sm-2 col-form-label">Kategori</label>
+                        <label for="pembelajaran_id" class="col-sm-2 col-form-label">Materi</label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('kategori') is-invalid @enderror" id="kategori" name="kategori">
-                                @if (old('kategori') == 'Bidang')  
-                                    <option value="Bidang" selected>Bidang</option>
-                                    <option value="Umum">Umum</option>
-                                @elseif(old('kategori') == 'Umum')
-                                    <option value="Bidang">Bidang</option>
-                                    <option value="Umum" selected>Umum</option>
-                                @else
+                            <select class="form-select" name="pembelajaran_id">
                                 <option selected disabled></option>
-                                <option value="Bidang">Bidang</option>
-                                <option value="Umum">Umum</option>
-                                @endif
+                                @foreach ($pembelajaran as $row)
+                                    @if(old('pembelajaran_id') == $row->id)
+                                        <option value="{{ $row->id }}" selected>{{ $row->materi }}</option>
+                                    @else
+                                        <option value="{{ $row->id }}">{{ $row->materi }}</option>
+                                    @endif
+                                @endforeach
                             </select>
-                            @error('kategori')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="deskripsi">Deskripsi</label>
+                        <label class="col-sm-2 col-form-label" for="quiz">Embed Quiz</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required value="{{ old('deskripsi') }}" autocomplete="off">
-                            @error('deskripsi')
+                            <input type="text" class="form-control @error('quiz') is-invalid @enderror" id="quiz" name="quiz" required value="{{ old('quiz') }}" autocomplete="off">
+                            @error('quiz')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
+                        <label class="col-sm-2 col-form-label" for="video">Embed Video</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="thumbnail" name="thumbnail" required value="{{ old('thumbnail') }}" autocomplete="off">
-                            @error('thumbnail')
+                            <input type="text" class="form-control @error('video') is-invalid @enderror" id="video" name="video" required value="{{ old('video') }}" autocomplete="off">
+                            @error('video')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
-
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
                             <button type="submit" class="btn btn-primary float-end px-4 btn-sm">Save</button>
@@ -102,7 +101,7 @@ Materi Pembelajaran
 </div>
 
 <script>
-    const title = document.querySelector('#materi');
+    const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function(){

@@ -83,7 +83,7 @@ Galeri
         i++
         foto.innerHTML += '<div class="row mb-4 classFoto" id="xfoto' + i + '">' +
             '<label class="col-sm-2 col-form-label" for="foto' + i + '">Foto ' + i + '</label>' +
-            '<div class="col-sm-10">' +
+            '<div class="col-sm-10">' + 
             '<input type="file" class="form-control jumlah @error("foto' + i + '") @enderror" id="foto' + i +
             '"required name="foto' + i + '">' +
             '@error("foto' + i + '")' +

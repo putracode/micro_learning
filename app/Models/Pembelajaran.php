@@ -9,20 +9,22 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Pembelajaran extends Model
 {
     use HasFactory;
+
+    use HasFactory;
     use Sluggable;
 
     protected $guarded = [""];
     protected $table = 'pembelajarans';
 
-    public function materi(){
-        return $this->belongsTo(Materi::class);
+    protected function materi(){
+        return $this->hasMany(materi::class);
     }
 
     public function sluggable(): array
     {
         return [
             'slug' => [
-                'source' => 'title'
+                'source' => 'materi'
             ]
         ];
     }

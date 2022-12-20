@@ -23,7 +23,7 @@ List Pembelajaran
         <table class="table table-hover table-striped py-2" id="example1">
             <thead>
                 <tr class="text-nowrap">
-                    {{-- <th>ID</th> --}}
+                    {{-- <th>#</th> --}}
                     <th>Embed List Pembelajaran</th>
                     <th>Action</th>
                 </tr>

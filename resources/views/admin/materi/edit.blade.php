@@ -1,12 +1,12 @@
 @extends('layout.sneat')
 
 @section('title')
-Materi Pembelajaran   
+Materi materi   
 @endsection
 
 @section('content')
 
-<h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Edit/</span> Materi Pembelajaran</h4>
+<h4 class="fw-bold py-1 mb-4"><span class="text-muted fw-light">Edit/</span> Materi materi</h4>
 
 <!-- Basic Layout & Basic with Icons -->
 <div class="row">
@@ -18,17 +18,16 @@ Materi Pembelajaran
                     @csrf
                     @method('put')
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="materi">Nama Materi</label>
+                        <label class="col-sm-2 col-form-label" for="title">Title</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('materi') is-invalid @enderror" id="materi" name="materi" required value="{{ old('materi',$materi->materi) }}" autocomplete="off">
-                            @error('materi')
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" required value="{{ old('title',$materi->title) }}">
+                            @error('title')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
                             @enderror
                         </div>
                     </div>
-
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="slug">Slug</label>
                         <div class="col-sm-10">
@@ -40,16 +39,36 @@ Materi Pembelajaran
                             @enderror
                         </div>
                     </div>
-
                     <div class="row mb-4">
-                        <label for="kategori" class="form-label col-sm-2 col-form-label">Kategori</label>
+                        <label class="col-sm-2 col-form-label" for="sub_title">Sub Title</label>
                         <div class="col-sm-10">
-                            <select class="form-select @error('kategori') is-invalid @enderror" id="kategori" name="kategori">
-                                <option selected disabled hidden></option>
-                                <option value="Bidang" {{ $materi->kategori == "Bidang" ? 'selected' : '' }}>Bidang</option>
-                                <option value="Umum" {{ $materi->kategori == "Umum" ? 'selected' : '' }}>Umum</option>
+                            <input type="text" class="form-control @error('sub_title') is-invalid @enderror" id="sub_title" name="sub_title" required value="{{ old('sub_title',$materi->sub_title) }}">
+                            @error('sub_title')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label for="pembelajaran_id" class="col-sm-2 col-form-label">Materi</label>
+                        <div class="col-sm-10">
+                            <select class="form-select" name="pembelajaran_id">
+                                @foreach ($pembelajaran as $row)
+                                    @if(old('materi_id',$materi->pembelajaran_id) == $row->id)
+                                        <option value="{{ $row->id }}" selected>{{ $row->materi }}</option>
+                                    @else
+                                        <option value="{{ $row->id }}">{{ $row->materi }}</option>
+                                    @endif
+                                @endforeach
                             </select>
-                            @error('kategori')
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <label class="col-sm-2 col-form-label" for="quiz">Embed Quiz</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control @error('quiz') is-invalid @enderror" id="quiz" name="quiz" required value="{{ old('quiz',$materi->quiz) }}">
+                            @error('quiz')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -57,23 +76,10 @@ Materi Pembelajaran
                         </div>
                     </div>
                     <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="deskripsi">Deskripsi</label>
+                        <label class="col-sm-2 col-form-label" for="video">Embed Video</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" required value="{{ old('deskripsi',$materi->deskripsi) }}" autocomplete="off">
-                            @error('deskripsi')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="row mb-4">
-                        <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
-                        <div class="col-sm-10">
-                            <input type="hidden" name="lama" value="{{ $materi->thumbnail }}">
-                            <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="thumbnail" name="thumbnail" required value="{{ old('thumbnail') }}" autocomplete="off">
-                            @error('thumbnail')
+                            <input type="text" class="form-control @error('video') is-invalid @enderror" id="video" name="video" required value="{{ old('video',$materi->video) }}">
+                            @error('video')
                             <div class="invalid-feedback">
                                 {{ $message }}
                             </div>
@@ -94,7 +100,7 @@ Materi Pembelajaran
 </div>
 
 <script>
-    const title = document.querySelector('#materi');
+    const title = document.querySelector('#title');
     const slug = document.querySelector('#slug');
 
     title.addEventListener('change', function(){

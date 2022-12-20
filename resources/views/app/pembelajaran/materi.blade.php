@@ -11,8 +11,8 @@
 @endsection
 @section('content')
 
-<h4>{{ $pembelajaran->sub_title }}</h4>
-{!! $pembelajaran->video !!}
+<h4>{{ $materi->sub_title }}</h4>
+{!! $materi->video !!}
 <a href="{{ url()->previous() }}" style="display: block">Kembali</a>
 
 @endsection

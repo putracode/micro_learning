@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Materi;
 use App\Models\Pembelajaran;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Materi;
+use Illuminate\Support\Facades\Storage;
 
 class AdminPembelajaranController extends Controller
 {
@@ -26,7 +27,7 @@ class AdminPembelajaranController extends Controller
      */
     public function create()
     {
-        return view('admin.pembelajaran.create',['materi' => Materi::orderBy('materi','asc')->get()]);
+        return view('admin.pembelajaran.create');
     }
 
     /**
@@ -38,13 +39,16 @@ class AdminPembelajaranController extends Controller
     public function store(Request $request)
     {
         $validasi = $this->validate($request,[
-            'title' => ['required'],
-            'sub_title' => ['required'],
-            'materi_id' => ['required'],
-            'video' => ['required'],
-            'quiz' => ['required'],
-            'slug' => ['required'],
+            'materi' => ['required'],
+            'kategori' => ['required'],
+            'deskripsi' => ['max:255'],
+            'thumbnail' => ['required'],
+            'slug' => ['required','unique:pembelajarans'],
         ]);
+
+        if($request->file('thumbnail')){
+            $validasi['thumbnail'] = $request->file('thumbnail')->store('thumbnail-pembelajaran');
+        }
 
         Pembelajaran::create($validasi);
         return redirect('/admin/pembelajaran')->with('success','Data berhasil ditambahkan!');
@@ -81,20 +85,11 @@ class AdminPembelajaranController extends Controller
      */
     public function update(Request $request, Pembelajaran $pembelajaran)
     {
-        // $validasi = $this->validate($request,[
-        //     'title' => ['required'],
-        //     'sub_title' => ['required'],
-        //     'materi_id' => ['required'],
-        //     'video' => ['required'],
-        //     'quiz' => ['required'],
-        // ]);
-
         $rules = [
-            'title' => ['required'],
-            'sub_title' => ['required'],
-            'materi_id' => ['required'],
-            'video' => ['required'],
-            'quiz' => ['required'],
+            'materi' => ['required'],
+            'kategori' => ['required'],
+            'deskripsi' => ['max:255'],
+            'thumbnail' => ['image'],
         ];
 
         if($request->slug != $pembelajaran->slug){
@@ -103,7 +98,14 @@ class AdminPembelajaranController extends Controller
 
         $validasi = $request->validate($rules);
 
-        Pembelajaran::where('id',$pembelajaran->id)->update($validasi);
+        if($request->file('thumbnail')){
+            if($request->lama){
+                Storage::delete($request->lama);
+            }
+            $validasi['thumbnail'] = $request->file('thumbnail')->store('thumbnail-pembelajaran');
+        }
+        
+        pembelajaran::where('id',$pembelajaran->id)->update($validasi);
         return redirect('/admin/pembelajaran')->with('success','Data berhasil diubah!');
     }
 
@@ -115,7 +117,10 @@ class AdminPembelajaranController extends Controller
      */
     public function destroy(Pembelajaran $pembelajaran)
     {
-        Pembelajaran::destroy($pembelajaran->id);
+        if($pembelajaran->thumbnail){
+            Storage::delete($pembelajaran->thumbnail);
+        }
+        pembelajaran::destroy($pembelajaran->id);
         return redirect('/admin/pembelajaran')->with('success','Data berhasil dihapus!');
     }
 }

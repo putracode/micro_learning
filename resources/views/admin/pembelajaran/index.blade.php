@@ -1,7 +1,7 @@
 @extends('layout.sneat')
 
 @section('title')
-Materi Pembelajaran   
+Pembelajaran   
 @endsection
 
 @section('styles')
@@ -28,23 +28,24 @@ Materi Pembelajaran
             <thead>
                 <tr class="text-nowrap">
                     <th>ID</th>
-                    <th>Title</th>
-                    <th>Sub Title</th>
                     <th>Materi</th>
-                    <th>Quiz</th>
-                    <th>Video</th>
+                    <th>Slug</th>
+                    <th>Kategori</th>
+                    <th>Thumbnail</th>
+                    <th>Deskripsi</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody class="table-border-bottom-0">
                 @foreach ($pembelajaran as $row)
                 <tr>
+
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $row->title }}</td>
-                    <td>{{ $row->sub_title }}</td>
-                    <td>{{ $row->materi->materi }}</td>
-                    <td>{{ $row->quiz }}</td>
-                    <td>{{ $row->video }}</td>
+                    <td>{{ $row->materi }}</td>
+                    <td>{{ $row->slug }}</td>
+                    <td>{{ $row->kategori }}</td>
+                        
+                    <td>{{ $row->deskripsi }}</td>
                     <td>
                         <a href="/admin/pembelajaran/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning ">
@@ -59,7 +60,7 @@ Materi Pembelajaran
                         <form action="/admin/pembelajaran/{{ $row->id }}" method="POST" style="display: inline">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Data" id="confirmbutton">
+                            <button type="submit" class="btn btn-icon btn-danger confirmdelete" data-name="Materi" id="confirmbutton">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                         viewBox="0 0 24 24">
                                         <g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
