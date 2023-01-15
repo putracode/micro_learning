@@ -28,7 +28,7 @@ Pembelajaran
             <thead>
                 <tr class="text-nowrap">
                     <th>ID</th>
-                    <th>Materi</th>
+                    <th>Nama Pelajaran</th>
                     <th>Slug</th>
                     <th>Kategori</th>
                     <th>Thumbnail</th>
@@ -44,7 +44,7 @@ Pembelajaran
                     <td>{{ $row->materi }}</td>
                     <td>{{ $row->slug }}</td>
                     <td>{{ $row->kategori }}</td>
-                        
+                    <td><img src="{{ asset('storage/' . $row->thumbnail) }}" style="width: 100px;" alt=""></td>
                     <td>{{ $row->deskripsi }}</td>
                     <td>
                         <a href="/admin/pembelajaran/{{ $row->id }}/edit">

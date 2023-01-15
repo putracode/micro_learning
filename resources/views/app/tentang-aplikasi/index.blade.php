@@ -1,26 +1,24 @@
 @extends('layout.page')
 
+@section('styles')
+    <style>
+        .opqrs{
+            /* font-family: 'Jost', sans-serif; */
+            letter-spacing: 0.5px;
+            line-height: 25px
+        }
+    </style>
+@endsection
 @section('content')
 
-{{-- <div class="card">
-    <div class="card-header">
-        TENTANG APLIKASI
-    </div>
-    <div class="card-body">
-        Aplikasi ini merupakan aplikasi temporer untuk Micro Learning di lingkungan SBU Jakban.
-        Semoga dengan aplikasi sederhana ini menambah keberkahan untuk kita semua.
-        SBU Jakban ..... !!!  Juara ... Juara ... Juara ...
-        <br>
-        Jika ada kendala atau masukan silahkan <a href="https://wa.me/628111993122" style="font-style: italic" target="blank">hubungi kami</a> 
-    </div>
-</div> --}}
-
-<p>
+<p class="opqrs">
     Aplikasi ini merupakan aplikasi temporer untuk Micro Learning di lingkungan SBU Jakban.
+    <br>
     Semoga dengan aplikasi sederhana ini menambah keberkahan untuk kita semua.
+    <br>
     SBU Jakban ..... !!!  Juara ... Juara ... Juara ...
 </p>
-<p>
+<p class="opqrs">
     Jika ada kendala atau masukan silahkan <a href="https://wa.me/628111993122" style="font-style: italic" target="blank">hubungi kami</a> 
 </p>
 

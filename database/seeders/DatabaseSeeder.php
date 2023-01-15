@@ -24,44 +24,28 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'name' => 'Saputra',
+            'name' => 'Admin',
             'role' => 'admin',
-            // 'username' => 'putra',
-            'email' => 'saputra@gmail.com',
+            'email' => 'admin@admin.com',
             'password' => bcrypt('password'),
-            'no_telepon' => '085692988947',
+            'no_telepon' => '-',
             'perusahaan' => 'ICON+',
-            'bidang' => 'Bidang Aktivasi Publik',
+            'bidang' => '-',
             'is_approve' => 2,
             'pengguna' => 'Internal',
             'password_change' => true
         ]);
 
         User::create([
-            'name' => 'Rendi Purwito Armin',
+            'name' => 'Guest',
             'role' => 'user',
-            // 'username' => 'rendi',
-            'email' => 'rendi@gmail.com',
-            'no_telepon' => '085893342578',
+            'email' => 'guest@guest.com',
+            'no_telepon' => '-',
             'password' => bcrypt('password'),
             'perusahaan' => 'ICON+',
-            'bidang' => 'Bidang Aktivasi Listrik',
+            'bidang' => '-',
             'is_approve' => 2,
             'pengguna' => 'Internal',
-            'password_change' => true
-        ]);
-
-        User::create([
-            'name' => 'Farhan Rian',
-            'role' => 'user',
-            // 'username' => 'rendi',
-            'email' => 'farhan@gmail.com',
-            'no_telepon' => '088932435572',
-            'password' => bcrypt('password'),
-            'perusahaan' => 'ICON+',
-            'bidang' => 'Bidang Retail',
-            'is_approve' => 2,
-            'pengguna' => 'Eksternal',
             'password_change' => true
         ]);
 

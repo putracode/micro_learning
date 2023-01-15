@@ -55,7 +55,7 @@ Materi Pembelajaran
                         <label for="pembelajaran_id" class="col-sm-2 col-form-label">Materi</label>
                         <div class="col-sm-10">
                             <select class="form-select" name="pembelajaran_id">
-                                <option selected disabled></option>
+                                <option selected disabled hidden></option>
                                 @foreach ($pembelajaran as $row)
                                     @if(old('pembelajaran_id') == $row->id)
                                         <option value="{{ $row->id }}" selected>{{ $row->materi }}</option>

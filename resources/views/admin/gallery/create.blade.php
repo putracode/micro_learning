@@ -26,11 +26,14 @@ Galeri
                             @enderror
                         </div>
                     </div>
+                    <div class="row">
+
+                        <img class="img-preview mb-3 img-fluid col-sm-5 offset-2 rounded" style="width: 250px; height: 150px; display: block; object-fit:cover;">
+                    </div>
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
                         <div class="col-sm-10">
-                            <input type="file" class="form-control @error('thumbnail') @enderror" id="thumbnail" name="thumbnail"
-                                required>
+                            <input type="file" class="form-control @error('thumbnail') @enderror" id="thumbnail" name="thumbnail" required onchange="previewImage()">
                             @error('thumbnail')
                             <div class="invalid-feedback">
                                 {{ $message }}
@@ -56,8 +59,8 @@ Galeri
                     </div>
                     <div class="row justify-content-end">
                         <div class="col-sm-10">
-                            <button type="submit" class="btn btn-primary float-end px-5 btn-sm">Send</button>
-                            <a href="/admin/gallery" class="btn btn-danger px-5 me-2 float-end btn-sm">Cancel</a>
+                            <button type="submit" class="btn btn-primary float-end px-4 btn-sm">Send</button>
+                            <a href="/admin/gallery" class="btn btn-danger px-4 me-2 float-end btn-sm">Cancel</a>
                         </div>
                     </div>
                 </form>
@@ -81,19 +84,24 @@ Galeri
 
     function addFoto() {
         i++
-        foto.innerHTML += '<div class="row mb-4 classFoto" id="xfoto' + i + '">' +
-            '<label class="col-sm-2 col-form-label" for="foto' + i + '">Foto ' + i + '</label>' +
-            '<div class="col-sm-10">' + 
-            '<input type="file" class="form-control jumlah @error("foto' + i + '") @enderror" id="foto' + i +
-            '"required name="foto' + i + '">' +
-            '@error("foto' + i + '")' +
-            '<div class="invalid-feedback">' +
-            '{{ $message }}' +
-            '</div>' +
-            '@enderror' +
-            '</div>' +
-            // '<div class="col-md-1">'+'<button class="btn btn-danger btn-sm" onclick="hapusFoto(xfoto'+ i +')" type="button" id="tambahvideo"><i class="bx bx-x"></i></button>'+'</div>' +
-            '</div>'
+        foto.innerHTML +=
+            '<div class="bungkus">'+
+                '<div class="row mb-2">'+
+                    '<img class="img-preview'+ i +' mb-3 img-fluid col-sm-5 offset-2 rounded" style="width: 250px; height: 150px; display: block; object-fit:cover;">' +
+                '</div>' +
+                '<div class="row mb-4 classFoto" id="xfoto' + i + '">' +
+                '<label class="col-sm-2 col-form-label" for="foto' + i + '">Foto ' + i + '</label>' +
+                '<div class="col-sm-10">' + 
+                '<input type="file" class="form-control jumlah @error("foto' + i + '") @enderror" id="foto' + i +
+                '"required name="foto' + i + '" onchange="previewImage'+ i +'()">' +
+                '@error("foto' + i + '")' +
+                '<div class="invalid-feedback">' +
+                '{{ $message }}' +
+                '</div>' +
+                '@enderror' +
+                '</div>' +
+                '</div>' +
+            '</div>' 
 
         if (i == 5) {
             btnFoto.style.display = 'none'
@@ -141,6 +149,62 @@ Galeri
         if (y < 2) {
             btnVideo.style.display = 'inline-block'
         }
+    }
+
+    function previewImage(){
+        const image = document.querySelector("#thumbnail");
+        const imgPreview = document.querySelector(".img-preview");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
+    }
+    function previewImage1(){
+        const image = document.querySelector("#foto1");
+        const imgPreview = document.querySelector(".img-preview1");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
+    }
+
+    function previewImage2(){
+        const image = document.querySelector("#foto2");
+        const imgPreview = document.querySelector(".img-preview2");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
+    }
+    function previewImage3(){
+        const image = document.querySelector("#foto3");
+        const imgPreview = document.querySelector(".img-preview3");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
+    }
+    function previewImage4(){
+        const image = document.querySelector("#foto4");
+        const imgPreview = document.querySelector(".img-preview4");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
+    }
+    function previewImage5(){
+        const image = document.querySelector("#foto5");
+        const imgPreview = document.querySelector(".img-preview5");
+
+        imgPreview.style.display = "block";
+
+        const blob = URL.createObjectURL(image.files[0]);
+        imgPreview.src = blob;
     }
 
 </script>

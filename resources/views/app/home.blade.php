@@ -117,8 +117,7 @@
               <a href="https://youtu.be/kth3y5WK8O8" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Tutorial</span></a>
             @endguest
             @auth  
-              <a href="https://youtu.be/Ajqc3o366wI" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
-              <a href="https://youtu.be/Ajqc3o366wI" class="glightbox btn-watch-video d-none"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+              <a href="https://youtu.be/kth3y5WK8O8" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
             @endauth
           </div>
         </div>

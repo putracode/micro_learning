@@ -165,7 +165,7 @@
                 </a>
               </div> --}}
               <!-- /Logo -->
-              <h4 class="mb-2">Forgot Password? 🔒</h4>
+              <h4 class="mb-2">Forgot Password?</h4>
               <p class="mb-4">Enter your email and we'll send your reset link</p>
               <form id="formAuthentication" class="mb-3" action="/forgot-password" method="POST">
                 @csrf
@@ -187,7 +187,6 @@
         </div>
       </div>
     </div>
-
     <!-- / Content -->
 
     

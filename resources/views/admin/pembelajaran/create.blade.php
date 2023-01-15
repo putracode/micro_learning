@@ -79,7 +79,7 @@ Pembelajaran
                     <div class="row mb-4">
                         <label class="col-sm-2 col-form-label" for="thumbnail">Thumbnail</label>
                         <div class="col-sm-10">
-                            <img class="img-preview mb-3 img-fluid col-sm-5">
+                            <img class="img-preview mb-3 img-fluid col-sm-5" style="width: 250px; height: 150px;">
                             <input type="file" class="form-control @error('thumbnail') is-invalid @enderror" id="thumbnail" name="thumbnail" required value="{{ old('thumbnail') }}" autocomplete="off" onchange="previewImage()">
                             @error('thumbnail')
                             <div class="invalid-feedback">

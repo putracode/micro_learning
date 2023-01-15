@@ -11,9 +11,14 @@
 @endsection
 @section('content')
 
-<h4>{{ $materi->sub_title }}</h4>
+<div class="judul mb-2">
+
+    <h4 style="display: inline">{{ $materi->sub_title }}</h4>
+    <a href="{{ url()->previous() }}" style="display: inline; float: right;"><i class='bx bx-chevron-left'></i>Kembali</a>
+</div>
+
 {!! $materi->video !!}
-<a href="{{ url()->previous() }}" style="display: block">Kembali</a>
+
 
 @endsection
 

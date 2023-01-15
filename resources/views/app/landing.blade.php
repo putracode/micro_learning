@@ -42,7 +42,7 @@
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="/"><img src="/img/putih.png" alt="" ></a></h1>
+      <h1 class="logo me-auto"><a href="/"><img src="/img/putih.png" alt=""></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="/arsha/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -111,9 +111,9 @@
             @auth
               <a href="/pembelajaran" class="btn-get-started scrollto">Pilih Materi</a>
             @endauth
-            @guest  
+            {{-- @guest  
               <a href="https://youtu.be/kth3y5WK8O8" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Tutorial</span></a>
-            @endguest
+            @endguest --}}
             @auth  
               <a href="https://youtu.be/Ajqc3o366wI" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
               <a href="https://youtu.be/Ajqc3o366wI" class="glightbox btn-watch-video d-none"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>

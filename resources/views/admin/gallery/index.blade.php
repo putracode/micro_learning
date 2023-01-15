@@ -36,7 +36,7 @@ Galeri
                     <td>{{ $row->title }}</td>
                     <td><img src="{{ asset('storage/' . $row->thumbnail) }}" style="width: 100px;" alt=""></td>
                     <td>
-                        {{-- <a href="/admin/gallery/{{ $row->id }}/edit">
+                        <a href="/admin/gallery/{{ $row->id }}/edit">
                             <button type="button" class="btn btn-icon  btn-warning">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
                                     viewBox="0 0 24 24">
@@ -45,7 +45,7 @@ Galeri
                                         fill="#ffffff" fill-rule="evenodd" />
                                 </svg>
                             </button>
-                        </a> --}}
+                        </a>
                         <a href="#" onclick="buttonConfirm({{ $row->id }})" data-name="gallery" id="confirmbutton">
                             <button type="button" class="btn btn-icon btn-danger">
                                 <svg xmlns="http://www.w3.org/2000/svg" role="img" width="1em" height="1em"
